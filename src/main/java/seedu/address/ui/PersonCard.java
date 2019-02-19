@@ -24,6 +24,9 @@ public class PersonCard extends UiPart<Region> {
 
     public final Person person;
 
+    private static final String[] TAG_COLOR_STYLES =
+            { "teal", "red", "yellow", "blue", "orange", "brown", "green", "pink", "black", "grey" };
+
     @FXML
     private HBox cardPane;
     @FXML
@@ -48,6 +51,26 @@ public class PersonCard extends UiPart<Region> {
         address.setText(person.getAddress().value);
         email.setText(person.getEmail().value);
         person.getTags().forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
+        initTags(person);
+    }
+
+
+    /**
+     * Returns the color for tag.
+     */
+    private String getTagColor(String tagName) {
+        return TAG_COLOR_STYLES[Math.abs(tagName.hashCode()) % TAG_COLOR_STYLES.length];
+    }
+
+    /**
+     * Creates the tag labels for {@code person}.
+     */
+    private void initTags(Person person) {
+        person.getTags().forEach(tag -> {
+            Label tagLabel = new Label(tag.tagName);
+            tagLabel.getStyleClass().add(getTagColor(tag.tagName));
+            tags.getChildren().add(tagLabel);
+        });
     }
 
     @Override
