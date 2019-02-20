@@ -139,7 +139,7 @@
 <div class="sect2">
 <h3 id="undoing-previous-command-code-undo-code"><a class="link" href="#undoing-previous-command-code-undo-code">Undoing previous command : <code>undo</code></a></h3>
 <div class="paragraph">
-<p>Restores the address book to the state before the previous <em>undoable</em> command was executed.<br>
+<p>Restores the records to the state before the previous <em>undoable</em> command was executed.<br>
 Format: <code>undo</code></p>
 </div>
 <div class="admonitionblock note">
@@ -150,7 +150,7 @@ Format: <code>undo</code></p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Undoable commands: those commands that modify the address book&#8217;s content (<code>add</code>, <code>delete</code>, <code>edit</code> and <code>clear</code>).</p>
+<p>Undoable commands: those commands that modify the records content (<code>addBook</code>, <code>addReview</code>, <code>`deleteBook</code>, <code>deleteReview</code>, <code>editTag</code> and <code>clear</code>).</p>
 </div>
 </td>
 </tr>
@@ -162,21 +162,20 @@ Format: <code>undo</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>delete 1</code><br>
-<code>list</code><br>
-<code>undo</code> (reverses the <code>delete 1</code> command)<br></p>
+<p><code>deleteBook Computer Security</code><br>
+<code>listBook</code><br>
+<code>undo</code> (reverses the <code>deleteBook Computer Security</code> command)<br></p>
 </li>
 <li>
-<p><code>select 1</code><br>
-<code>list</code><br>
+<p><code>listBook</code><br>
 <code>undo</code><br>
 The <code>undo</code> command fails as there are no undoable commands executed previously.</p>
 </li>
 <li>
-<p><code>delete 1</code><br>
+<p><code>deleteBook Alice</code><br>
 <code>clear</code><br>
 <code>undo</code> (reverses the <code>clear</code> command)<br>
-<code>undo</code> (reverses the <code>delete 1</code> command)<br></p>
+<code>undo</code> (reverses the <code>deleteBook Alice</code> command)<br></p>
 </li>
 </ul>
 </div>
@@ -193,28 +192,139 @@ Format: <code>redo</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>delete 1</code><br>
-<code>undo</code> (reverses the <code>delete 1</code> command)<br>
-<code>redo</code> (reapplies the <code>delete 1</code> command)<br></p>
+<p><code>deleteBook Alice</code><br>
+<code>undo</code> (reverses the <code>deleteBook Alice</code> command)<br>
+<code>redo</code> (reapplies the <code>deleteBook Alice</code> command)<br></p>
 </li>
 <li>
-<p><code>delete 1</code><br>
+<p><code>deleteBook Hello World</code><br>
 <code>redo</code><br>
 The <code>redo</code> command fails as there are no <code>undo</code> commands executed previously.</p>
-</li>
-<li>
-<p><code>delete 1</code><br>
-<code>clear</code><br>
-<code>undo</code> (reverses the <code>clear</code> command)<br>
-<code>undo</code> (reverses the <code>delete 1</code> command)<br>
-<code>redo</code> (reapplies the <code>delete 1</code> command)<br>
-<code>redo</code> (reapplies the <code>clear</code> command)<br></p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
+<h3 id="give-a-summary-of-all-the-books-read-code-summary-code"><a class="link" href="#give-a-summary-of-all-the-books-read-code-summary-code">Give a Summary of All the Books Read : <code>summary</code></a></h3>
+<div class="paragraph">
+<p>Generate a summary of all the books read so far.<br>
+Format: <code>summary</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>summary</code>
+An example of a summary <code>You have read 100 books so far. Your favourite book is Alice in Wonderland. You wrote 13 reviews for it. The tag you use most commonly is “textbook.” Your favourite author is “John Doe”, you read 11 books written by him. The book that you gave the lowest rating is “Algorithms”</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">Clearing all entries : <code>clear</code></a></h3>
+<div class="paragraph">
+<p>Clears all entries from the address book.<br>
+Format: <code>clear</code></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">Exiting the program : <code>exit</code></a></h3>
+<div class="paragraph">
+<p>Exits the program.<br>
+Format: <code>exit</code></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="saving-the-data"><a class="link" href="#saving-the-data">Saving the data</a></h3>
+<div class="paragraph">
+<p>Book review data are saved in the hard disk automatically after any command that changes the data.<br>
+There is no need to save manually.</p>
+</div>
+</div>
+<div class="sect2">
 <h3 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">Encrypting data files <code>[coming in v2.0]</code></a></h3>
+<div class="paragraph">
+<p><em>{explain how the user can enable/disable data encryption}</em></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="faq"><a class="link" href="#faq">FAQ</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Q</strong>: How do I transfer my data to another Computer?<br>
+<strong>A</strong>: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous Book Squirrel folder.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="command-summary"><a class="link" href="#command-summary">Command Summary</a></h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>AddBook</strong> <code>addBook n/BOOK NAME a/author m/RATING(0-10) [t/TAG]…</code><br>
+e.g. <code>addBook n/Alice in Wonderland a/Lewis Carroll m/5 t/fantasy t/fairy tale</code></p>
+</li>
+<li>
+<p><strong>AddReview</strong> <code>aaddReview n/BOOK NAME r/review</code><br>
+e.g. <code>addReview n/Alice in Wonderland r/While Lewis Carroll purists will scoff at the aging of his curious young protagonist, most movie audiences will enjoy this colorful world.</code></p>
+</li>
+<li>
+<p><strong>Clear</strong> : <code>clear</code></p>
+</li>
+<li>
+<p><strong>DeleteBook</strong> : <code>deleteBook n/BOOKNAME</code><br>
+e.g. <code>deleteBook n/Alice in Wonderland</code></p>
+</li>
+<li>
+<p><strong>DeleteReview</strong> : <code>deleteReview INDEX</code></p>
+</li>
+<li>
+<p><strong>EditBook</strong> : <code>edit n/BOOKNAME [a/AUTHOR] [m/RATING]&#8230;&#8203;</code><br>
+e.g. <code>edit n/Alice in Wonderland a/some author</code></p>
+</li>
+<li>
+<p><strong>EditTag</strong> : <code>editTag n/BOOKNAME [ta/TAG TO ADD] [td/TAG TO DELETE]</code><br>
+e.g. <code>editTag n/Alice in Wonderland ta/horror td/fantasy.</code></p>
+</li>
+<li>
+<p><strong>Find</strong> : <code>find KEYWORD [MORE_KEYWORDS]</code><br>
+e.g. <code>find Wonderland</code></p>
+</li>
+<li>
+<p><strong>ListBook</strong> : <code>listBook [t/TAG] [m/RATING]</code><br>
+e.g. <code>listBook t/textbook m/5</code></p>
+</li>
+<li>
+<p><strong>ListReview</strong> : <code>listReview n/BOOKNAME</code><br>
+e.g. <code>listReview n/Alice in Wonderland</code></p>
+</li>
+<li>
+<p><strong>Help</strong> : <code>help</code></p>
+</li>
+<li>
+<p><strong>History</strong> : <code>history</code></p>
+</li>
+<li>
+<p><strong>Undo</strong> : <code>undo</code></p>
+</li>
+<li>
+<p><strong>Redo</strong> : <code>redo</code></p>
+</li>
+<li>
+<p><strong>Summary</strong> : <code>summary</code></p>
+</li>
+<li>
+<p><strong>Exit</strong> : <code>exit</code></p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="encrypting-data-files-code-coming-in-v2-0-code-2"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code-2">Encrypting data files <code>[coming in v2.0]</code></a></h3>
 <div class="paragraph">
 <p><em>{explain how the user can enable/disable data encryption}</em></p>
 </div>
@@ -452,4 +562,4 @@ If the <code>currentStatePointer</code> is at index <code>bookListStateList.size
 <p><em>{Optionally, you may include other projects in your portfolio.}</em></p>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-02-19 09:09:19 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-02-20 11:56:24 UTC</div></div></div></body></html>
