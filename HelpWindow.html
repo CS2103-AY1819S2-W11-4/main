@@ -14,7 +14,7 @@
 <li><a href="#Features">3. Features</a>
 <ul class="sectlevel2">
 <li><a href="#viewing-help-code-help-code">3.1. Viewing help : <code>help</code></a></li>
-<li><a href="#adding-a-code-add-code">3.2. Adding a : <code>add</code></a></li>
+<li><a href="#adding-a-book-code-addbook-code">3.2. Adding a Book: <code>addBook</code></a></li>
 <li><a href="#adding-a-book-review-code-addreview-code">3.3. Adding a Book Review: <code>addReview</code></a></li>
 <li><a href="#listing-book-entries-code-listbook-code">3.4. Listing Book Entries : <code>listBook</code></a></li>
 <li><a href="#listing-book-reviews-to-a-certain-book-code-listreview-code">3.5. Listing Book Reviews to a Certain Book : <code>listReview</code></a></li>
@@ -131,9 +131,9 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 </div>
 </div>
 <div class="sect2">
-<h3 id="adding-a-code-add-code"><a class="link" href="#adding-a-code-add-code">3.2. Adding a : <code>add</code></a></h3>
+<h3 id="adding-a-book-code-addbook-code"><a class="link" href="#adding-a-book-code-addbook-code">3.2. Adding a Book: <code>addBook</code></a></h3>
 <div class="paragraph">
-<p>Adds a person to the address book<br>
+<p>Adds a book to the book list<br>
 Format: <code>addBook n/BOOK NAME a/author m/RATING(0-10) [t/TAG]…​</code></p>
 </div>
 <div class="paragraph">
@@ -174,21 +174,33 @@ Format: <code>addReview n/BOOK NAME r/review</code></p>
 <h3 id="listing-book-entries-code-listbook-code"><a class="link" href="#listing-book-entries-code-listbook-code">3.4. Listing Book Entries : <code>listBook</code></a></h3>
 <div class="paragraph">
 <p>Shows a list of all book entries, with the specified TAG and RATING.<br>
-Format: <code>listBook [t/TAG] [m/RATING]</code>
-Examples:</p>
+Format: <code>listBook [t/TAG] [m/RATING]</code></p>
 </div>
 <div class="paragraph">
-<p>*<code>listBook t/textbook m/5</code>
-*<code>listBook t/testbook</code>
-*<code>listBook m/5</code></p>
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>listBook t/textbook m/5</code></p>
+</li>
+<li>
+<p><code>listBook t/testbook</code></p>
+</li>
+<li>
+<p><code>listBook m/5</code></p>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect2">
 <h3 id="listing-book-reviews-to-a-certain-book-code-listreview-code"><a class="link" href="#listing-book-reviews-to-a-certain-book-code-listreview-code">3.5. Listing Book Reviews to a Certain Book : <code>listReview</code></a></h3>
 <div class="paragraph">
 <p>Shows a list of all review entries of a book.<br>
-Format: <code>listReview n/BOOKNAME</code>
-Examples:</p>
+Format: <code>listReview n/BOOKNAME</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
 </div>
 <div class="paragraph">
 <p>*<code>listReview n/Alice in Wonderland</code></p>
@@ -593,4 +605,4 @@ e.g. <code>listReview n/Alice in Wonderland</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-02-20 14:00:29 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-02-25 06:16:14 UTC</div></div></div></body></html>
