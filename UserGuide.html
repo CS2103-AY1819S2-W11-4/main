@@ -14,18 +14,18 @@
 <li><a href="#Features">3. Features</a>
 <ul class="sectlevel2">
 <li><a href="#viewing-help-code-help-code">3.1. Viewing help : <code>help</code></a></li>
-<li><a href="#adding-a-book-code-addbook-code">3.2. Adding a Book: <code>addBook</code></a></li>
-<li><a href="#adding-a-book-review-code-addreview-code">3.3. Adding a Book Review: <code>addReview</code></a></li>
-<li><a href="#listing-book-entries-code-listbook-code">3.4. Listing Book Entries : <code>listBook</code></a></li>
-<li><a href="#listing-book-reviews-to-a-certain-book-code-listreview-code">3.5. Listing Book Reviews to a Certain Book : <code>listReview</code></a></li>
-<li><a href="#editing-book-entry-code-editbook-code">3.6. Editing Book Entry : <code>editBook</code></a></li>
-<li><a href="#editing-tags-of-a-certain-book-code-edittag-code">3.7. Editing Tags of a Certain Book: <code>editTag</code></a></li>
+<li><a href="#adding-a-book-code-addbook-code">3.2. Adding a book: <code>addBook</code></a></li>
+<li><a href="#adding-a-book-review-code-addreview-code">3.3. Adding a book review: <code>addReview</code></a></li>
+<li><a href="#listing-book-entries-code-listbook-code">3.4. Listing book entries : <code>listBook</code></a></li>
+<li><a href="#listing-book-reviews-of-a-certain-book-code-listreview-code">3.5. Listing book reviews of a certain book : <code>listReview</code></a></li>
+<li><a href="#editing-book-entry-code-editbook-code">3.6. Editing book entry : <code>editBook</code></a></li>
+<li><a href="#editing-tags-of-a-certain-book-code-edittag-code">3.7. Editing tags of a certain book: <code>editTag</code></a></li>
 <li><a href="#deleting-a-book-code-deletebook-code">3.8. Deleting a book : <code>deleteBook</code></a></li>
-<li><a href="#deleting-a-book-review-code-deletereview-code">3.9. Deleting a Book Review: <code>deleteReview</code></a></li>
+<li><a href="#deleting-a-book-review-code-deletereview-code">3.9. Deleting a book review: <code>deleteReview</code></a></li>
 <li><a href="#listing-entered-commands-code-history-code">3.10. Listing entered commands : <code>history</code></a></li>
 <li><a href="#undoing-previous-command-code-undo-code">3.11. Undoing previous command : <code>undo</code></a></li>
 <li><a href="#redoing-the-previously-undone-command-code-redo-code">3.12. Redoing the previously undone command : <code>redo</code></a></li>
-<li><a href="#give-a-summary-of-all-the-books-read-code-summary-code">3.13. Give a Summary of All the Books Read : <code>summary</code></a></li>
+<li><a href="#give-a-summary-of-all-the-books-read-code-summary-code">3.13. Give a summary of all the books read : <code>summary</code></a></li>
 <li><a href="#clearing-all-entries-code-clear-code">3.14. Clearing all entries : <code>clear</code></a></li>
 <li><a href="#exiting-the-program-code-exit-code">3.15. Exiting the program : <code>exit</code></a></li>
 <li><a href="#saving-the-data">3.16. Saving the data</a></li>
@@ -130,7 +130,7 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 </div>
 </div>
 <div class="sect2">
-<h3 id="adding-a-book-code-addbook-code"><a class="link" href="#adding-a-book-code-addbook-code">3.2. Adding a Book: <code>addBook</code></a></h3>
+<h3 id="adding-a-book-code-addbook-code"><a class="link" href="#adding-a-book-code-addbook-code">3.2. Adding a book: <code>addBook</code></a></h3>
 <div class="paragraph">
 <p>Adds a book to the book list<br>
 Format: <code>addBook n/BOOK NAME a/author m/RATING(0-10) [t/TAG]…​</code></p>
@@ -150,7 +150,7 @@ Format: <code>addBook n/BOOK NAME a/author m/RATING(0-10) [t/TAG]…​</code></
 </div>
 </div>
 <div class="sect2">
-<h3 id="adding-a-book-review-code-addreview-code"><a class="link" href="#adding-a-book-review-code-addreview-code">3.3. Adding a Book Review: <code>addReview</code></a></h3>
+<h3 id="adding-a-book-review-code-addreview-code"><a class="link" href="#adding-a-book-review-code-addreview-code">3.3. Adding a book review: <code>addReview</code></a></h3>
 <div class="paragraph">
 <p>Adds a book review to a certain book in the book list<br>
 Format: <code>addReview n/BOOK NAME r/review</code></p>
@@ -170,7 +170,7 @@ Format: <code>addReview n/BOOK NAME r/review</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="listing-book-entries-code-listbook-code"><a class="link" href="#listing-book-entries-code-listbook-code">3.4. Listing Book Entries : <code>listBook</code></a></h3>
+<h3 id="listing-book-entries-code-listbook-code"><a class="link" href="#listing-book-entries-code-listbook-code">3.4. Listing book entries : <code>listBook</code></a></h3>
 <div class="paragraph">
 <p>Shows a list of all book entries, with the specified TAG and RATING.<br>
 Format: <code>listBook [n/NAME] [t/TAG] [m/RATING]</code></p>
@@ -216,10 +216,21 @@ Format: <code>listBook [n/NAME] [t/TAG] [m/RATING]</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="listing-book-reviews-to-a-certain-book-code-listreview-code"><a class="link" href="#listing-book-reviews-to-a-certain-book-code-listreview-code">3.5. Listing Book Reviews to a Certain Book : <code>listReview</code></a></h3>
+<h3 id="listing-book-reviews-of-a-certain-book-code-listreview-code"><a class="link" href="#listing-book-reviews-of-a-certain-book-code-listreview-code">3.5. Listing book reviews of a certain book : <code>listReview</code></a></h3>
 <div class="paragraph">
 <p>Shows a list of all review entries of a book.<br>
 Format: <code>listReview n/BOOKNAME</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The book name need to match exactly</p>
+</li>
+</ul>
+</div>
+</div>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -233,7 +244,7 @@ Format: <code>listReview n/BOOKNAME</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="editing-book-entry-code-editbook-code"><a class="link" href="#editing-book-entry-code-editbook-code">3.6. Editing Book Entry : <code>editBook</code></a></h3>
+<h3 id="editing-book-entry-code-editbook-code"><a class="link" href="#editing-book-entry-code-editbook-code">3.6. Editing book entry : <code>editBook</code></a></h3>
 <div class="paragraph">
 <p>Edits an existing book entry (eg. edit the mark, author or tag).<br>
 Format: <code>edit n/BOOKNAME [a/AUTHOR] [m/RATING]&#8230;&#8203;</code></p>
@@ -243,7 +254,7 @@ Format: <code>edit n/BOOKNAME [a/AUTHOR] [m/RATING]&#8230;&#8203;</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p>Edits the book entry with name BOOKNAME.</p>
+<p>Edits the book entry with exact name BOOKNAME.</p>
 </li>
 <li>
 <p>At least one of the optional fields must be provided.</p>
@@ -268,7 +279,7 @@ Change the author of book called “Alice in Wonderland” to some author.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="editing-tags-of-a-certain-book-code-edittag-code"><a class="link" href="#editing-tags-of-a-certain-book-code-edittag-code">3.7. Editing Tags of a Certain Book: <code>editTag</code></a></h3>
+<h3 id="editing-tags-of-a-certain-book-code-edittag-code"><a class="link" href="#editing-tags-of-a-certain-book-code-edittag-code">3.7. Editing tags of a certain book: <code>editTag</code></a></h3>
 <div class="paragraph">
 <p>Edit tags of the book specified by BOOKNAME.
 Format: <code>editTag n/BOOKNAME [ta/TAG TO ADD] [td/TAG TO DELETE]</code></p>
@@ -337,7 +348,7 @@ Deletes the entry of Alice in Wonderland.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="deleting-a-book-review-code-deletereview-code"><a class="link" href="#deleting-a-book-review-code-deletereview-code">3.9. Deleting a Book Review: <code>deleteReview</code></a></h3>
+<h3 id="deleting-a-book-review-code-deletereview-code"><a class="link" href="#deleting-a-book-review-code-deletereview-code">3.9. Deleting a book review: <code>deleteReview</code></a></h3>
 <div class="paragraph">
 <p>Deletes the review of the specified book from the review list.<br>
 Format: ` deleteReview INDEX`</p>
@@ -347,20 +358,17 @@ Format: ` deleteReview INDEX`</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Deletes the book of the specified <code>BOOKNAME</code>.</p>
+<p>Deletes of the book at the specified <code>INDEX</code>.</p>
 </li>
 <li>
-<p>The <code>BOOKNAME</code> refers to the name of the book.</p>
+<p>The index refers to the index number shown in the displayed review list.</p>
+</li>
+<li>
+<p>The index must be a positive integer 1, 2, 3, …​</p>
 </li>
 </ul>
 </div>
 </div>
-</div>
-<div class="paragraph">
-<p>Format:
-*Deletes the review of the book at the specified INDEX.
-*The index refers to the index number shown in the displayed review list.
-*The index must be a positive integer 1, 2, 3, …​</p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -368,10 +376,8 @@ Format: ` deleteReview INDEX`</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>deleteBook n/Alice in Wonderland</code></p>
-</li>
-<li>
-<p><code>deleteReview 2</code>
+<p><code>listReview n/Alice in Wonderland</code><br>
+<code>deleteReview 2</code><br>
 Deletes the 2nd review of Alice in Wonderland.</p>
 </li>
 </ul>
@@ -467,7 +473,7 @@ The <code>redo</code> command fails as there are no <code>undo</code> commands e
 </div>
 </div>
 <div class="sect2">
-<h3 id="give-a-summary-of-all-the-books-read-code-summary-code"><a class="link" href="#give-a-summary-of-all-the-books-read-code-summary-code">3.13. Give a Summary of All the Books Read : <code>summary</code></a></h3>
+<h3 id="give-a-summary-of-all-the-books-read-code-summary-code"><a class="link" href="#give-a-summary-of-all-the-books-read-code-summary-code">3.13. Give a summary of all the books read : <code>summary</code></a></h3>
 <div class="paragraph">
 <p>Generate a summary of all the books read so far.<br>
 Format: <code>summary</code></p>
@@ -582,4 +588,4 @@ e.g. <code>listReview n/Alice in Wonderland</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-04 00:31:48 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-04 11:25:33 UTC</div></div></div></body></html>
