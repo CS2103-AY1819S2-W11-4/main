@@ -19,17 +19,16 @@
 <li><a href="#listing-book-entries-code-listbook-code">3.4. Listing book entries : <code>listBook</code></a></li>
 <li><a href="#listing-book-reviews-of-a-certain-book-code-listreview-code">3.5. Listing book reviews of a certain book : <code>listReview</code></a></li>
 <li><a href="#editing-book-entry-code-editbook-code">3.6. Editing book entry : <code>editBook</code></a></li>
-<li><a href="#editing-tags-of-a-certain-book-code-edittag-code">3.7. Editing tags of a certain book: <code>editTag</code></a></li>
-<li><a href="#deleting-a-book-code-deletebook-code">3.8. Deleting a book : <code>deleteBook</code></a></li>
-<li><a href="#deleting-a-book-review-code-deletereview-code">3.9. Deleting a book review: <code>deleteReview</code></a></li>
-<li><a href="#listing-entered-commands-code-history-code">3.10. Listing entered commands : <code>history</code></a></li>
-<li><a href="#undoing-previous-command-code-undo-code">3.11. Undoing previous command : <code>undo</code></a></li>
-<li><a href="#redoing-the-previously-undone-command-code-redo-code">3.12. Redoing the previously undone command : <code>redo</code></a></li>
-<li><a href="#give-a-summary-of-all-the-books-read-code-summary-code">3.13. Give a summary of all the books read : <code>summary</code></a></li>
-<li><a href="#clearing-all-entries-code-clear-code">3.14. Clearing all entries : <code>clear</code></a></li>
-<li><a href="#exiting-the-program-code-exit-code">3.15. Exiting the program : <code>exit</code></a></li>
-<li><a href="#saving-the-data">3.16. Saving the data</a></li>
-<li><a href="#encrypting-data-files-code-coming-in-v2-0-code">3.17. Encrypting data files <code>[coming in v2.0]</code></a></li>
+<li><a href="#deleting-a-book-code-deletebook-code">3.7. Deleting a book : <code>deleteBook</code></a></li>
+<li><a href="#deleting-a-book-review-code-deletereview-code">3.8. Deleting a book review: <code>deleteReview</code></a></li>
+<li><a href="#listing-entered-commands-code-history-code">3.9. Listing entered commands : <code>history</code></a></li>
+<li><a href="#undoing-previous-command-code-undo-code">3.10. Undoing previous command : <code>undo</code></a></li>
+<li><a href="#redoing-the-previously-undone-command-code-redo-code">3.11. Redoing the previously undone command : <code>redo</code></a></li>
+<li><a href="#give-a-summary-of-all-the-books-read-code-summary-code">3.12. Give a summary of all the books read : <code>summary</code></a></li>
+<li><a href="#clearing-all-entries-code-clear-code">3.13. Clearing all entries : <code>clear</code></a></li>
+<li><a href="#exiting-the-program-code-exit-code">3.14. Exiting the program : <code>exit</code></a></li>
+<li><a href="#saving-the-data">3.15. Saving the data</a></li>
+<li><a href="#encrypting-data-files-code-coming-in-v2-0-code">3.16. Encrypting data files <code>[coming in v2.0]</code></a></li>
 </ul>
 </li>
 <li><a href="#faq">4. FAQ</a></li>
@@ -253,7 +252,7 @@ Format: <code>listReview n/BOOKNAME</code></p>
 <h3 id="editing-book-entry-code-editbook-code"><a class="link" href="#editing-book-entry-code-editbook-code">3.6. Editing book entry : <code>editBook</code></a></h3>
 <div class="paragraph">
 <p>Edits an existing book entry (eg. edit the mark, author or tag).<br>
-Format: <code>edit n/BOOKNAME [a/AUTHOR] [m/RATING]&#8230;&#8203;</code></p>
+Format: <code>edit n/BOOKNAME [a/AUTHOR] [m/RATING] [t/TAG]&#8230;&#8203;</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -284,60 +283,14 @@ Format: <code>edit n/BOOKNAME [a/AUTHOR] [m/RATING]&#8230;&#8203;</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>edit n/Alice in Wonderland a/some author</code><br>
-Change the author of book called “Alice in Wonderland” to some author.</p>
+<p><code>edit n/Alice in Wonderland a/some author t/some tag</code><br>
+Change the author of book called “Alice in Wonderland” to some author and some tags.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="editing-tags-of-a-certain-book-code-edittag-code"><a class="link" href="#editing-tags-of-a-certain-book-code-edittag-code">3.7. Editing tags of a certain book: <code>editTag</code></a></h3>
-<div class="paragraph">
-<p>Edit tags of the book specified by BOOKNAME.
-Format: <code>editTag n/BOOKNAME [ta/TAG TO ADD] [td/TAG TO DELETE]</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>Edits the book&#8217;s tag with exact name BOOKNAME.</p>
-</li>
-<li>
-<p>The search by book name is case insensitive. e.g <code>hans</code> will match <code>Hans</code></p>
-</li>
-<li>
-<p>The order of the keywords does matter. e.g. <code>Alice Wonderland</code> will not match <code>Wonderland Alice</code></p>
-</li>
-<li>
-<p>At least one of the optional fields must be provided.</p>
-</li>
-<li>
-<p>[t/TAG] replaces all existing tags of the book</p>
-</li>
-<li>
-<p>[ta/TAG TO ADD] adds the tag to the book</p>
-</li>
-<li>
-<p>[td/TAG TO DELETE] deletes the tag</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>editTag n/Alice in Wonderland ta/horror td/fantasy.</code></p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="deleting-a-book-code-deletebook-code"><a class="link" href="#deleting-a-book-code-deletebook-code">3.8. Deleting a book : <code>deleteBook</code></a></h3>
+<h3 id="deleting-a-book-code-deletebook-code"><a class="link" href="#deleting-a-book-code-deletebook-code">3.7. Deleting a book : <code>deleteBook</code></a></h3>
 <div class="paragraph">
 <p>Deletes the specified book from the book list.<br>
 Format: <code>deleteBook n/BOOKNAME</code></p>
@@ -378,7 +331,7 @@ Deletes the entry of Alice in Wonderland.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="deleting-a-book-review-code-deletereview-code"><a class="link" href="#deleting-a-book-review-code-deletereview-code">3.9. Deleting a book review: <code>deleteReview</code></a></h3>
+<h3 id="deleting-a-book-review-code-deletereview-code"><a class="link" href="#deleting-a-book-review-code-deletereview-code">3.8. Deleting a book review: <code>deleteReview</code></a></h3>
 <div class="paragraph">
 <p>Deletes the review of the specified book from the review list.<br>
 Format: <code>deleteReview INDEX</code></p>
@@ -414,7 +367,7 @@ Deletes the 2nd review of Alice in Wonderland.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="listing-entered-commands-code-history-code"><a class="link" href="#listing-entered-commands-code-history-code">3.10. Listing entered commands : <code>history</code></a></h3>
+<h3 id="listing-entered-commands-code-history-code"><a class="link" href="#listing-entered-commands-code-history-code">3.9. Listing entered commands : <code>history</code></a></h3>
 <div class="paragraph">
 <p>Lists all the commands that you have entered in reverse chronological order.<br>
 Format: <code>history</code></p>
@@ -435,7 +388,7 @@ Format: <code>history</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="undoing-previous-command-code-undo-code"><a class="link" href="#undoing-previous-command-code-undo-code">3.11. Undoing previous command : <code>undo</code></a></h3>
+<h3 id="undoing-previous-command-code-undo-code"><a class="link" href="#undoing-previous-command-code-undo-code">3.10. Undoing previous command : <code>undo</code></a></h3>
 <div class="paragraph">
 <p>Restores the records to the state before the previous <em>undoable</em> command was executed.<br>
 Format: <code>undo</code></p>
@@ -479,7 +432,7 @@ The <code>undo</code> command fails as there are no undoable commands executed p
 </div>
 </div>
 <div class="sect2">
-<h3 id="redoing-the-previously-undone-command-code-redo-code"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code">3.12. Redoing the previously undone command : <code>redo</code></a></h3>
+<h3 id="redoing-the-previously-undone-command-code-redo-code"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code">3.11. Redoing the previously undone command : <code>redo</code></a></h3>
 <div class="paragraph">
 <p>Reverses the most recent <code>undo</code> command.<br>
 Format: <code>redo</code></p>
@@ -503,7 +456,7 @@ The <code>redo</code> command fails as there are no <code>undo</code> commands e
 </div>
 </div>
 <div class="sect2">
-<h3 id="give-a-summary-of-all-the-books-read-code-summary-code"><a class="link" href="#give-a-summary-of-all-the-books-read-code-summary-code">3.13. Give a summary of all the books read : <code>summary</code></a></h3>
+<h3 id="give-a-summary-of-all-the-books-read-code-summary-code"><a class="link" href="#give-a-summary-of-all-the-books-read-code-summary-code">3.12. Give a summary of all the books read : <code>summary</code></a></h3>
 <div class="paragraph">
 <p>Generate a summary of all the books read so far.<br>
 Format: <code>summary</code></p>
@@ -521,28 +474,28 @@ An example of a summary <code>You have read 100 books so far. Your favourite boo
 </div>
 </div>
 <div class="sect2">
-<h3 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">3.14. Clearing all entries : <code>clear</code></a></h3>
+<h3 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">3.13. Clearing all entries : <code>clear</code></a></h3>
 <div class="paragraph">
 <p>Clears all entries from the address book.<br>
 Format: <code>clear</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.15. Exiting the program : <code>exit</code></a></h3>
+<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.14. Exiting the program : <code>exit</code></a></h3>
 <div class="paragraph">
 <p>Exits the program.<br>
 Format: <code>exit</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.16. Saving the data</a></h3>
+<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.15. Saving the data</a></h3>
 <div class="paragraph">
 <p>Book review data are saved in the hard disk automatically after any command that changes the data.<br>
 There is no need to save manually.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">3.17. Encrypting data files <code>[coming in v2.0]</code></a></h3>
+<h3 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">3.16. Encrypting data files <code>[coming in v2.0]</code></a></h3>
 <div class="paragraph">
 <p><em>{explain how the user can enable/disable data encryption}</em></p>
 </div>
@@ -618,4 +571,4 @@ e.g. <code>listReview n/Alice in Wonderland</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-08 15:38:45 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-10 12:13:54 UTC</div></div></div></body></html>
