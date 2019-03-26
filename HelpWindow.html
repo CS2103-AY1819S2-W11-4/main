@@ -78,9 +78,6 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <p><strong><code>addBook</code></strong><code>n/Alice in Wonderland a/Lewis Carroll m/5 t/fantasy t/fairy tale</code> : adds a book named <code>Alice in Wonderland</code> to the record.</p>
 </li>
 <li>
-<p><strong><code>deleteBook</code></strong><code>n/Alice</code> : deletes the record of books whose name contains 'Alice'</p>
-</li>
-<li>
 <p><strong><code>exit</code></strong> : exits the app</p>
 </li>
 </ul>
@@ -428,9 +425,9 @@ Format: <code>undo</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>deleteBook n/Computer Security</code><br>
-<code>listBook n/Alice</code><br>
-<code>undo</code> (reverses the <code>deleteBook Computer Security</code> command)<br></p>
+<p><code>listBook n/Alice</code><br>
+<code>deleteBook 1</code><br>
+<code>undo</code> (reverses the <code>deleteBook 1</code> command)<br></p>
 </li>
 <li>
 <p><code>listBook a/James</code><br>
@@ -438,10 +435,10 @@ Format: <code>undo</code></p>
 The <code>undo</code> command fails as there are no undoable commands executed previously.</p>
 </li>
 <li>
-<p><code>deleteBook n/Alice</code><br>
+<p><code>deleteBook 1</code><br>
 <code>clear</code><br>
 <code>undo</code> (reverses the <code>clear</code> command)<br>
-<code>undo</code> (reverses the <code>deleteBook Alice</code> command)<br></p>
+<code>undo</code> (reverses the <code>deleteBook 1</code> command)<br></p>
 </li>
 </ul>
 </div>
@@ -458,12 +455,12 @@ Format: <code>redo</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>deleteBook n/Alice</code><br>
-<code>undo</code> (reverses the <code>deleteBook Alice</code> command)<br>
-<code>redo</code> (reapplies the <code>deleteBook Alice</code> command)<br></p>
+<p><code>deleteBook 1</code><br>
+<code>undo</code> (reverses the <code>deleteBook 1</code> command)<br>
+<code>redo</code> (reapplies the <code>deleteBook 1</code> command)<br></p>
 </li>
 <li>
-<p><code>deleteBook n/Hello World</code><br>
+<p><code>deleteBook 1</code><br>
 <code>redo</code><br>
 The <code>redo</code> command fails as there are no <code>undo</code> commands executed previously.</p>
 </li>
@@ -543,15 +540,15 @@ e.g. <code>addReview n/Alice in Wonderland r/While Lewis Carroll purists will sc
 <p><strong>Clear</strong> : <code>clear</code></p>
 </li>
 <li>
-<p><strong>DeleteBook</strong> : <code>deleteBook n/BOOKNAME</code><br>
-e.g. <code>deleteBook n/Alice in Wonderland</code></p>
+<p><strong>DeleteBook</strong> : <code>deleteBook INDEX</code><br>
+e.g. <code>deleteBook 4</code></p>
 </li>
 <li>
 <p><strong>DeleteReview</strong> : <code>deleteReview rt/REVIEW TITLE</code></p>
 </li>
 <li>
-<p><strong>EditBook</strong> : <code>edit n/BOOKNAME [a/AUTHOR] [m/RATING]&#8230;&#8203;</code><br>
-e.g. <code>edit n/Alice in Wonderland a/some author</code></p>
+<p><strong>EditBook</strong> : <code>edit INDEX [n/BOOKNAME] [a/AUTHOR] [m/RATING]&#8230;&#8203;</code><br>
+e.g. <code>edit 1 n/Alice in Wonderland a/some author</code></p>
 </li>
 <li>
 <p><strong>ListBook</strong> : <code>listBook [n/NAME] [t/TAG] [m/RATING] [a/Author]</code><br>
@@ -582,4 +579,4 @@ e.g. <code>listReview n/Alice in Wonderland</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-26 07:50:12 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-26 15:03:03 UTC</div></div></div></body></html>
