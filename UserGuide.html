@@ -13,9 +13,36 @@
 <li><a href="#quick-start">2. Quick Start</a></li>
 <li><a href="#Features">3. Features</a>
 <ul class="sectlevel2">
-<li><a href="#book-commands">3.1. Book Commands</a></li>
-<li><a href="#review-commands">3.2. Review Commands</a></li>
-<li><a href="#system-commands">3.3. System Commands</a></li>
+<li><a href="#book-commands">3.1. Book Commands</a>
+<ul class="sectlevel3">
+<li><a href="#adding-a-book-code-addbook-code">3.1.1. Adding a book: <code>addBook</code></a></li>
+<li><a href="#editing-book-entry-code-editbook-code">3.1.2. Editing book entry : <code>editBook</code></a></li>
+<li><a href="#deleting-a-book-code-deletebook-code">3.1.3. Deleting a book : <code>deleteBook</code></a></li>
+<li><a href="#listing-book-entries-code-listbook-code">3.1.4. Listing book entries : <code>listBook</code></a></li>
+<li><a href="#sort-books-command-code-sortbook-code">3.1.5. Sort books command : <code>sortBook</code></a></li>
+</ul>
+</li>
+<li><a href="#review-commands">3.2. Review Commands</a>
+<ul class="sectlevel3">
+<li><a href="#adding-a-book-review-code-addreview-code">3.2.1. Adding a book review: <code>addReview</code></a></li>
+<li><a href="#deleting-a-book-review-code-deletereview-code">3.2.2. Deleting a book review: <code>deleteReview</code></a></li>
+<li><a href="#listing-all-book-reviews-code-listallreviews-code">3.2.3. Listing all book reviews: <code>listAllReviews</code></a></li>
+<li><a href="#listing-book-reviews-of-a-certain-book-code-listreview-code">3.2.4. Listing book reviews of a certain book : <code>listReview</code></a></li>
+<li><a href="#selecting-an-review-code-selectreview-code">3.2.5. Selecting an review: <code>selectReview</code></a></li>
+</ul>
+</li>
+<li><a href="#system-commands">3.3. System Commands</a>
+<ul class="sectlevel3">
+<li><a href="#viewing-help-code-help-code">3.3.1. Viewing help : <code>help</code></a></li>
+<li><a href="#listing-entered-commands-code-history-code">3.3.2. Listing entered commands : <code>history</code></a></li>
+<li><a href="#undoing-previous-command-code-undo-code">3.3.3. Undoing previous command : <code>undo</code></a></li>
+<li><a href="#redoing-the-previously-undone-command-code-redo-code">3.3.4. Redoing the previously undone command : <code>redo</code></a></li>
+<li><a href="#give-a-summary-of-all-the-books-read-code-summary-code">3.3.5. Give a summary of all the books read : <code>summary</code></a></li>
+<li><a href="#clearing-all-entries-code-clear-code">3.3.6. Clearing all entries : <code>clear</code></a></li>
+<li><a href="#exiting-the-program-code-exit-code">3.3.7. Exiting the program : <code>exit</code></a></li>
+<li><a href="#saving-the-data">3.3.8. Saving the data</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href="#faq">4. FAQ</a></li>
@@ -129,7 +156,7 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <div class="sect3">
 <h4 id="adding-a-book-code-addbook-code"><a class="link" href="#adding-a-book-code-addbook-code">3.1.1. Adding a book: <code>addBook</code></a></h4>
 <div class="paragraph">
-<p>Adds a book to the book list<br>
+<p>Adds a book to the book shelf<br>
 Format: <code>addBook n/BOOKNAME a/author m/RATING(0-10) [t/TAG]…​</code></p>
 </div>
 <div class="paragraph">
@@ -145,9 +172,125 @@ Format: <code>addBook n/BOOKNAME a/author m/RATING(0-10) [t/TAG]…​</code></p
 </li>
 </ul>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The book name is case sensitive</p>
+</li>
+<li>
+<p>Two books with same book name are considered same book</p>
+</li>
+<li>
+<p>Trying to add a book which is already present in the book shelf will result in duplicate book error, and the addBook command will fail</p>
+</li>
+<li>
+<p>Book names should only contain no more than 50 characters (space included), and it should not be blank</p>
+</li>
+<li>
+<p>Author names should only contain alphanumeric characters and spaces, and it should not be blank nor longer than 50 characters</p>
+</li>
+<li>
+<p>Tags names should be alphanumeric and contains less than 20 characters</p>
+</li>
+<li>
+<p>Rating should be an integer ranging from 0 to 10 inclusive</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
 </div>
 <div class="sect3">
-<h4 id="listing-book-entries-code-listbook-code"><a class="link" href="#listing-book-entries-code-listbook-code">3.1.2. Listing book entries : <code>listBook</code></a></h4>
+<h4 id="editing-book-entry-code-editbook-code"><a class="link" href="#editing-book-entry-code-editbook-code">3.1.2. Editing book entry : <code>editBook</code></a></h4>
+<div class="paragraph">
+<p>Edits an existing book entry (eg. edit the mark, author or tag).<br>
+Format: <code>editBook INDEX [n/BOOKNAME] [a/AUTHOR] [m/RATING] [t/TAG]&#8230;&#8203;</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Edits the book at the specified INDEX. The index refers to the index number shown in the displayed book list. The index must be a positive integer 1, 2, 3, …​</p>
+</li>
+<li>
+<p>Edit a book with new name same as the name of other book which is already existing in book shelf is not allowed</p>
+</li>
+<li>
+<p>At least one of the optional fields must be provided.</p>
+</li>
+<li>
+<p>Existing values will be updated to the input values.</p>
+</li>
+<li>
+<p>When editing tags, the existing tags of the book will be removed i.e adding of tags is not cumulative.</p>
+</li>
+<li>
+<p>You can remove all the book’s tags by typing t/ without specifying any tags after it.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>edit 1 n/Alice in Wonderland a/some author t/some tag</code><br>
+Change the name, author, tag of the first book to Alice in Wonderland, some author, some tag.</p>
+</li>
+<li>
+<p><code>edit 2 t/</code><br>
+Clear all the existing tags of the second book in the result list.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="deleting-a-book-code-deletebook-code"><a class="link" href="#deleting-a-book-code-deletebook-code">3.1.3. Deleting a book : <code>deleteBook</code></a></h4>
+<div class="paragraph">
+<p>Deletes the specified book from the book list.<br>
+Format: <code>deleteBook INDEX</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Deletes the book of the specified <code>INDEX</code>.</p>
+</li>
+<li>
+<p>All the reviews of the deleted book will also be deleted.</p>
+</li>
+<li>
+<p>The index refers to the index number shown in the displayed book list.</p>
+</li>
+<li>
+<p>The index must be a positive integer 1, 2, 3, …​</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>listBook n/Computer Security</code><br>
+<code>deleteBook 1</code><br>
+Deletes the 1st person in the results of the listBook command.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="listing-book-entries-code-listbook-code"><a class="link" href="#listing-book-entries-code-listbook-code">3.1.4. Listing book entries : <code>listBook</code></a></h4>
 <div class="paragraph">
 <p>Shows a list of all book entries, with the specified TAG and RATING.<br>
 Format: <code>listBook [n/BOOKNAME] [a/AUTHOR] [t/TAG] [m/RATING]</code></p>
@@ -200,90 +343,6 @@ Format: <code>listBook [n/BOOKNAME] [a/AUTHOR] [t/TAG] [m/RATING]</code></p>
 </li>
 <li>
 <p><code>listBook m/5</code></p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="editing-book-entry-code-editbook-code"><a class="link" href="#editing-book-entry-code-editbook-code">3.1.3. Editing book entry : <code>editBook</code></a></h4>
-<div class="paragraph">
-<p>Edits an existing book entry (eg. edit the mark, author or tag).<br>
-Format: <code>editBook INDEX [n/BOOKNAME] [a/AUTHOR] [m/RATING] [t/TAG]&#8230;&#8203;</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>Edits the book at the specified INDEX. The index refers to the index number shown in the displayed book list. The index must be a positive integer 1, 2, 3, …​</p>
-</li>
-<li>
-<p>At least one of the optional fields must be provided.</p>
-</li>
-<li>
-<p>Existing values will be updated to the input values.</p>
-</li>
-<li>
-<p>When editing tags, the existing tags of the book will be removed i.e adding of tags is not cumulative.</p>
-</li>
-<li>
-<p>You can remove all the book’s tags by typing t/ without specifying any tags after it.</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>edit 1 n/Alice in Wonderland a/some author t/some tag</code><br>
-Change the name, author, tag of the first book to Alice in Wonderland, some author, some tag.</p>
-</li>
-<li>
-<p><code>edit 2 t/</code><br>
-Clear all the existing tags of the second book in the result list.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="deleting-a-book-code-deletebook-code"><a class="link" href="#deleting-a-book-code-deletebook-code">3.1.4. Deleting a book : <code>deleteBook</code></a></h4>
-<div class="paragraph">
-<p>Deletes the specified book from the book list.<br>
-Format: <code>deleteBook INDEX</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>Deletes the book of the specified <code>INDEX</code>.</p>
-</li>
-<li>
-<p>The index refers to the index number shown in the displayed book list.</p>
-</li>
-<li>
-<p>The index must be a positive integer 1, 2, 3, …​</p>
-</li>
-<li>
-<p>The reviews of the deleted book will also be deleted.</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>listBook n/Computer Security</code><br>
-<code>deleteBook 1</code><br>
-Deletes the 1st person in the results of the listBook command.</p>
 </li>
 </ul>
 </div>
@@ -353,7 +412,48 @@ sort bookList by rating of the book in descending order.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="listing-book-reviews-of-a-certain-book-code-listreview-code"><a class="link" href="#listing-book-reviews-of-a-certain-book-code-listreview-code">3.2.2. Listing book reviews of a certain book : <code>listReview</code></a></h4>
+<h4 id="deleting-a-book-review-code-deletereview-code"><a class="link" href="#deleting-a-book-review-code-deletereview-code">3.2.2. Deleting a book review: <code>deleteReview</code></a></h4>
+<div class="paragraph">
+<p>Deletes the review of the specified index number from the review list.<br>
+Format: <code>deleteReview INDEX</code></p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>deleteReview 1</code></p>
+</li>
+</ul>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Deletes the review of the specified <code>INDEX</code>.</p>
+</li>
+<li>
+<p>The index refers to the index number shown in the displayed review list.</p>
+</li>
+<li>
+<p>The index must be a positive integer 1, 2, 3, …​</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="listing-all-book-reviews-code-listallreviews-code"><a class="link" href="#listing-all-book-reviews-code-listallreviews-code">3.2.3. Listing all book reviews: <code>listAllReviews</code></a></h4>
+<div class="paragraph">
+<p>Lists all the reviews in the Book Shelf.
+Format: <code>listAllReviews</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="listing-book-reviews-of-a-certain-book-code-listreview-code"><a class="link" href="#listing-book-reviews-of-a-certain-book-code-listreview-code">3.2.4. Listing book reviews of a certain book : <code>listReview</code></a></h4>
 <div class="paragraph">
 <p>Lists the reviews of the book identified by the index number used in the displayed book list.<br>
 Format: <code>listReview INDEX</code>
@@ -379,14 +479,7 @@ Example:
 </div>
 </div>
 <div class="sect3">
-<h4 id="listing-all-book-reviews-code-listallreviews-code"><a class="link" href="#listing-all-book-reviews-code-listallreviews-code">3.2.3. Listing all book reviews: <code>listAllReviews</code></a></h4>
-<div class="paragraph">
-<p>Lists all the reviews in the Book Shelf.
-Format: <code>listAllReviews</code></p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="selecting-an-review-code-selectreview-code"><a class="link" href="#selecting-an-review-code-selectreview-code">3.2.4. Selecting an review: <code>selectReview</code></a></h4>
+<h4 id="selecting-an-review-code-selectreview-code"><a class="link" href="#selecting-an-review-code-selectreview-code">3.2.5. Selecting an review: <code>selectReview</code></a></h4>
 <div class="paragraph">
 <p>Selects a review.</p>
 </div>
@@ -404,40 +497,6 @@ Example:
 </li>
 <li>
 <p>The complete review will be displayed at the rightmost panel.</p>
-</li>
-<li>
-<p>The index refers to the index number shown in the displayed review list.</p>
-</li>
-<li>
-<p>The index must be a positive integer 1, 2, 3, …​</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="deleting-a-book-review-code-deletereview-code"><a class="link" href="#deleting-a-book-review-code-deletereview-code">3.2.5. Deleting a book review: <code>deleteReview</code></a></h4>
-<div class="paragraph">
-<p>Deletes the review of the specified index number from the review list.<br>
-Format: <code>deleteReview INDEX</code></p>
-</div>
-<div class="paragraph">
-<p>Example:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>deleteReview 1</code></p>
-</li>
-</ul>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>Deletes the review of the specified <code>INDEX</code>.</p>
 </li>
 <li>
 <p>The index refers to the index number shown in the displayed review list.</p>
@@ -631,16 +690,16 @@ There is no need to save manually.</p>
 e.g. <code>addBook n/Alice in Wonderland a/Lewis Carroll m/5 t/fantasy t/textbook</code></p>
 </li>
 <li>
-<p><strong>ListBook</strong> : <code>listBook [n/NAME] [t/TAG] [m/RATING] [a/Author]</code><br>
-e.g. <code>listBook t/textbook m/5</code></p>
-</li>
-<li>
 <p><strong>EditBook</strong> : <code>edit INDEX [n/BOOKNAME] [a/AUTHOR] [m/RATING]&#8230;&#8203;</code><br>
 e.g. <code>edit 1 n/Alice in Wonderland a/some author</code></p>
 </li>
 <li>
 <p><strong>DeleteBook</strong> : <code>deleteBook INDEX</code><br>
 e.g. <code>deleteBook 4</code></p>
+</li>
+<li>
+<p><strong>ListBook</strong> : <code>listBook [n/NAME] [t/TAG] [m/RATING] [a/Author]</code><br>
+e.g. <code>listBook t/textbook m/5</code></p>
 </li>
 <li>
 <p><strong>sortBook</strong> : <code>sortBook st/TYPE o/ORDER</code><br>
@@ -658,20 +717,20 @@ e.g. <code>sortBook st/AUTHOR o/ASC</code></p>
 e.g. <code>addReview n/Alice in Wonderland r/While Lewis Carroll purists will scoff at the aging of his curious young protagonist, most movie audiences will enjoy this colorful world.</code></p>
 </li>
 <li>
-<p><strong>ListReview</strong> : <code>listReview INDEX</code><br>
-e.g. <code>listReview 1</code></p>
+<p><strong>DeleteReview</strong> : <code>deleteReview INDEX</code><br>
+eg. <code>deleteReview 1</code></p>
 </li>
 <li>
 <p><strong>ListAllReviews</strong> : <code>listAllReviews<br>
 e.g. `listAllReviews</code></p>
 </li>
 <li>
-<p><strong>SelectReview</strong> : <code>selectReview INDEX</code><br>
-e.g. <code>selectReview 1</code></p>
+<p><strong>ListReview</strong> : <code>listReview INDEX</code><br>
+e.g. <code>listReview 1</code></p>
 </li>
 <li>
-<p><strong>DeleteReview</strong> : <code>deleteReview INDEX</code><br>
-eg. <code>deleteReview 1</code></p>
+<p><strong>SelectReview</strong> : <code>selectReview INDEX</code><br>
+e.g. <code>selectReview 1</code></p>
 </li>
 </ul>
 </div>
@@ -705,4 +764,4 @@ eg. <code>deleteReview 1</code></p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-01 01:54:19 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-01 12:56:06 UTC</div></div></div></body></html>
