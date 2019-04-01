@@ -30,12 +30,11 @@
 <li><a href="#implementation">3. Implementation</a>
 <ul class="sectlevel2">
 <li><a href="#undo-redo-feature">3.1. Undo/Redo feature</a></li>
-<li><a href="#proposed-data-encryption">3.2. [Proposed] Data Encryption</a></li>
-<li><a href="#logging">3.3. Logging</a></li>
-<li><a href="#Implementation-Configuration">3.4. Configuration</a></li>
-<li><a href="#addbook-feature">3.5. AddBook feature</a></li>
-<li><a href="#addreview-feature">3.6. AddReview Feature</a></li>
-<li><a href="#listbook-feature">3.7. ListBook Feature</a></li>
+<li><a href="#logging">3.2. Logging</a></li>
+<li><a href="#Implementation-Configuration">3.3. Configuration</a></li>
+<li><a href="#addbook-feature">3.4. AddBook feature</a></li>
+<li><a href="#listbook-feature">3.5. ListBook Feature</a></li>
+<li><a href="#review-features">3.6. Review Features</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a>
@@ -772,20 +771,14 @@ If the <code>currentStatePointer</code> is at index <code>BookShelfStateList.siz
 </div>
 </div>
 <div class="sect2">
-<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">3.2. [Proposed] Data Encryption</a></h3>
-<div class="paragraph">
-<p><em>{Explain here how the data encryption feature will be implemented}</em></p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.3. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">3.2. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.4, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.3, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -816,15 +809,15 @@ If the <code>currentStatePointer</code> is at index <code>BookShelfStateList.siz
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.4. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.3. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g user prefs file location, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="addbook-feature"><a class="link" href="#addbook-feature">3.5. AddBook feature</a></h3>
+<h3 id="addbook-feature"><a class="link" href="#addbook-feature">3.4. AddBook feature</a></h3>
 <div class="sect3">
-<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">3.5.1. Current Implementation</a></h4>
+<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">3.4.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The addBook mechanism is facilitated by <code>BookShelf</code>.
 It contains <code>UniqueBookList</code> in which all the book data are stored and duplicates are not allowed.
@@ -872,7 +865,7 @@ If the book already exists, CommandException(MESSAGE_DUPLICATE_BOOK) will be thr
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">3.5.2. Design Considerations</a></h4>
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">3.4.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-how-addbook-executes"><a class="link" href="#aspect-how-addbook-executes">Aspect: How addBook executes</a></h5>
 <div class="ulist">
@@ -909,102 +902,9 @@ If the book already exists, CommandException(MESSAGE_DUPLICATE_BOOK) will be thr
 </div>
 </div>
 <div class="sect2">
-<h3 id="addreview-feature"><a class="link" href="#addreview-feature">3.6. AddReview Feature</a></h3>
+<h3 id="listbook-feature"><a class="link" href="#listbook-feature">3.5. ListBook Feature</a></h3>
 <div class="sect3">
-<h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">3.6.1. Current Implementation</a></h4>
-<div class="paragraph">
-<p>Given below is an example usage and how addReview feature behaves at each step.</p>
-</div>
-<div class="paragraph">
-<p>Step 1. The user launches the application for the first time. The <code>VersionedBookShelf</code> will be initialized with the initial book shelf state, and the <code>currentStatePointer</code> pointing to that single book shelf state.</p>
-</div>
-<div class="paragraph">
-<p>Step 2. The user executes <code>addReview n/Alice in Wonderland rt/Carroll has depicted a unique world I hadn&#8217;t seen before r/Alice&#8217;s Adventures in Wonderland by Lewis Carroll is a story about Alice who falls down a rabbit hole and lands into a fantasy world that is full of weird, wonderful people and animals.</code></p>
-</div>
-<div class="paragraph">
-<p>Step 3. The <code>AddReviewCommandParser</code> parses this command, and returns an <code>AddReviewCommand</code>. Exception will be thrown if the command is invalid.</p>
-</div>
-<div class="paragraph">
-<p>Step 4. The <code>AddReviewCommand</code> creates a <code>Review</code> object based on the parameter the user keyed in.</p>
-</div>
-<div class="paragraph">
-<p>Step 5. The <code>AddReviewCommand</code> executes. The command checks if the book to which the review is added exists in the <code>BookShelf</code>, based on <code>BookNameContainsExactKeywordPredicate</code>. If the book does not exist, an exception is thrown. If the book exists, the <code>Review</code> object is added to the set of reviews of the book.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">3.6.2. Design Considerations</a></h4>
-<div class="sect4">
-<h5 id="aspect-data-structure-to-store-reviews"><a class="link" href="#aspect-data-structure-to-store-reviews">Aspect: Data structure to store Reviews</a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (current choice):</strong> Use a Set to store all Reviews, just like tags.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Easy to code and manage because it is the same implementation as tags.</p>
-</li>
-<li>
-<p>Cons: Set does not allow duplicate reviews. Need to check for duplicate reviews added.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Use a List to store Reviews</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: There will be an order for the reviews added based on time created. More clear to users.</p>
-</li>
-<li>
-<p>Cons: May have unforeseen bugs or implications.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect4">
-<h5 id="aspect-where-to-store-reviews"><a class="link" href="#aspect-where-to-store-reviews">Aspect: Where to store Reviews</a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (current choice):</strong> Use a Set within a Book, just like tags.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Easy to code and manage because it is the same implementation as tags. The design makes sense because Reviews belong to Books.</p>
-</li>
-<li>
-<p>Cons: It is not known whether this design is compatible with the UI component.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Have another ObservableList for Reviews.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Maybe makes it easier for the UI to implement.</p>
-</li>
-<li>
-<p>Cons: Harder to implement.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="listbook-feature"><a class="link" href="#listbook-feature">3.7. ListBook Feature</a></h3>
-<div class="sect3">
-<h4 id="current-implementation-4"><a class="link" href="#current-implementation-4">3.7.1. Current Implementation</a></h4>
+<h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">3.5.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>Given below is an example usage and how listBook feature behaves at each step.</p>
 </div>
@@ -1022,7 +922,7 @@ If the book already exists, CommandException(MESSAGE_DUPLICATE_BOOK) will be thr
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">3.7.2. Design Considerations</a></h4>
+<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">3.5.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-how-to-select-books"><a class="link" href="#aspect-how-to-select-books">Aspect: How to select books.</a></h5>
 <div class="ulist">
@@ -1055,6 +955,157 @@ If the book already exists, CommandException(MESSAGE_DUPLICATE_BOOK) will be thr
 </li>
 </ul>
 </div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="review-features"><a class="link" href="#review-features">3.6. Review Features</a></h3>
+<div class="sect3">
+<h4 id="addreview-feature"><a class="link" href="#addreview-feature">3.6.1. AddReview Feature</a></h4>
+<div class="sect4">
+<h5 id="current-implementation-4"><a class="link" href="#current-implementation-4">Current Implementation</a></h5>
+<div class="paragraph">
+<p>Given below is an example usage and how addReview feature behaves at each step.</p>
+</div>
+<div class="paragraph">
+<p>Step 1. The user launches the application for the first time. The <code>VersionedBookShelf</code> will be initialized with the initial book shelf state, and the <code>currentStatePointer</code> pointing to that single book shelf state.</p>
+</div>
+<div class="paragraph">
+<p>Step 2. The user executes <code>addReview n/Alice in Wonderland rt/Carroll has depicted a unique world I hadn&#8217;t seen before r/Alice&#8217;s Adventures in Wonderland by Lewis Carroll is a story about Alice who falls down a rabbit hole and lands into a fantasy world that is full of weird, wonderful people and animals.</code></p>
+</div>
+<div class="paragraph">
+<p>Step 3. The <code>AddReviewCommandParser</code> parses this command, and creates a <code>Review</code> object based on the parameters in user input.</p>
+</div>
+<div class="paragraph">
+<p>Step 4. The <code>AddReviewCommandParser`returns an `AddReviewCommand</code>. Exception will be thrown if the command is invalid.</p>
+</div>
+<div class="paragraph">
+<p>Step 5. The <code>AddReviewCommand</code> executes. The command checks if the book to which the review is added exists in the <code>BookShelf</code>, based on <code>BookNameContainsExactKeywordPredicate</code>. If the book does not exist, an exception is thrown.</p>
+</div>
+<div class="paragraph">
+<p>Step 6. If the book exists, the review is added to the review list of the Book Shelf.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="design-considerations-4"><a class="link" href="#design-considerations-4">Design Considerations</a></h5>
+<div class="sect5">
+<h6 id="aspect-data-structure-to-store-reviews"><a class="link" href="#aspect-data-structure-to-store-reviews">Aspect: Data structure to store Reviews</a></h6>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Use a List to store Reviews</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: There will be an order for the reviews added based on time created. More clear to users.</p>
+</li>
+<li>
+<p>Cons: May have unforeseen bugs or implications.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Use a Set to store all Reviews, just like tags.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to code and manage because it is the same implementation as tags.</p>
+</li>
+<li>
+<p>Cons: Set does not allow duplicate reviews. Need to check for duplicate reviews added.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect5">
+<h6 id="aspect-where-to-store-reviews"><a class="link" href="#aspect-where-to-store-reviews">Aspect: Where to store Reviews</a></h6>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Have another independent list for reviews in the book shelf.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Much easier to implement.</p>
+</li>
+<li>
+<p>Cons: Reviews and Books now have exactly the same structure, which violates the DRY principle.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Use a Set within a Book, just like tags.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: The model makes more sense because Reviews belong to Books.</p>
+</li>
+<li>
+<p>Cons: Makes it more difficult to link with the UI component.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="listreview-feature"><a class="link" href="#listreview-feature">3.6.2. ListReview Feature</a></h4>
+<div class="sect4">
+<h5 id="current-implementation-5"><a class="link" href="#current-implementation-5">Current Implementation</a></h5>
+<div class="paragraph">
+<p>The ListReview Feature is currently combined with the previous SelectPerson.</p>
+</div>
+<div class="paragraph">
+<p>Given below is an example usage and program behaviour:</p>
+</div>
+<div class="paragraph">
+<p>Step 1. The user executes <code>listReview 1</code></p>
+</div>
+<div class="paragraph">
+<p>Step 2. The ListReviewCommandParser parses this command, and returns a new ListReviewCommand with the specified index.</p>
+</div>
+<div class="paragraph">
+<p>Step 3. The ListReviewCommand executes. The book with the specified index is selected.</p>
+</div>
+<div class="paragraph">
+<p>Step 4. Reviews of the selected book will be displayed in the rightmost panel.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="design-considerations-5"><a class="link" href="#design-considerations-5">Design Considerations</a></h5>
+<div class="sect5">
+<h6 id="aspect"><a class="link" href="#aspect">Aspect:</a></h6>
+
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="listallreview-feature"><a class="link" href="#listallreview-feature">3.6.3. ListAllReview Feature</a></h4>
+<div class="sect4">
+<h5 id="current-implementation-6"><a class="link" href="#current-implementation-6">Current Implementation</a></h5>
+
+</div>
+</div>
+<div class="sect3">
+<h4 id="selectreview-feature"><a class="link" href="#selectreview-feature">3.6.4. SelectReview Feature</a></h4>
+<div class="sect4">
+<h5 id="current-implementation-7"><a class="link" href="#current-implementation-7">Current Implementation</a></h5>
+
+</div>
+</div>
+<div class="sect3">
+<h4 id="deletereview-feature"><a class="link" href="#deletereview-feature">3.6.5. DeleteReview Feature</a></h4>
+<div class="sect4">
+<h5 id="current-implementation-8"><a class="link" href="#current-implementation-8">Current Implementation</a></h5>
+
 </div>
 </div>
 </div>
@@ -1839,4 +1890,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-01 00:19:37 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-01 01:54:19 UTC</div></div></div></body></html>

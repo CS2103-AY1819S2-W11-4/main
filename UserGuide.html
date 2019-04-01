@@ -13,27 +13,19 @@
 <li><a href="#quick-start">2. Quick Start</a></li>
 <li><a href="#Features">3. Features</a>
 <ul class="sectlevel2">
-<li><a href="#viewing-help-code-help-code">3.1. Viewing help : <code>help</code></a></li>
-<li><a href="#adding-a-book-code-addbook-code">3.2. Adding a book: <code>addBook</code></a></li>
-<li><a href="#adding-a-book-review-code-addreview-code">3.3. Adding a book review: <code>addReview</code></a></li>
-<li><a href="#listing-book-entries-code-listbook-code">3.4. Listing book entries : <code>listBook</code></a></li>
-<li><a href="#listing-book-reviews-of-a-certain-book-code-listreview-code">3.5. Listing book reviews of a certain book : <code>listReview</code></a></li>
-<li><a href="#editing-book-entry-code-editbook-code">3.6. Editing book entry : <code>editBook</code></a></li>
-<li><a href="#deleting-a-book-code-deletebook-code">3.7. Deleting a book : <code>deleteBook</code></a></li>
-<li><a href="#deleting-a-book-review-code-deletereview-code">3.8. Deleting a book review: <code>deleteReview</code></a></li>
-<li><a href="#sort-books-commands-code-sortbook-code">3.9. Sort books commands : <code>sortBook</code></a></li>
-<li><a href="#listing-entered-commands-code-history-code">3.10. Listing entered commands : <code>history</code></a></li>
-<li><a href="#undoing-previous-command-code-undo-code">3.11. Undoing previous command : <code>undo</code></a></li>
-<li><a href="#redoing-the-previously-undone-command-code-redo-code">3.12. Redoing the previously undone command : <code>redo</code></a></li>
-<li><a href="#give-a-summary-of-all-the-books-read-code-summary-code">3.13. Give a summary of all the books read : <code>summary</code></a></li>
-<li><a href="#clearing-all-entries-code-clear-code">3.14. Clearing all entries : <code>clear</code></a></li>
-<li><a href="#exiting-the-program-code-exit-code">3.15. Exiting the program : <code>exit</code></a></li>
-<li><a href="#saving-the-data">3.16. Saving the data</a></li>
-<li><a href="#encrypting-data-files-code-coming-in-v2-0-code">3.17. Encrypting data files <code>[coming in v2.0]</code></a></li>
+<li><a href="#book-commands">3.1. Book Commands</a></li>
+<li><a href="#review-commands">3.2. Review Commands</a></li>
+<li><a href="#system-commands">3.3. System Commands</a></li>
 </ul>
 </li>
 <li><a href="#faq">4. FAQ</a></li>
-<li><a href="#command-summary">5. Command Summary</a></li>
+<li><a href="#command-summary">5. Command Summary</a>
+<ul class="sectlevel2">
+<li><a href="#book-commands-2">5.1. Book Commands</a></li>
+<li><a href="#review-commands-2">5.2. Review Commands</a></li>
+<li><a href="#system-commands-2">5.3. System Commands</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -133,13 +125,9 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 </div>
 </div>
 <div class="sect2">
-<h3 id="viewing-help-code-help-code"><a class="link" href="#viewing-help-code-help-code">3.1. Viewing help : <code>help</code></a></h3>
-<div class="paragraph">
-<p>Format: <code>help</code></p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="adding-a-book-code-addbook-code"><a class="link" href="#adding-a-book-code-addbook-code">3.2. Adding a book: <code>addBook</code></a></h3>
+<h3 id="book-commands"><a class="link" href="#book-commands">3.1. Book Commands</a></h3>
+<div class="sect3">
+<h4 id="adding-a-book-code-addbook-code"><a class="link" href="#adding-a-book-code-addbook-code">3.1.1. Adding a book: <code>addBook</code></a></h4>
 <div class="paragraph">
 <p>Adds a book to the book list<br>
 Format: <code>addBook n/BOOKNAME a/author m/RATING(0-10) [t/TAG]…​</code></p>
@@ -158,30 +146,8 @@ Format: <code>addBook n/BOOKNAME a/author m/RATING(0-10) [t/TAG]…​</code></p
 </ul>
 </div>
 </div>
-<div class="sect2">
-<h3 id="adding-a-book-review-code-addreview-code"><a class="link" href="#adding-a-book-review-code-addreview-code">3.3. Adding a book review: <code>addReview</code></a></h3>
-<div class="paragraph">
-<p>Adds a book review to a certain book in the book list<br></p>
-</div>
-<div class="paragraph">
-<p>Format: `addReview n/BOOKNAME rt/REVIEW TITLE r/REVIEW MESSAGE</p>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>addReview n/Alice in Wonderland rt/An interesting child book r/While Lewis Carroll purists will scoff at the aging of his curious young protagonist, most movie audiences will enjoy this colorful world.</code></p>
-</li>
-<li>
-<p><code>addReview n/Structure and Interpretation of Computer Programs rt/Computing Bible r/A very difficult book:(</code></p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="listing-book-entries-code-listbook-code"><a class="link" href="#listing-book-entries-code-listbook-code">3.4. Listing book entries : <code>listBook</code></a></h3>
+<div class="sect3">
+<h4 id="listing-book-entries-code-listbook-code"><a class="link" href="#listing-book-entries-code-listbook-code">3.1.2. Listing book entries : <code>listBook</code></a></h4>
 <div class="paragraph">
 <p>Shows a list of all book entries, with the specified TAG and RATING.<br>
 Format: <code>listBook [n/BOOKNAME] [a/AUTHOR] [t/TAG] [m/RATING]</code></p>
@@ -238,42 +204,8 @@ Format: <code>listBook [n/BOOKNAME] [a/AUTHOR] [t/TAG] [m/RATING]</code></p>
 </ul>
 </div>
 </div>
-<div class="sect2">
-<h3 id="listing-book-reviews-of-a-certain-book-code-listreview-code"><a class="link" href="#listing-book-reviews-of-a-certain-book-code-listreview-code">3.5. Listing book reviews of a certain book : <code>listReview</code></a></h3>
-<div class="paragraph">
-<p>Shows a list of all review entries of a book.<br>
-Format: <code>listReview n/BOOKNAME</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>The book name need to match exactly</p>
-</li>
-<li>
-<p>The search by book name is case insensitive. e.g <code>hans</code> will match <code>Hans</code></p>
-</li>
-<li>
-<p>The order of the keywords does matter. e.g. <code>Alice Wonderland</code> will not match <code>Wonderland Alice</code></p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>listReview n/Alice in Wonderland</code></p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="editing-book-entry-code-editbook-code"><a class="link" href="#editing-book-entry-code-editbook-code">3.6. Editing book entry : <code>editBook</code></a></h3>
+<div class="sect3">
+<h4 id="editing-book-entry-code-editbook-code"><a class="link" href="#editing-book-entry-code-editbook-code">3.1.3. Editing book entry : <code>editBook</code></a></h4>
 <div class="paragraph">
 <p>Edits an existing book entry (eg. edit the mark, author or tag).<br>
 Format: <code>editBook INDEX [n/BOOKNAME] [a/AUTHOR] [m/RATING] [t/TAG]&#8230;&#8203;</code></p>
@@ -317,8 +249,8 @@ Clear all the existing tags of the second book in the result list.</p>
 </ul>
 </div>
 </div>
-<div class="sect2">
-<h3 id="deleting-a-book-code-deletebook-code"><a class="link" href="#deleting-a-book-code-deletebook-code">3.7. Deleting a book : <code>deleteBook</code></a></h3>
+<div class="sect3">
+<h4 id="deleting-a-book-code-deletebook-code"><a class="link" href="#deleting-a-book-code-deletebook-code">3.1.4. Deleting a book : <code>deleteBook</code></a></h4>
 <div class="paragraph">
 <p>Deletes the specified book from the book list.<br>
 Format: <code>deleteBook INDEX</code></p>
@@ -335,6 +267,9 @@ Format: <code>deleteBook INDEX</code></p>
 </li>
 <li>
 <p>The index must be a positive integer 1, 2, 3, …​</p>
+</li>
+<li>
+<p>The reviews of the deleted book will also be deleted.</p>
 </li>
 </ul>
 </div>
@@ -353,49 +288,8 @@ Deletes the 1st person in the results of the listBook command.</p>
 </ul>
 </div>
 </div>
-<div class="sect2">
-<h3 id="deleting-a-book-review-code-deletereview-code"><a class="link" href="#deleting-a-book-review-code-deletereview-code">3.8. Deleting a book review: <code>deleteReview</code></a></h3>
-<div class="paragraph">
-<p>Deletes the review of the specified book from the review list.<br>
-Format: <code>deleteReview rt/REVIEW TITLE</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>Deletes of the book with the specified REVIEW TITLE.</p>
-</li>
-<li>
-<p>The REVIEW TITLE must only contain alphanumeric characters</p>
-</li>
-<li>
-<p>and exist in the review list.</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>listBook</code><br>
-<code>deleteBook 2</code><br>
-Deletes the 2nd person in the book shelf.</p>
-</li>
-<li>
-<p><code>listReview n/Alice in Wonderland</code><br>
-<code>deleteReview rt/An interesting children&#8217;s book</code><br>
-Deletes the review with the title "An interesting children&#8217;s book"</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="sort-books-commands-code-sortbook-code"><a class="link" href="#sort-books-commands-code-sortbook-code">3.9. Sort books commands : <code>sortBook</code></a></h3>
+<div class="sect3">
+<h4 id="sort-books-command-code-sortbook-code"><a class="link" href="#sort-books-command-code-sortbook-code">3.1.5. Sort books command : <code>sortBook</code></a></h4>
 <div class="paragraph">
 <p>sort bookList in specify order.<br>
 Format: <code>sortBook st/TYPE o/ORDER</code></p>
@@ -433,8 +327,140 @@ sort bookList by rating of the book in descending order.</p>
 </ul>
 </div>
 </div>
+</div>
 <div class="sect2">
-<h3 id="listing-entered-commands-code-history-code"><a class="link" href="#listing-entered-commands-code-history-code">3.10. Listing entered commands : <code>history</code></a></h3>
+<h3 id="review-commands"><a class="link" href="#review-commands">3.2. Review Commands</a></h3>
+<div class="sect3">
+<h4 id="adding-a-book-review-code-addreview-code"><a class="link" href="#adding-a-book-review-code-addreview-code">3.2.1. Adding a book review: <code>addReview</code></a></h4>
+<div class="paragraph">
+<p>Adds a book review to a certain book in the book list<br></p>
+</div>
+<div class="paragraph">
+<p>Format: `addReview n/BOOKNAME rt/REVIEW TITLE r/REVIEW MESSAGE</p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>addReview n/Alice in Wonderland rt/An interesting child book r/While Lewis Carroll purists will scoff at the aging of his curious young protagonist, most movie audiences will enjoy this colorful world.</code></p>
+</li>
+<li>
+<p><code>addReview n/Structure and Interpretation of Computer Programs rt/Computing Bible r/A very difficult book:(</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="listing-book-reviews-of-a-certain-book-code-listreview-code"><a class="link" href="#listing-book-reviews-of-a-certain-book-code-listreview-code">3.2.2. Listing book reviews of a certain book : <code>listReview</code></a></h4>
+<div class="paragraph">
+<p>Lists the reviews of the book identified by the index number used in the displayed book list.<br>
+Format: <code>listReview INDEX</code>
+Example:
+* <code>listReview 1</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Lists the review of the book at the specified <code>INDEX</code>.</p>
+</li>
+<li>
+<p>The index refers to the index number shown in the displayed book list.</p>
+</li>
+<li>
+<p>The index must be a positive integer 1, 2, 3, …​</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="listing-all-book-reviews-code-listallreviews-code"><a class="link" href="#listing-all-book-reviews-code-listallreviews-code">3.2.3. Listing all book reviews: <code>listAllReviews</code></a></h4>
+<div class="paragraph">
+<p>Lists all the reviews in the Book Shelf.
+Format: <code>listAllReviews</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="selecting-an-review-code-selectreview-code"><a class="link" href="#selecting-an-review-code-selectreview-code">3.2.4. Selecting an review: <code>selectReview</code></a></h4>
+<div class="paragraph">
+<p>Selects a review.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>selectReview INDEX</code>
+Example:
+* <code>selectReview 1</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Selects the review of the specified <code>INDEX</code>.</p>
+</li>
+<li>
+<p>The complete review will be displayed at the rightmost panel.</p>
+</li>
+<li>
+<p>The index refers to the index number shown in the displayed review list.</p>
+</li>
+<li>
+<p>The index must be a positive integer 1, 2, 3, …​</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="deleting-a-book-review-code-deletereview-code"><a class="link" href="#deleting-a-book-review-code-deletereview-code">3.2.5. Deleting a book review: <code>deleteReview</code></a></h4>
+<div class="paragraph">
+<p>Deletes the review of the specified index number from the review list.<br>
+Format: <code>deleteReview INDEX</code></p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>deleteReview 1</code></p>
+</li>
+</ul>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Deletes the review of the specified <code>INDEX</code>.</p>
+</li>
+<li>
+<p>The index refers to the index number shown in the displayed review list.</p>
+</li>
+<li>
+<p>The index must be a positive integer 1, 2, 3, …​</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="system-commands"><a class="link" href="#system-commands">3.3. System Commands</a></h3>
+<div class="sect3">
+<h4 id="viewing-help-code-help-code"><a class="link" href="#viewing-help-code-help-code">3.3.1. Viewing help : <code>help</code></a></h4>
+<div class="paragraph">
+<p>Format: <code>help</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="listing-entered-commands-code-history-code"><a class="link" href="#listing-entered-commands-code-history-code">3.3.2. Listing entered commands : <code>history</code></a></h4>
 <div class="paragraph">
 <p>Lists all the commands that you have entered in reverse chronological order.<br>
 Format: <code>history</code></p>
@@ -454,8 +480,8 @@ Format: <code>history</code></p>
 </table>
 </div>
 </div>
-<div class="sect2">
-<h3 id="undoing-previous-command-code-undo-code"><a class="link" href="#undoing-previous-command-code-undo-code">3.11. Undoing previous command : <code>undo</code></a></h3>
+<div class="sect3">
+<h4 id="undoing-previous-command-code-undo-code"><a class="link" href="#undoing-previous-command-code-undo-code">3.3.3. Undoing previous command : <code>undo</code></a></h4>
 <div class="paragraph">
 <p>Restores the records to the state before the previous <em>undoable</em> command was executed.<br>
 Format: <code>undo</code></p>
@@ -498,8 +524,8 @@ The <code>undo</code> command fails as there are no undoable commands executed p
 </ul>
 </div>
 </div>
-<div class="sect2">
-<h3 id="redoing-the-previously-undone-command-code-redo-code"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code">3.12. Redoing the previously undone command : <code>redo</code></a></h3>
+<div class="sect3">
+<h4 id="redoing-the-previously-undone-command-code-redo-code"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code">3.3.4. Redoing the previously undone command : <code>redo</code></a></h4>
 <div class="paragraph">
 <p>Reverses the most recent <code>undo</code> command.<br>
 Format: <code>redo</code></p>
@@ -522,8 +548,8 @@ The <code>redo</code> command fails as there are no <code>undo</code> commands e
 </ul>
 </div>
 </div>
-<div class="sect2">
-<h3 id="give-a-summary-of-all-the-books-read-code-summary-code"><a class="link" href="#give-a-summary-of-all-the-books-read-code-summary-code">3.13. Give a summary of all the books read : <code>summary</code></a></h3>
+<div class="sect3">
+<h4 id="give-a-summary-of-all-the-books-read-code-summary-code"><a class="link" href="#give-a-summary-of-all-the-books-read-code-summary-code">3.3.5. Give a summary of all the books read : <code>summary</code></a></h4>
 <div class="paragraph">
 <p>Generate a summary of all the books read so far.<br>
 Format: <code>summary</code></p>
@@ -560,31 +586,26 @@ An example of a summary <code>You&#8217;ve read 9 books. You prefered books by E
 </ul>
 </div>
 </div>
-<div class="sect2">
-<h3 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">3.14. Clearing all entries : <code>clear</code></a></h3>
+<div class="sect3">
+<h4 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">3.3.6. Clearing all entries : <code>clear</code></a></h4>
 <div class="paragraph">
 <p>Clears all entries from the book shelf.<br>
 Format: <code>clear</code></p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.15. Exiting the program : <code>exit</code></a></h3>
+<div class="sect3">
+<h4 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.3.7. Exiting the program : <code>exit</code></a></h4>
 <div class="paragraph">
 <p>Exits the program.<br>
 Format: <code>exit</code></p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.16. Saving the data</a></h3>
+<div class="sect3">
+<h4 id="saving-the-data"><a class="link" href="#saving-the-data">3.3.8. Saving the data</a></h4>
 <div class="paragraph">
 <p>Book review data are saved in the hard disk automatically after any command that changes the data.<br>
 There is no need to save manually.</p>
 </div>
-</div>
-<div class="sect2">
-<h3 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">3.17. Encrypting data files <code>[coming in v2.0]</code></a></h3>
-<div class="paragraph">
-<p><em>{explain how the user can enable/disable data encryption}</em></p>
 </div>
 </div>
 </div>
@@ -601,6 +622,8 @@ There is no need to save manually.</p>
 <div class="sect1">
 <h2 id="command-summary"><a class="link" href="#command-summary">5. Command Summary</a></h2>
 <div class="sectionbody">
+<div class="sect2">
+<h3 id="book-commands-2"><a class="link" href="#book-commands-2">5.1. Book Commands</a></h3>
 <div class="ulist">
 <ul>
 <li>
@@ -608,35 +631,55 @@ There is no need to save manually.</p>
 e.g. <code>addBook n/Alice in Wonderland a/Lewis Carroll m/5 t/fantasy t/textbook</code></p>
 </li>
 <li>
-<p><strong>AddReview</strong> <code>addReview n/BOOKNAME r/review</code><br>
-e.g. <code>addReview n/Alice in Wonderland r/While Lewis Carroll purists will scoff at the aging of his curious young protagonist, most movie audiences will enjoy this colorful world.</code></p>
-</li>
-<li>
-<p><strong>Clear</strong> : <code>clear</code></p>
-</li>
-<li>
-<p><strong>DeleteBook</strong> : <code>deleteBook INDEX</code><br>
-e.g. <code>deleteBook 4</code></p>
-</li>
-<li>
-<p><strong>DeleteReview</strong> : <code>deleteReview rt/REVIEW TITLE</code></p>
+<p><strong>ListBook</strong> : <code>listBook [n/NAME] [t/TAG] [m/RATING] [a/Author]</code><br>
+e.g. <code>listBook t/textbook m/5</code></p>
 </li>
 <li>
 <p><strong>EditBook</strong> : <code>edit INDEX [n/BOOKNAME] [a/AUTHOR] [m/RATING]&#8230;&#8203;</code><br>
 e.g. <code>edit 1 n/Alice in Wonderland a/some author</code></p>
 </li>
 <li>
-<p><strong>ListBook</strong> : <code>listBook [n/NAME] [t/TAG] [m/RATING] [a/Author]</code><br>
-e.g. <code>listBook t/textbook m/5</code></p>
-</li>
-<li>
-<p><strong>ListReview</strong> : <code>listReview n/BOOKNAME</code><br>
-e.g. <code>listReview n/Alice in Wonderland</code></p>
+<p><strong>DeleteBook</strong> : <code>deleteBook INDEX</code><br>
+e.g. <code>deleteBook 4</code></p>
 </li>
 <li>
 <p><strong>sortBook</strong> : <code>sortBook st/TYPE o/ORDER</code><br>
 e.g. <code>sortBook st/AUTHOR o/ASC</code></p>
 </li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="review-commands-2"><a class="link" href="#review-commands-2">5.2. Review Commands</a></h3>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>AddReview</strong> <code>addReview n/BOOKNAME r/review</code><br>
+e.g. <code>addReview n/Alice in Wonderland r/While Lewis Carroll purists will scoff at the aging of his curious young protagonist, most movie audiences will enjoy this colorful world.</code></p>
+</li>
+<li>
+<p><strong>ListReview</strong> : <code>listReview INDEX</code><br>
+e.g. <code>listReview 1</code></p>
+</li>
+<li>
+<p><strong>ListAllReviews</strong> : <code>listAllReviews<br>
+e.g. `listAllReviews</code></p>
+</li>
+<li>
+<p><strong>SelectReview</strong> : <code>selectReview INDEX</code><br>
+e.g. <code>selectReview 1</code></p>
+</li>
+<li>
+<p><strong>DeleteReview</strong> : <code>deleteReview INDEX</code><br>
+eg. <code>deleteReview 1</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="system-commands-2"><a class="link" href="#system-commands-2">5.3. System Commands</a></h3>
+<div class="ulist">
+<ul>
 <li>
 <p><strong>Help</strong> : <code>help</code></p>
 </li>
@@ -653,9 +696,13 @@ e.g. <code>sortBook st/AUTHOR o/ASC</code></p>
 <p><strong>Summary</strong> : <code>summary</code></p>
 </li>
 <li>
+<p><strong>Clear</strong> : <code>clear</code></p>
+</li>
+<li>
 <p><strong>Exit</strong> : <code>exit</code></p>
 </li>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-01 00:19:37 UTC</div></div></div></body></html>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-01 01:54:19 UTC</div></div></div></body></html>
