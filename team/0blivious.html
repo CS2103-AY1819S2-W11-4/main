@@ -1,0 +1,473 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>0blivious - Project Portfolio for Book Squirrel</title><link rel="stylesheet" href="../stylesheets/gh-pages.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="../index.html">Book-Squirrel</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="../UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="../DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link active" href="../AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="../ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/cs2103-ay1819s2-w11-4/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>0blivious - Project Portfolio for Book Squirrel</h1></div><div id="content"><div class="sect1">
+<h2 id="about-the-project"><a class="link" href="#about-the-project">About the Project</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>My team and I were tasked with enhancing a application addressbook-level4 for our
+Software Engineering project. We chose to morph it into an book review recording application called
+Book Squirrel. This enhanced application enables readers to keep track of their reading, recording down their
+reviews of books and obtain statistics of their past reading habits.</p>
+</div>
+<div class="paragraph">
+<p>My role was to design and write the codes to support the CRUD of books. The following sections
+illustrate these enhancements in more detail, as well as the relevant sections I have added to the
+user and developer guides in relation to these enhancements.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="summary-of-contributions"><a class="link" href="#summary-of-contributions">Summary of contributions</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This section shows a summary of my coding, documentation, and other helpful contributions to the
+team project.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Enhancement added</strong>: support CRUD of book object</p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: allows the user to add, edit, delete book in the book shelf and check reviews of selected book.</p>
+</li>
+<li>
+<p>Justification: This feature is the basis of the application. As our app is viewed as a big book shelf
+that keeps numerous books and the reviews related to each book. The CRUD features of book object is necessary to support
+all the other operations.</p>
+</li>
+<li>
+<p>Highlights: This enhancement affects existing commands and commands to be added in future. It required an in-depth
+analysis of design alternatives. The implementation too was challenging as it required changes to existing commands.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Code contributed</strong>: [<a href="https://nus-cs2103-ay1819s2.github.io/cs2103-dashboard/#search=0blivious">Link to Code</a>]</p>
+</li>
+<li>
+<p><strong>Other contributions</strong>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Project management:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Managed releases <code>v1.1</code> - <code>v1.3</code> (3 releases) on GitHub</p>
+</li>
+<li>
+<p>Setting up Travis, Coveralls, Codacy for code checking purpose.</p>
+</li>
+<li>
+<p>Managing Issue Tracker and merging of PRs.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Enhancements to existing features:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Updated the GUI to show list of reviews of certain book when click on that book card (Pull requests <a href="https://github.com/cs2103-ay1819s2-w11-4/main/pull/90">#90</a>)</p>
+</li>
+<li>
+<p>Wrote additional tests for existing features to increase coverage (Pull requests <a href="https://github.com/cs2103-ay1819s2-w11-4/main/pull/67">#67</a>, <a href="https://github.com/cs2103-ay1819s2-w11-4/main/pull/69">#69</a>,
+<a href="https://github.com/cs2103-ay1819s2-w11-4/main/pull/92">#92</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Documentation:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Update User Guide and Developer Guide to reflect current product (Pull requests <a href="https://github.com/cs2103-ay1819s2-w11-4/main/pull/61">#61</a>, <a href="https://github.com/cs2103-ay1819s2-w11-4/main/pull/97">#97</a>,
+<a href="https://github.com/cs2103-ay1819s2-w11-4/main/pull/96">#96</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Community:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>PRs reviewed (with non-trivial review comments): (Pull requests <a href="https://github.com/cs2103-ay1819s2-w11-4/main/pull/42">#42</a>, <a href="https://github.com/cs2103-ay1819s2-w11-4/main/pull/65">#65</a>, <a href="https://github.com/cs2103-ay1819s2-w11-4/main/pull/66">#66</a>, , <a href="https://github.com/cs2103-ay1819s2-w11-4/main/pull/93">#93</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-user-guide"><a class="link" href="#contributions-to-the-user-guide">Contributions to the User Guide</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We had to update the original addressbook User Guide with instructions for the enhancements that
+we had added. The following is an excerpt from our Book Squirrel User Guide, showing additions that I have
+made for the CRUD features for book.</p>
+</div>
+<div class="sect3">
+<h4 id="adding-a-book-code-addbook-code"><a class="link" href="#adding-a-book-code-addbook-code">Adding a book: <code>addBook</code></a></h4>
+<div class="paragraph">
+<p>Adds a book to the book shelf<br>
+Format: <code>addBook n/BOOKNAME a/author m/RATING(0-10) [t/TAG]…​</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>addBook n/Alice in Wonderland a/Lewis Carroll m/5 t/fantasy t/fairy tale</code></p>
+</li>
+<li>
+<p><code>addBook n/Structure and Interpretation of Computer Programs a/Hal Abelson Jerry Sussman m/4 t/textbook</code></p>
+</li>
+</ul>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The book name is case sensitive</p>
+</li>
+<li>
+<p>Two books with same book name are considered same book</p>
+</li>
+<li>
+<p>Trying to add a book which is already present in the book shelf will result in duplicate book error, and the addBook command will fail</p>
+</li>
+<li>
+<p>Book names should only contain no more than 50 characters (space included), and it should not be blank</p>
+</li>
+<li>
+<p>Author names should only contain alphanumeric characters and spaces, and it should not be blank nor longer than 50 characters</p>
+</li>
+<li>
+<p>Tags names should be alphanumeric and contains less than 20 characters</p>
+</li>
+<li>
+<p>Rating should be an integer ranging from 0 to 10 inclusive</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="editing-book-entry-code-editbook-code"><a class="link" href="#editing-book-entry-code-editbook-code">Editing book entry : <code>editBook</code></a></h4>
+<div class="paragraph">
+<p>Edits an existing book entry (eg. edit the mark, author or tag).<br>
+Format: <code>editBook INDEX [n/BOOKNAME] [a/AUTHOR] [m/RATING] [t/TAG]&#8230;&#8203;</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Edits the book at the specified INDEX. The index refers to the index number shown in the displayed book list. The index must be a positive integer 1, 2, 3, …​</p>
+</li>
+<li>
+<p>Edit a book with new name same as the name of other book which is already existing in book shelf is not allowed</p>
+</li>
+<li>
+<p>At least one of the optional fields must be provided.</p>
+</li>
+<li>
+<p>Existing values will be updated to the input values.</p>
+</li>
+<li>
+<p>When editing tags, the existing tags of the book will be removed i.e adding of tags is not cumulative.</p>
+</li>
+<li>
+<p>You can remove all the book’s tags by typing t/ without specifying any tags after it.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>edit 1 n/Alice in Wonderland a/some author t/some tag</code><br>
+Change the name, author, tag of the first book to Alice in Wonderland, some author, some tag.</p>
+</li>
+<li>
+<p><code>edit 2 t/</code><br>
+Clear all the existing tags of the second book in the result list.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="deleting-a-book-code-deletebook-code"><a class="link" href="#deleting-a-book-code-deletebook-code">Deleting a book : <code>deleteBook</code></a></h4>
+<div class="paragraph">
+<p>Deletes the specified book from the book list.<br>
+Format: <code>deleteBook INDEX</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Deletes the book of the specified <code>INDEX</code>.</p>
+</li>
+<li>
+<p>All the reviews of the deleted book will also be deleted.</p>
+</li>
+<li>
+<p>The index refers to the index number shown in the displayed book list.</p>
+</li>
+<li>
+<p>The index must be a positive integer 1, 2, 3, …​</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>listBook n/Computer Security</code><br>
+<code>deleteBook 1</code><br>
+Deletes the 1st book in the results of the listBook command.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-developer-guide"><a class="link" href="#contributions-to-the-developer-guide">Contributions to the Developer Guide</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The following section shows my additions to the Book Squirrel Developer Guide for the addBook
+features.</p>
+</div>
+<div class="sect2">
+<h3 id="addbook-feature"><a class="link" href="#addbook-feature">AddBook feature</a></h3>
+<div class="sect3">
+<h4 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h4>
+<div class="paragraph">
+<p>The addBook mechanism is facilitated by <code>BookShelf</code>.
+It contains <code>UniqueBookList</code> in which all the book data are stored and duplicates are not allowed. Books with same book name are considered as duplicates.
+Additionally, it uses the following operations from <code>BookShelf</code>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>model#hasBook()</code>&#8201;&#8212;&#8201;Check if the book already exists in the book shelf.</p>
+</li>
+<li>
+<p><code>model#addBook()</code>&#8201;&#8212;&#8201;To add the new book into book shelf.</p>
+</li>
+<li>
+<p><code>model#commitBookShelf()</code>&#8201;&#8212;&#8201;Saves the current book shelf state for undo/redo..</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>These operations are exposed in the <code>Model</code> interface.</p>
+</div>
+<div class="paragraph">
+<p>Given below is an example usage scenario and how the addBook mechanism behaves at each step.</p>
+</div>
+<div class="paragraph">
+<p>Step 1. The user launches the application for the first time. The <code>VersionedBookShelf</code> will be initialized with the initial book shelf state, and the <code>currentStatePointer</code> pointing to that single book shelf state.</p>
+</div>
+<div class="paragraph">
+<p>Step 2. The user executes <code>addBook n/Alice a/HR m/5 tag/fantasy</code> command to add the book called Alice, written by HR, with rating of 5 and tag of fantasy in the book list. The <code>addBook</code> command calls <code>Model#hasBook()</code>, checking if the book already exists in the book shelf.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If the book already exists, CommandException(MESSAGE_DUPLICATE_BOOK) will be thrown. It will not call <code>Model#commitBookShelf()</code>, so the book shelf state will not be saved into the <code>BookShelfStateList</code>.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Step 4. The book shelf now adds the book to the book list after making sure there is no duplicates, and calls Model#commitBookShelf(), causing the modified state of the book list after the <code>addBook</code> command executes to be saved in the BookShelfStateList</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-how-duplicate-of-book-is-defined"><a class="link" href="#aspect-how-duplicate-of-book-is-defined">Aspect: How duplicate of book is defined</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Books with same book name are considered as duplicates.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to support other command such as addReview which search for the book based on its name.</p>
+</li>
+<li>
+<p>Cons: User may encounter trouble if they read two books with same name but written by different authors.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Books with multiple identical fields (eg. book name and author, book name and rating, etc) are considered same book.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Able to store books with same same but different in other fields.</p>
+</li>
+<li>
+<p>Cons: Causing trouble to executing other commands like addReview as more parameters must be provided to search for a certain book.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-data-structure-to-support-the-addbook-command"><a class="link" href="#aspect-data-structure-to-support-the-addbook-command">Aspect: Data structure to support the addBook command</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Saves the entire book as one object contains different components such as author, rating, etc.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to implement delete and other features that change an entire book.</p>
+</li>
+<li>
+<p>Cons: May be more difficult to implement the summary feature which needs to obtain statistics of all separate components, eg. find the most popular author.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Components stored as individual objects.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easier to obtain statistics regarding each component.</p>
+</li>
+<li>
+<p>Cons: It is hard to manage book object as we need to find a way to connect all components together.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="editbook-feature"><a class="link" href="#editbook-feature">EditBook feature</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">Current Implementation</a></h4>
+<div class="paragraph">
+<p>The editBook mechanism is facilitated by <code>BookShelf</code>.
+It contains <code>UniqueBookList</code> in which all the book data are stored and duplicates are not allowed. Books with same book name are considered as duplicates.
+Additionally, it uses the following operations from <code>BookShelf</code>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>model#hasBook()</code>&#8201;&#8212;&#8201;Check if the book already exists in the book shelf.</p>
+</li>
+<li>
+<p><code>model#setBook()</code>&#8201;&#8212;&#8201;To set a book with field values provided.</p>
+</li>
+<li>
+<p><code>model#commitBookShelf()</code>&#8201;&#8212;&#8201;Saves the current book shelf state for undo/redo..</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>These operations are exposed in the <code>Model</code> interface.</p>
+</div>
+<div class="paragraph">
+<p>Given below is an example usage scenario and how the addBook mechanism behaves at each step.</p>
+</div>
+<div class="paragraph">
+<p>Step 1. The user launches the application for the first time. The <code>VersionedBookShelf</code> will be initialized with the initial book shelf state, and the <code>currentStatePointer</code> pointing to that single book shelf state.</p>
+</div>
+<div class="paragraph">
+<p>Step 2. The user executes <code>editBook 1 n/Alice a/HR m/5 tag/fantasy</code> command to edit the first book present in the book list to be a book called Alice, written by HR, with rating of 5 and tag of fantasy in the book list. The <code>addBook</code> command calls <code>Model#hasBook()</code>, checking if the book already exists in the book shelf.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If the new book name already exists, CommandException(MESSAGE_DUPLICATE_BOOK) will be thrown. It will not call <code>Model#commitBookShelf()</code>, so the book shelf state will not be saved into the <code>BookShelfStateList</code>.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Step 4. The book shelf now set the fields of the first book to the new ones provided, and calls Model#commitBookShelf(), causing the modified state of the book list after the <code>addBook</code> command executes to be saved in the BookShelfStateList</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-how-editbook-is-executed"><a class="link" href="#aspect-how-editbook-is-executed">Aspect: How editBook is executed</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Use index to figure out the book user wishes to edit.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to select the book user wish to edit with the support of our UI.</p>
+</li>
+<li>
+<p>Cons: A listBook command might be needed before executing editBook if the current filtered book list is empty</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Use exact book name to figure out the book user wishes to edit.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: No need to first filter out a non-empty book list.</p>
+</li>
+<li>
+<p>Cons: Causing trouble for user to type in the full name of the book.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-02 09:23:57 UTC</div></div></div></body></html>

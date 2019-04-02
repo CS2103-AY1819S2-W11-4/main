@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>Book Squirrel - Developer Guide</title><link rel="stylesheet" href="stylesheets/gh-pages.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="seedu-header"><nav class="navbar navbar-lg navbar-light bg-lighter"><div class="container"><a class="navbar-brand" href="https://se-edu.github.io/"><img src="images/SeEduLogo.png" alt="SE-EDU"></a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level1">AB-1</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level2">AB-2</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level3">AB-3</a></li><li class="nav-item"><a class="nav-link active" href="index.html">AB-4</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/collate">Collate</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/se-book">Book</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/learningresources">Resources</a></li></ul></div></nav></div><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="index.html">Book-Squirrel</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link active" href="DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="LearningOutcomes.html">LOs</a></li><li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/cs2103-ay1819s2-w11-4/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>Book Squirrel - Developer Guide</h1></div><div id="content"><div id="preamble">
+<link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="index.html">Book-Squirrel</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link active" href="DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/cs2103-ay1819s2-w11-4/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>Book Squirrel - Developer Guide</h1></div><div id="content"><div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
 <p>By: <code>Team W11-4</code>      Since: <code>Jun 2019</code>      Licence: <code>MIT</code></p>
@@ -33,8 +33,9 @@
 <li><a href="#logging">3.2. Logging</a></li>
 <li><a href="#Implementation-Configuration">3.3. Configuration</a></li>
 <li><a href="#addbook-feature">3.4. AddBook feature</a></li>
-<li><a href="#listbook-feature">3.5. ListBook Feature</a></li>
-<li><a href="#review-features">3.6. Review Features</a></li>
+<li><a href="#editbook-feature">3.5. EditBook feature</a></li>
+<li><a href="#listbook-feature">3.6. ListBook Feature</a></li>
+<li><a href="#review-features">3.7. Review Features</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a>
@@ -934,9 +935,96 @@ If the book already exists, CommandException(MESSAGE_DUPLICATE_BOOK) will be thr
 </div>
 </div>
 <div class="sect2">
-<h3 id="listbook-feature"><a class="link" href="#listbook-feature">3.5. ListBook Feature</a></h3>
+<h3 id="editbook-feature"><a class="link" href="#editbook-feature">3.5. EditBook feature</a></h3>
 <div class="sect3">
 <h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">3.5.1. Current Implementation</a></h4>
+<div class="paragraph">
+<p>The editBook mechanism is facilitated by <code>BookShelf</code>.
+It contains <code>UniqueBookList</code> in which all the book data are stored and duplicates are not allowed. Books with same book name are considered as duplicates.
+Additionally, it uses the following operations from <code>BookShelf</code>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>model#hasBook()</code>&#8201;&#8212;&#8201;Check if the book already exists in the book shelf.</p>
+</li>
+<li>
+<p><code>model#setBook()</code>&#8201;&#8212;&#8201;To set a book with field values provided.</p>
+</li>
+<li>
+<p><code>model#commitBookShelf()</code>&#8201;&#8212;&#8201;Saves the current book shelf state for undo/redo..</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>These operations are exposed in the <code>Model</code> interface.</p>
+</div>
+<div class="paragraph">
+<p>Given below is an example usage scenario and how the addBook mechanism behaves at each step.</p>
+</div>
+<div class="paragraph">
+<p>Step 1. The user launches the application for the first time. The <code>VersionedBookShelf</code> will be initialized with the initial book shelf state, and the <code>currentStatePointer</code> pointing to that single book shelf state.</p>
+</div>
+<div class="paragraph">
+<p>Step 2. The user executes <code>editBook 1 n/Alice a/HR m/5 tag/fantasy</code> command to edit the first book present in the book list to be a book called Alice, written by HR, with rating of 5 and tag of fantasy in the book list. The <code>addBook</code> command calls <code>Model#hasBook()</code>, checking if the book already exists in the book shelf.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If the new book name already exists, CommandException(MESSAGE_DUPLICATE_BOOK) will be thrown. It will not call <code>Model#commitBookShelf()</code>, so the book shelf state will not be saved into the <code>BookShelfStateList</code>.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Step 4. The book shelf now set the fields of the first book to the new ones provided, and calls Model#commitBookShelf(), causing the modified state of the book list after the <code>addBook</code> command executes to be saved in the BookShelfStateList</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">3.5.2. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-how-editbook-is-executed"><a class="link" href="#aspect-how-editbook-is-executed">Aspect: How editBook is executed</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Use index to figure out the book user wishes to edit.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to select the book user wish to edit with the support of our UI.</p>
+</li>
+<li>
+<p>Cons: A listBook command might be needed before executing editBook if the current filtered book list is empty</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Use exact book name to figure out the book user wishes to edit.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: No need to first filter out a non-empty book list.</p>
+</li>
+<li>
+<p>Cons: Causing trouble for user to type in the full name of the book.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="listbook-feature"><a class="link" href="#listbook-feature">3.6. ListBook Feature</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-4"><a class="link" href="#current-implementation-4">3.6.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>Given below is an example usage and how listBook feature behaves at each step.</p>
 </div>
@@ -954,7 +1042,7 @@ If the book already exists, CommandException(MESSAGE_DUPLICATE_BOOK) will be thr
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">3.5.2. Design Considerations</a></h4>
+<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">3.6.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-how-to-select-books"><a class="link" href="#aspect-how-to-select-books">Aspect: How to select books.</a></h5>
 <div class="ulist">
@@ -991,11 +1079,11 @@ If the book already exists, CommandException(MESSAGE_DUPLICATE_BOOK) will be thr
 </div>
 </div>
 <div class="sect2">
-<h3 id="review-features"><a class="link" href="#review-features">3.6. Review Features</a></h3>
+<h3 id="review-features"><a class="link" href="#review-features">3.7. Review Features</a></h3>
 <div class="sect3">
-<h4 id="addreview-feature"><a class="link" href="#addreview-feature">3.6.1. AddReview Feature</a></h4>
+<h4 id="addreview-feature"><a class="link" href="#addreview-feature">3.7.1. AddReview Feature</a></h4>
 <div class="sect4">
-<h5 id="current-implementation-4"><a class="link" href="#current-implementation-4">Current Implementation</a></h5>
+<h5 id="current-implementation-5"><a class="link" href="#current-implementation-5">Current Implementation</a></h5>
 <div class="paragraph">
 <p>Given below is an example usage and how addReview feature behaves at each step.</p>
 </div>
@@ -1019,7 +1107,7 @@ If the book already exists, CommandException(MESSAGE_DUPLICATE_BOOK) will be thr
 </div>
 </div>
 <div class="sect4">
-<h5 id="design-considerations-4"><a class="link" href="#design-considerations-4">Design Considerations</a></h5>
+<h5 id="design-considerations-5"><a class="link" href="#design-considerations-5">Design Considerations</a></h5>
 <div class="sect5">
 <h6 id="aspect-data-structure-to-store-reviews"><a class="link" href="#aspect-data-structure-to-store-reviews">Aspect: Data structure to store Reviews</a></h6>
 <div class="ulist">
@@ -1086,15 +1174,40 @@ If the book already exists, CommandException(MESSAGE_DUPLICATE_BOOK) will be thr
 </ul>
 </div>
 </div>
+<div class="sect5">
+<h6 id="aspect-constraints-on-review-parameters"><a class="link" href="#aspect-constraints-on-review-parameters">Aspect: Constraints on Review Parameters</a></h6>
+<div class="ulist">
+<ul>
+<li>
+<p>ReviewTitle has the same constraints as BookName, less than 50 characters.</p>
+</li>
+<li>
+<p>ReviewMessage should be less than or equal to 400 characters. This is because the
+BookBrowserPanel used to display the ReviewMessage currently cannot hold more than 400 characters.
+Longer text also makes it more difficult to edit in the small CommandBox. Future releases would consider
+adding enhanced review input panel to make the review feature more user friendly.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect5">
+<h6 id="aspect-auto-creation-of-date-for-the-review"><a class="link" href="#aspect-auto-creation-of-date-for-the-review">Aspect: Auto-creation of Date for the Review</a></h6>
+<div class="ulist">
+<ul>
+<li>
+<p>Currently, the constructor of Review automatically assigns a dateCreated to it.
+This feature is provided for the convenience of the user. An overloaded constructor
+is available where the date can be passed in as a parameter, to be used in testing.</p>
+</li>
+</ul>
+</div>
+</div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="listreview-feature"><a class="link" href="#listreview-feature">3.6.2. ListReview Feature</a></h4>
+<h4 id="listreview-feature"><a class="link" href="#listreview-feature">3.7.2. ListReview Feature</a></h4>
 <div class="sect4">
-<h5 id="current-implementation-5"><a class="link" href="#current-implementation-5">Current Implementation</a></h5>
-<div class="paragraph">
-<p>The ListReview Feature is currently combined with the previous SelectPerson.</p>
-</div>
+<h5 id="current-implementation-6"><a class="link" href="#current-implementation-6">Current Implementation</a></h5>
 <div class="paragraph">
 <p>Given below is an example usage and program behaviour:</p>
 </div>
@@ -1110,12 +1223,119 @@ If the book already exists, CommandException(MESSAGE_DUPLICATE_BOOK) will be thr
 <div class="paragraph">
 <p>Step 4. Reviews of the selected book will be displayed in the rightmost panel.</p>
 </div>
+<div class="paragraph">
+<p>Alternatively, the user can click the book to select it.</p>
 </div>
-<div class="sect4">
-<h5 id="design-considerations-5"><a class="link" href="#design-considerations-5">Design Considerations</a></h5>
 <div class="sect5">
 <h6 id="aspect"><a class="link" href="#aspect">Aspect:</a></h6>
 
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="listallreviews-feature"><a class="link" href="#listallreviews-feature">3.7.3. ListAllReviews Feature</a></h4>
+<div class="sect4">
+<h5 id="current-implementation-7"><a class="link" href="#current-implementation-7">Current Implementation</a></h5>
+<div class="paragraph">
+<p>The ListAllReviews Feature uses the same implementation as the ListBook feature:</p>
+</div>
+<div class="paragraph">
+<p>Step 1. The user executes <code>listAllReviews</code></p>
+</div>
+<div class="paragraph">
+<p>Step 2. A new ListAllReviewsCommand is returned by the BookShelfParser</p>
+</div>
+<div class="paragraph">
+<p>Step 3. The ListAllReviewsCommand executes. Review list panel is updated to show all reviews.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="design-considerations-6"><a class="link" href="#design-considerations-6">Design Considerations</a></h5>
+<div class="sect5">
+<h6 id="aspect-whether-to-combine-listallreviews-command-with-listreview-command"><a class="link" href="#aspect-whether-to-combine-listallreviews-command-with-listreview-command">Aspect: Whether to combine ListAllReviews command with ListReview command</a></h6>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> not to combine.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Command is more logical and user friendly because it is actually not intuitive to have two functions combined in one ListReview command.</p>
+</li>
+<li>
+<p>Cons: Inconsistency with the ListBook command may cause confusion.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Combine.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Consistency.</p>
+</li>
+<li>
+<p>Cons: Command is not intuitive, and takes extra time to implement review predicates.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="selectreview-feature"><a class="link" href="#selectreview-feature">3.7.4. SelectReview Feature</a></h4>
+<div class="sect4">
+<h5 id="current-implementation-8"><a class="link" href="#current-implementation-8">Current Implementation</a></h5>
+<div class="paragraph">
+<p>Selection of review is implemented the same way as selection of book.</p>
+</div>
+<div class="paragraph">
+<p>In addition, review message of selected review will be displayed in the book browser panel.</p>
+</div>
+<div class="paragraph">
+<p>Step 1. The user executes <code>selectReview 1</code></p>
+</div>
+<div class="paragraph">
+<p>Step 2. The SelectReviewCommandParser parses this command, and returns a new SelectReviewCommand with index 1.</p>
+</div>
+<div class="paragraph">
+<p>Step 3. The SelectReviewCommand executes. The review with the specified index is selected.</p>
+</div>
+<div class="paragraph">
+<p>Step 4. The BookBrowserPanel listens to the change in selected review, and displays its review message.</p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="deletereview-feature"><a class="link" href="#deletereview-feature">3.7.5. DeleteReview Feature</a></h4>
+<div class="sect4">
+<h5 id="current-implementation-9"><a class="link" href="#current-implementation-9">Current Implementation</a></h5>
+<div class="paragraph">
+<p>Review is deleted based on index.</p>
+</div>
+<div class="paragraph">
+<p>Step 1. The user executes <code>deleteReview 1</code></p>
+</div>
+<div class="paragraph">
+<p>Step 2. The DeleteReviewCommandParser parses this command, and returns a new DeleteReviewCommand with index 1.</p>
+</div>
+<div class="paragraph">
+<p>Step 3. The DeleteReviewCommand executes. The review with the specified index is deleted.</p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="other-design-considerations"><a class="link" href="#other-design-considerations">3.7.6. Other Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="whether-to-implement-editreview"><a class="link" href="#whether-to-implement-editreview">Whether to Implement EditReview</a></h5>
+<div class="paragraph">
+<p>It seems natural to implement EditReview as one component of the CRUD features. However,
+editing an existing review requires re-typing everything and seems painstaking to the user. It makes much more sense to just delete
+the original review and add a new one. Hence. EditReview is currently not implemented.</p>
 </div>
 </div>
 </div>
@@ -1854,4 +2074,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-02 08:41:46 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-02 09:23:57 UTC</div></div></div></body></html>
