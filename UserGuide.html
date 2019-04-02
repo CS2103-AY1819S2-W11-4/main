@@ -37,7 +37,7 @@
 <li><a href="#listing-entered-commands-code-history-code">3.3.2. Listing entered commands : <code>history</code></a></li>
 <li><a href="#undoing-previous-command-code-undo-code">3.3.3. Undoing previous command : <code>undo</code></a></li>
 <li><a href="#redoing-the-previously-undone-command-code-redo-code">3.3.4. Redoing the previously undone command : <code>redo</code></a></li>
-<li><a href="#give-a-summary-of-all-the-books-read-code-summary-code">3.3.5. Give a summary of all the books read : <code>summary</code></a></li>
+<li><a href="#providing-statistics-of-all-the-books-read-code-summary-code">3.3.5. Providing statistics of all the books read : <code>summary</code></a></li>
 <li><a href="#clearing-all-entries-code-clear-code">3.3.6. Clearing all entries : <code>clear</code></a></li>
 <li><a href="#exiting-the-program-code-exit-code">3.3.7. Exiting the program : <code>exit</code></a></li>
 <li><a href="#saving-the-data">3.3.8. Saving the data</a></li>
@@ -60,7 +60,7 @@
 <h2 id="introduction"><a class="link" href="#introduction">1. Introduction</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>BookSquirrel is for those who <strong>want to keep record of books they&#8217;ve read</strong>. More importantly, BookSquirrel is <strong>optimized for those who prefer to work with a Command Line Interface</strong> (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, BookSquirrel can get your contact management tasks done faster than traditional GUI apps. Interested? Jump to the <a href="#quick-start">Section 2, &#8220;Quick Start&#8221;</a> to get started. Enjoy!</p>
+<p>BookSquirrel is for those who <strong>want to keep a record of books they&#8217;ve read</strong>. More importantly, BookSquirrel is <strong>optimized for those who prefer to work with a Command Line Interface</strong> (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, BookSquirrel can get your contact management tasks done faster than traditional GUI apps. Interested? Jump to the <a href="#quick-start">Section 2, &#8220;Quick Start&#8221;</a> to get started. Enjoy!</p>
 </div>
 </div>
 </div>
@@ -76,10 +76,10 @@
 <p>Download the latest <code>bookSquirrel.jar</code> <a href="https://github.com/cs2103-ay1819s2-w11-4/main/releases">here</a>.</p>
 </li>
 <li>
-<p>Copy the file to the folder you want to use as the home folder for your Book Shelf.</p>
+<p>Copy the file to the folder you want to use as the home folder for your application.</p>
 </li>
 <li>
-<p>Double-click the file to start the app. The GUI should appear in a few seconds.</p>
+<p>Double-click the file to start the app. The main window should appear in a few seconds, as shown in the screenshot below.</p>
 <div class="imageblock">
 <div class="content">
 <img src="images/Ui.png" alt="Ui" width="790">
@@ -88,7 +88,7 @@
 </li>
 <li>
 <p>Type the command in the command box and press <kbd>Enter</kbd> to execute it.<br>
-e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> will open the help window.</p>
+E.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> will open the help window.</p>
 </li>
 <li>
 <p>Some example commands you can try:</p>
@@ -165,10 +165,12 @@ Format: <code>addBook n/BOOKNAME a/author m/RATING(0-10) [t/TAG]…​</code></p
 <div class="ulist">
 <ul>
 <li>
-<p><code>addBook n/Alice in Wonderland a/Lewis Carroll m/5 t/fantasy t/fairy tale</code></p>
+<p><code>addBook n/Alice in Wonderland a/Lewis Carroll m/5 t/fantasy t/fairy tale</code><br>
+Adds a book named Alice in Wonderland to the record. The book is written by Lewis Carroll, rated 5 stars, and labeled with tags ‘fantasy’ and ‘fairy tale’.</p>
 </li>
 <li>
-<p><code>addBook n/Structure and Interpretation of Computer Programs a/Hal Abelson Jerry Sussman m/4 t/textbook</code></p>
+<p><code>addBook n/Structure and Interpretation of Computer Programs a/Hal Abelson Jerry Sussman m/4 t/textbook</code><br>
+Adds a book named Structure and Interpretation of Computer Programs to the record. The book is written by Hal Abelson Jerry Sussman, rated 4 stars, and labeled with tag ‘textbook’.</p>
 </li>
 </ul>
 </div>
@@ -564,7 +566,8 @@ Format: <code>listReview INDEX</code></p>
 <div class="sect3">
 <h4 id="viewing-help-code-help-code"><a class="link" href="#viewing-help-code-help-code">3.3.1. Viewing help : <code>help</code></a></h4>
 <div class="paragraph">
-<p>Format: <code>help</code></p>
+<p>Offer a guide of all possible commands.<br>
+Format: <code>help</code></p>
 </div>
 </div>
 <div class="sect3">
@@ -661,7 +664,7 @@ The <code>redo</code> command fails as there are no <code>undo</code> commands e
 </div>
 </div>
 <div class="sect3">
-<h4 id="give-a-summary-of-all-the-books-read-code-summary-code"><a class="link" href="#give-a-summary-of-all-the-books-read-code-summary-code">3.3.5. Give a summary of all the books read : <code>summary</code></a></h4>
+<h4 id="providing-statistics-of-all-the-books-read-code-summary-code"><a class="link" href="#providing-statistics-of-all-the-books-read-code-summary-code">3.3.5. Providing statistics of all the books read : <code>summary</code></a></h4>
 <div class="paragraph">
 <p>Generate a summary of all the books read so far.<br>
 Format: <code>summary</code></p>
@@ -817,4 +820,4 @@ e.g. <code>selectReview 1</code></p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-02 11:31:13 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-02 11:50:46 UTC</div></div></div></body></html>
