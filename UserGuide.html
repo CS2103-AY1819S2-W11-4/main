@@ -351,20 +351,32 @@ Format: <code>listBook [n/BOOKNAME] [a/AUTHOR] [t/TAG] [m/RATING]</code></p>
 <h4 id="sort-books-command-code-sortbook-code"><a class="link" href="#sort-books-command-code-sortbook-code">3.1.5. Sort books command : <code>sortBook</code></a></h4>
 <div class="paragraph">
 <p>sort bookList in specify order.<br>
-Format: <code>sortBook st/TYPE o/ORDER</code></p>
+Format: <code>sortBook st/TYPE&#8230;&#8203; [o/ORDER] [o1/ORDER] [o2/ORDER] [o3/ORDER]</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
 <ul>
 <li>
-<p>TYPE can be either <strong>AUTHOR</strong>, <strong>NAME</strong> or <strong>RATING</strong>.</p>
+<p>TYPE can only be either <strong>AUTHOR</strong>, <strong>NAME</strong> or <strong>RATING</strong>.</p>
+</li>
+<li>
+<p>Able to sort more than one <strong>TYPE</strong> by writing down more than one <strong>TYPE</strong> after the <strong>sortBook</strong>.</p>
 </li>
 <li>
 <p>ORDER can be either <strong>ASC</strong>(ascending) and <strong>DES</strong>(descending).</p>
 </li>
 <li>
-<p>TYPE and ORDER are all case-insensitive.</p>
+<p>Omit o/ORDER, it will sort in <strong>ASC</strong>(ascending).</p>
+</li>
+<li>
+<p>o1, o2, o3 is corresponding specify order for each <strong>TYPE</strong> that specify in front.</p>
+</li>
+<li>
+<p>o/ORDER is the orderfor all <strong>TYPEs</strong>, it will overwrite order if both o and o1 appear at same time.</p>
+</li>
+<li>
+<p><strong>TYPE</strong> and <strong>ORDER</strong> are all case-insensitive.</p>
 </li>
 </ul>
 </div>
@@ -376,12 +388,16 @@ Format: <code>sortBook st/TYPE o/ORDER</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>sortBook st/name o/asc</code>
+<p><code>sortBook st/name</code>
 sort bookList by book name in ascending order.</p>
 </li>
 <li>
-<p><code>sortBook st/RATING o/des</code>
-sort bookList by rating of the book in descending order.</p>
+<p><code>sortBook st/rating st/name o1/des</code>
+sort bookList by rating of the book in descending order and if they having same rating it will sort them by book name is asc order.</p>
+</li>
+<li>
+<p><code>sortBook st/author st/rating o/des o2/asc</code>
+sort bookList by author in descending order and if they having same rating it will sort them by rating in des order.(o/des overwrite o2/asc)</p>
 </li>
 </ul>
 </div>
@@ -570,7 +586,7 @@ Format: <code>undo</code></p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Undoable commands: those commands that modify the records content (<code>addBook</code>, <code>addReview</code>, <code>`deleteBook</code>, <code>deleteReview</code>, <code>editBook</code> and <code>clear</code>).</p>
+<p>Undoable commands: those commands that modify the records content (<code>addBook</code>, <code>addReview</code>, <code>deleteBook</code>, <code>deleteReview</code>, <code>editBook</code>, <code>sortBook</code> and <code>clear</code>).</p>
 </div>
 </td>
 </tr>
@@ -585,6 +601,10 @@ Format: <code>undo</code></p>
 <p><code>listBook n/Alice</code><br>
 <code>deleteBook 1</code><br>
 <code>undo</code> (reverses the <code>deleteBook 1</code> command)<br></p>
+</li>
+<li>
+<p><code>sortBook st/rating</code><br>
+<code>undo</code> (reverses the <code>sortBook st/rating</code> command)<br></p>
 </li>
 <li>
 <p><code>listBook a/James</code><br>
@@ -781,4 +801,4 @@ e.g. <code>selectReview 1</code></p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-02 09:23:57 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-02 09:44:42 UTC</div></div></div></body></html>
