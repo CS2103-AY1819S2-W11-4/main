@@ -113,7 +113,7 @@ E.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <div class="sect1">
 <h2 id="Features"><a class="link" href="#Features">3. Features</a></h2>
 <div class="sectionbody">
-<div class="exampleblock">
+<div id="Command-Format" class="exampleblock">
 <div class="content">
 <div class="paragraph">
 <p><strong>Command Format</strong></p>
@@ -143,6 +143,9 @@ E.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 </li>
 <li>
 <p>Review content should not exceed 350 characters (space included).</p>
+</li>
+<li>
+<p>Rating should be integer from 0 to 10 inclusive.</p>
 </li>
 <li>
 <p>Tags should not exceed 20 characters (space included).</p>
@@ -188,16 +191,10 @@ Adds a book named Structure and Interpretation of Computer Programs to the recor
 <p>Trying to add a book which is already present in the book shelf will result in duplicate book error, and the addBook command will fail</p>
 </li>
 <li>
-<p>Book names should only contain no more than 50 characters (space included), and it should not be blank</p>
+<p>If multiple valid parameters are supplied to the same field (E.g. addBook n/A n/B), the latter one will be took as the input</p>
 </li>
 <li>
-<p>Author names should only contain alphanumeric characters and spaces, and it should not be blank nor longer than 50 characters</p>
-</li>
-<li>
-<p>Tags names should be alphanumeric and contains less than 20 characters</p>
-</li>
-<li>
-<p>Rating should be an integer ranging from 0 to 10 inclusive</p>
+<p>Take a look at <a href="#Command-Format">[Command-Format]</a> to see the valid format for each parameter</p>
 </li>
 </ul>
 </div>
@@ -224,13 +221,19 @@ Format: <code>editBook INDEX [n/BOOKNAME] [a/AUTHOR] [m/RATING] [t/TAG]&#8230;&#
 <p>At least one of the optional fields must be provided.</p>
 </li>
 <li>
-<p>Existing values will be updated to the input values.</p>
+<p>If multiple valid parameters are supplied to the same field (E.g. addBook n/A n/B), the latter one will be took as the input</p>
 </li>
 <li>
-<p>When editing tags, the existing tags of the book will be removed i.e adding of tags is not cumulative.</p>
+<p>Take a look at <a href="#Command Format">[Command Format]</a> to see the valid format for each parameter</p>
 </li>
 <li>
-<p>You can remove all the book’s tags by typing t/ without specifying any tags after it.</p>
+<p>Existing values will be updated to the input values</p>
+</li>
+<li>
+<p>When editing tags, the existing tags of the book will be removed i.e adding of tags is not cumulative</p>
+</li>
+<li>
+<p>You can remove all the book’s tags by typing t/ without specifying any tags after it</p>
 </li>
 </ul>
 </div>
@@ -820,4 +823,4 @@ e.g. <code>selectReview 1</code></p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-04 00:11:31 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-04 06:01:50 UTC</div></div></div></body></html>
