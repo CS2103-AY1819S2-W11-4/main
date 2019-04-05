@@ -60,7 +60,7 @@
 <h2 id="introduction"><a class="link" href="#introduction">1. Introduction</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>BookSquirrel is for those who <strong>want to keep a record of books they&#8217;ve read</strong>. More importantly, BookSquirrel is <strong>optimized for those who prefer to work with a Command Line Interface</strong> (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, BookSquirrel can get your contact management tasks done faster than traditional GUI apps. Interested? Jump to the <a href="#quick-start">Section 2, &#8220;Quick Start&#8221;</a> to get started. Enjoy!</p>
+<p>BookSquirrel is for those who <strong>want to keep a record of books they&#8217;ve read</strong>. More importantly, BookSquirrel is <strong>optimized for those who prefer to work with a Command Line Interface</strong> (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, BookSquirrel can get your book management tasks done faster than traditional GUI apps. Interested? Jump to the <a href="#quick-start">Section 2, &#8220;Quick Start&#8221;</a> to get started. Enjoy!</p>
 </div>
 </div>
 </div>
@@ -145,7 +145,7 @@ E.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <p>Review content should not exceed 350 characters (space included).</p>
 </li>
 <li>
-<p>Rating should be integer from 0 to 10 inclusive.</p>
+<p>Rating should be integer from 0 to 10 inclusive and the input should be 1 or 2 digit number.</p>
 </li>
 <li>
 <p>Tags should not exceed 20 characters (space included).</p>
@@ -212,7 +212,7 @@ Format: <code>editBook INDEX [n/BOOKNAME] [a/AUTHOR] [m/RATING] [t/TAG]&#8230;&#
 <div class="ulist">
 <ul>
 <li>
-<p>Edits the book at the specified INDEX. The index refers to the index number shown in the displayed book list. The index must be a positive integer 1, 2, 3, …​</p>
+<p>Edit the book at the specified INDEX. The index refers to the index number shown in the displayed book list. The index must be a positive integer 1, 2, 3, …​</p>
 </li>
 <li>
 <p>Edit a book with new name same as the name of other book which is already existing in book shelf is not allowed</p>
@@ -245,11 +245,11 @@ Format: <code>editBook INDEX [n/BOOKNAME] [a/AUTHOR] [m/RATING] [t/TAG]&#8230;&#
 <div class="ulist">
 <ul>
 <li>
-<p><code>edit 1 n/Alice in Wonderland a/some author t/some tag</code><br>
+<p><code>editBook 1 n/Alice in Wonderland a/some author t/some tag</code><br>
 Change the name, author, tag of the first book to Alice in Wonderland, some author, some tag.</p>
 </li>
 <li>
-<p><code>edit 2 t/</code><br>
+<p><code>editBook 2 t/</code><br>
 Clear all the existing tags of the second book in the result list.</p>
 </li>
 </ul>
@@ -749,8 +749,8 @@ There is no need to save manually.</p>
 e.g. <code>addBook n/Alice in Wonderland a/Lewis Carroll m/5 t/fantasy t/textbook</code></p>
 </li>
 <li>
-<p><strong>EditBook</strong> : <code>edit INDEX [n/BOOKNAME] [a/AUTHOR] [m/RATING]&#8230;&#8203;</code><br>
-e.g. <code>edit 1 n/Alice in Wonderland a/some author</code></p>
+<p><strong>EditBook</strong> : <code>editBook INDEX [n/BOOKNAME] [a/AUTHOR] [m/RATING]&#8230;&#8203;</code><br>
+e.g. <code>editBook 1 n/Alice in Wonderland a/some author</code></p>
 </li>
 <li>
 <p><strong>DeleteBook</strong> : <code>deleteBook INDEX</code><br>
@@ -823,4 +823,4 @@ e.g. <code>selectReview 1</code></p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-04 06:01:50 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-05 15:29:47 UTC</div></div></div></body></html>
