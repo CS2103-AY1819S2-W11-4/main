@@ -121,10 +121,16 @@ E.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <div class="ulist">
 <ul>
 <li>
-<p>Words in <code>UPPER_CASE</code> are the parameters to be supplied by the user e.g. in <code>add n/NAME</code>, <code>NAME</code> is a parameter which can be used as <code>add n/John Doe</code>.</p>
+<p>The total length of user input should not exceed 500 characters (space included).</p>
 </li>
 <li>
-<p>Items in square brackets are optional e.g <code>n/NAME [t/TAG]</code> can be used as <code>n/Alice in Wonderland t/fantasy</code> or as <code>n/Alice in Wonderland</code>.</p>
+<p>Words in <code>UPPER_CASE</code> are the parameters to be supplied by the user e.g. in <code>addBook n/NAME</code>, <code>NAME</code> is a parameter which can be used as <code>addBook n/Book</code>.</p>
+</li>
+<li>
+<p>Words in <code>UPPER_CASE</code> without brackets are the parameters that should only be supplied once e.g. in <code>addBook n/NAME</code>, <code>NAME</code> is a parameter which should only appear once in user input, <code>addBook n/John Doe n/Alice</code> is not allowed.</p>
+</li>
+<li>
+<p>Items in square brackets are optional (can be supplied once or not at all) e.g <code>n/NAME [a/AUTHOR]</code> can be used as <code>n/Alice in Wonderland a/Jack</code> or as <code>n/Alice in Wonderland</code>.</p>
 </li>
 <li>
 <p>Items with <code>…</code>​ after them can be used multiple times including zero times e.g. <code>[t/TAG]&#8230;&#8203;</code> can be used as <code>&#160;</code> (i.e. 0 times), <code>t/fantasy</code>, <code>t/fantasy t/textbook</code> etc.</p>
@@ -191,9 +197,6 @@ Adds a book named Structure and Interpretation of Computer Programs to the recor
 <p>Trying to add a book which is already present in the book shelf will result in duplicate book error, and the addBook command will fail</p>
 </li>
 <li>
-<p>If multiple valid parameters are supplied to the same field (E.g. addBook n/A n/B), the latter one will be took as the input</p>
-</li>
-<li>
 <p>Take a look at <a href="#Command-Format">[Command-Format]</a> to see the valid format for each parameter</p>
 </li>
 </ul>
@@ -219,9 +222,6 @@ Format: <code>editBook INDEX [n/BOOKNAME] [a/AUTHOR] [m/RATING] [t/TAG]&#8230;&#
 </li>
 <li>
 <p>At least one of the optional fields must be provided.</p>
-</li>
-<li>
-<p>If multiple valid parameters are supplied to the same field (E.g. addBook n/A n/B), the latter one will be took as the input</p>
 </li>
 <li>
 <p>Take a look at <a href="#Command Format">[Command Format]</a> to see the valid format for each parameter</p>
@@ -827,4 +827,4 @@ e.g. <code>selectReview 1</code></p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-06 03:23:25 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-06 11:42:48 UTC</div></div></div></body></html>
