@@ -249,22 +249,22 @@ An example of a summary <code>You&#8217;ve read 9 books. You preferred books by 
 <p>The current version of listBook command works to help the user to search books that satisfy certain criteria. The user can look for books by giving keywords of book name, author, tag or rating.</p>
 </div>
 <div class="paragraph">
-<p>This would be handy when there are many books in the book shelf. It also makes the app more user-friendly as the user sometimes cannot remember the exact full name of a book but only know a few things about the book desired.</p>
+<p>This would be handy when there are many books on the bookshelf. It also makes the app more user-friendly as the user sometimes cannot remember the exact full name of a book but only know a few things about the book desired.</p>
 </div>
 <div class="paragraph">
-<p>Compared to to the <code>list</code> command in the address book app, our <code>listBookCommand</code> is an implementation of the combination of <code>list</code> and <code>find</code> and even more functionally helpful, as it accepts more filtering criteria than the original command does.</p>
+<p>Compared to the <code>list</code> command in the address book app, our <code>listBookCommand</code> is an implementation of the combination of <code>list</code> and <code>find</code> and even more functionally helpful, as it accepts more filtering criteria than the original command does.</p>
 </div>
 <div class="paragraph">
 <p>Given below is an example usage and how listBook feature behaves at each step.</p>
 </div>
 <div class="paragraph">
-<p>Step 1. The user launches the application for the first time. The <code>VersionedBookShelf</code> will be initialized with the initial book shelf state, and the <code>currentStatePointer</code> pointing to that single book shelf state.</p>
+<p>Step 1. The user launches the application for the first time. The <code>VersionedBookShelf</code> will be initialized with the initial bookshelf state, and the <code>currentStatePointer</code> pointing to that single bookshelf state.</p>
 </div>
 <div class="paragraph">
 <p>Step 2. The user executes <code>listBook n/Life</code>.</p>
 </div>
 <div class="paragraph">
-<p>Step 3. The <code>ListBookCommandParser</code> parses this command, and returns an <code>ListBookCommand</code>. Exception will be thrown if the command is invalid.</p>
+<p>Step 3. The <code>ListBookCommandParser</code> parses this command, and returns an <code>ListBookCommand</code>. The exception will be thrown if the command is invalid.</p>
 </div>
 <div class="paragraph">
 <p>Step 4. The <code>ListBookCommand</code> be executed. The command checks all the book in the <code>BookShelf</code>, selects out books whose name contain <code>Life</code> based on <code>BookNameContainsKeywordPredicate</code>.</p>
@@ -277,27 +277,27 @@ An example of a summary <code>You&#8217;ve read 9 books. You preferred books by 
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Only books match all criteria provided will be selected. For example, if the user give 2 book name keywords and 2 ratings, only books matching at least 1 name keyword and at least 1 rating will be selected. Books match 1 name keyword but no ratings will not be considered.</p>
+<p><strong>Alternative 1 (current choice):</strong> Only books match all criteria provided will be selected. For example, if the user gives 2 book name keywords and 2 ratings, only books matching at least 1 name keyword and at least 1 rating will be selected. Books match 1 name keyword but no ratings will not be considered.</p>
 <div class="ulist">
 <ul>
 <li>
 <p>Pros: Easy to test and manage.</p>
 </li>
 <li>
-<p>Cons: Such searching technique may fail to provide the user with enough inforamtion.</p>
+<p>Cons: Such search techniques may fail to provide the user with enough information.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Alternative 2:</strong> Books that match at least one criteria will be selected. For example, if the user give 2 book name keywords and 2 ratings, books that match 1 name keyword but no ratings will still be selected.</p>
+<p><strong>Alternative 2:</strong> Books that match at least one criteria will be selected. For example, if the user gives 2 book name keywords and 2 ratings, books that match 1 name keyword but no ratings will still be selected.</p>
 <div class="ulist">
 <ul>
 <li>
 <p>Pros: More likely to provide the user with the book that the user is looking for.</p>
 </li>
 <li>
-<p>Cons: Hard to test and manage. Such design also fails to narrow down search results when the user is providing more keywords for the targetd book.</p>
+<p>Cons: Hard to test and manage. Such a design also fails to narrow down search results when the user is providing more keywords for the targeted book.</p>
 </li>
 </ul>
 </div>
@@ -312,13 +312,13 @@ An example of a summary <code>You&#8217;ve read 9 books. You preferred books by 
 <div class="sect3">
 <h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">Current Implementation</a></h4>
 <div class="paragraph">
-<p>The summary feature is a command works to summarize the books in the bookshlef. The user can have a rough overview of what he/she has read.</p>
+<p>The summary feature is a command works to summarize the books in the bookshelf. The user can have a rough overview of what he/she has read.</p>
 </div>
 <div class="paragraph">
-<p>Given below is an example usage and how summary feature works.</p>
+<p>Given below is an example of usage and how the summary feature works.</p>
 </div>
 <div class="paragraph">
-<p>Step 1. The user launches the application for the first time. The <code>VersionedBookShelf</code> will be initialized with the initial book shelf state, and the <code>currentStatePointer</code> pointing to that single book shelf state.</p>
+<p>Step 1. The user launches the application for the first time. The <code>VersionedBookShelf</code> will be initialized with the initial bookshelf state, and the <code>currentStatePointer</code> pointing to that single bookshelf state.</p>
 </div>
 <div class="paragraph">
 <p>Step 2. The user executes <code>summary</code></p>
@@ -327,10 +327,10 @@ An example of a summary <code>You&#8217;ve read 9 books. You preferred books by 
 <p>Step 3. The <code>SummaryCommandParser</code> parses this command.</p>
 </div>
 <div class="paragraph">
-<p>Step 4. The <code>SummaryCommandParser`returns an `SummaryCommand</code>. Exception will be thrown if the command is invalid.</p>
+<p>Step 4. The <code>SummaryCommandParser`returns an `SummaryCommand</code>. The exception will be thrown if the command is invalid.</p>
 </div>
 <div class="paragraph">
-<p>Step 5. The <code>SummaryCommand</code> executes. The command will traverse all books in the book shelf, checks if there are authors or tags appear more than once and give relative details. The command will also show the highest rating of books in the book shelf.</p>
+<p>Step 5. The <code>SummaryCommand</code> executes. The command will traverse all books in the bookshelf, checks, if there are authors or tags, appear more than once and give relative details. The command will also show the highest rating of books on the bookshelf.</p>
 </div>
 </div>
 <div class="sect3">
@@ -344,10 +344,10 @@ An example of a summary <code>You&#8217;ve read 9 books. You preferred books by 
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: This prevent the command from accessing data managed by the model manager, thus independency of different parts is guaranteed.</p>
+<p>Pros: This prevents the command from accessing data managed by the model manager, thus independency of different parts is guaranteed.</p>
 </li>
 <li>
-<p>Cons: More methods are introduced into the model manager. To get include more information in the summary, not ony the summary command should be modified, but also more information query methodS should be added in THE <code>Model</code>.</p>
+<p>Cons: More methods are introduced into the model manager. To get include more information in the summary, not only the summary command should be modified, but also more information query methodS should be added in THE <code>Model</code>.</p>
 </li>
 </ul>
 </div>
@@ -360,7 +360,7 @@ An example of a summary <code>You&#8217;ve read 9 books. You preferred books by 
 <p>Pros: More flexible as the command can extract any information it desires.</p>
 </li>
 <li>
-<p>Cons: This approach is unsafe and may leads to more bugs as it violates the principle of independency.</p>
+<p>Cons: This approach is unsafe and may lead to more bugs as it violates the principle of independence.</p>
 </li>
 </ul>
 </div>
@@ -371,4 +371,4 @@ An example of a summary <code>You&#8217;ve read 9 books. You preferred books by 
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-12 08:47:15 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-12 09:01:24 UTC</div></div></div></body></html>

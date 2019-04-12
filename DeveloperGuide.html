@@ -77,7 +77,8 @@
 <ul class="sectlevel2">
 <li><a href="#launch-and-shutdown">F.1. Launch and Shutdown</a></li>
 <li><a href="#deleting-a-book">F.2. Deleting a book</a></li>
-<li><a href="#saving-data">F.3. Saving data</a></li>
+<li><a href="#sorting-the-booklist">F.3. Sorting the bookList</a></li>
+<li><a href="#saving-data">F.4. Saving data</a></li>
 </ul>
 </li>
 </ul>
@@ -123,7 +124,7 @@ Windows developers are highly recommended to use JDK <code>9</code>.
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-IntelliJ by default has Gradle and JavaFx plugins installed.<br>
+IntelliJ by default has Gradle and JavaFX plugins installed.<br>
 Do not disable them. If you have disabled them, go to <code>File</code> &gt; <code>Settings</code> &gt; <code>Plugins</code> to re-enable them.
 </td>
 </tr>
@@ -170,7 +171,7 @@ Do not disable them. If you have disabled them, go to <code>File</code> &gt; <co
 </li>
 <li>
 <p>Open a console and run the command <code>gradlew processResources</code> (Mac/Linux: <code>./gradlew processResources</code>). It should finish with the <code>BUILD SUCCESSFUL</code> message.<br>
-This will generate all resources required by the application and tests.</p>
+This will generate all the resources required by the application and tests.</p>
 </li>
 <li>
 <p>Open <a href="https://github.com/cs2103-ay1819s2-w11-4/main/tree/master/src/main/java/seedu/address/ui/MainWindow.java"><code>MainWindow.java</code></a> and check for any code errors</p>
@@ -548,10 +549,10 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>Book Shelf</c
 <div class="ulist">
 <ul>
 <li>
-<p>can save <code>UserPref</code> objects in json format and read it back.</p>
+<p>can save <code>UserPref</code> objects in JSON format and read it back.</p>
 </li>
 <li>
-<p>can save the Book Shelf data in json format and read it back.</p>
+<p>can save the Book Shelf data in JSON format and read it back.</p>
 </li>
 <li>
 <p>both the data of books and reviews will be saved.</p>
@@ -560,7 +561,7 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>Book Shelf</c
 <p>users are not supposed to touch the data file (file inside the <code>data</code> folder) directly. If the user insists on doing so, the data might be corrupted.</p>
 </li>
 <li>
-<p>users are not supposed to add data files into the app manually. If the user accidentally corrupt the data file, he or she may have to reinstall the app and all data will get lost.</p>
+<p>users are not supposed to add data files into the app manually. If the user accidentally corrupts the data file, he or she may have to reinstall the app and all data will get lost.</p>
 </li>
 </ul>
 </div>
@@ -585,7 +586,7 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>Book Shelf</c
 <h4 id="current-implementation"><a class="link" href="#current-implementation">4.1.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The sortBook mechanism is facilitated by <code>VersionedBookShelf</code>.
-It extends <code>BookShelf</code> with the sort function which will sort the <code>UniqueBookList</code>. <code>UniqueBookList</code> implemented the Book list as <code>ObservableList&lt;Book&gt;</code>. sortBook command sort the book list in specify order by implementing the <code>Comaparator&lt;Book&gt;</code>.</p>
+It extends <code>BookShelf</code> with the sort function which will sort the <code>UniqueBookList</code>. <code>UniqueBookList</code> implemented the Booklist as <code>ObservableList&lt;Book&gt;</code>. sortBook command sort the book list in specify order by implementing the <code>Comaparator&lt;Book&gt;</code>.</p>
 </div>
 <div class="paragraph">
 <p>Additionally, it uses/implements the following operations:</p>
@@ -596,7 +597,7 @@ It extends <code>BookShelf</code> with the sort function which will sort the <co
 <p><code>VersionedBookShelf#sort()</code>&#8201;&#8212;&#8201;It calls <code>UniqueBookList</code> sortBooks function and notifies the listeners.</p>
 </li>
 <li>
-<p><code>BookShelf#indicateModified()</code>&#8201;&#8212;&#8201;Notifies listeners that the book shelf has been modified.</p>
+<p><code>BookShelf#indicateModified()</code>&#8201;&#8212;&#8201;Notifies listeners that the bookshelf has been modified.</p>
 </li>
 <li>
 <p><code>UniqueBookList#sortBooks()</code>&#8201;&#8212;&#8201;Implement the comparaotr, call <code>ObservableList&lt;Book&gt;</code> and pass in the comparator.</p>
@@ -610,10 +611,10 @@ It extends <code>BookShelf</code> with the sort function which will sort the <co
 <p>Given below is an example usage scenario and how the sortBook mechanism behaves at each step.</p>
 </div>
 <div class="paragraph">
-<p>Step 1. The user launches the application for the first time. The <code>VersionedBookShelf</code> will be initialized with the initial book shelf state, and the <code>currentStatePointer</code> pointing to that single book shelf state.</p>
+<p>Step 1. The user launches the application for the first time. The <code>VersionedBookShelf</code> will be initialized with the initial bookshelf state, and the <code>currentStatePointer</code> pointing to that single bookshelf state.</p>
 </div>
 <div class="paragraph">
-<p>Step 2. The user executes <code>sortBook st/rating</code> command to sort all the books in the book shelf in ascending order. The command will be pass to SortBookCommand Parser to convert it to SortBook command, the parser will checks the correctness of the command. If command is in incorrect format, parser will shows correct command instruction to user, otherwise parser will call the constructor of SortBook command.</p>
+<p>Step 2. The user executes <code>sortBook st/rating</code> command to sort all the books in the bookshelf in ascending order. The command will be pass to SortBookCommand Parser to convert it to SortBook command, the parser will check the correctness of the command. If the command is in an incorrect format, the parser will show correct command instruction to the user, otherwise, the parser will call the constructor of SortBook command.</p>
 </div>
 <div class="paragraph">
 <p>Step 3. <code>SortBookCommand#execute</code> will be call, it will check whether the book list is empty before proceed to call <code>ModelManager#sort()</code>.</p>
@@ -631,13 +632,13 @@ If the book list is empty, CommandException(MESSAGE_BOOK_LIST_EMPTY) will be thr
 </table>
 </div>
 <div class="paragraph">
-<p>Step 4. If everything is correct, <code>VersionedBookShelf#sort()</code> will be call. It will executes <code>UniqueBookList#sortBooks</code> and <code>BookShelf#indicateModified</code> will be called after the list is been sorted to notify listener that display data has been modify.</p>
+<p>Step 4. If everything is correct, <code>VersionedBookShelf#sort()</code> will be called. It will execute <code>UniqueBookList#sortBooks</code> and <code>BookShelf#indicateModified</code> will be called after the list is been sorted to notify the listener that display data has been modified.</p>
 </div>
 <div class="paragraph">
 <p>Step 5. <code>ObservableList&lt;Book&gt;</code> was implemented in <code>UniqueBookList</code> as internal list. <code>UniqueBookList#sortBooks</code> will call <code>ObservableList&lt;Book&gt;#sort</code> to sort the internal list by providing custom Comparator.</p>
 </div>
 <div class="paragraph">
-<p>Step 6. ` model#commitBookShelf()` will be execute to store current book list into <code>List&lt;ReadOnlyBookShelf&gt;</code> for support undo/redo command after the list is sorted and notify the listener.</p>
+<p>Step 6. ` model#commitBookShelf()` will be executed to store the current book list into <code>List&lt;ReadOnlyBookShelf&gt;</code> for support undo/redo command after the list is sorted and notify the listener.</p>
 </div>
 </div>
 <div class="sect3">
@@ -654,7 +655,7 @@ If the book list is empty, CommandException(MESSAGE_BOOK_LIST_EMPTY) will be thr
 <p>Pros: Easy to implement, easy to maintain.</p>
 </li>
 <li>
-<p>Cons: The sorting method is too general, can have better sorting algorithm.</p>
+<p>Cons: The sorting method is too general, can have a better sorting algorithm.</p>
 </li>
 </ul>
 </div>
@@ -687,20 +688,20 @@ If the book list is empty, CommandException(MESSAGE_BOOK_LIST_EMPTY) will be thr
 <p>Pros: Easy to implement, as the list coming with sort function.</p>
 </li>
 <li>
-<p>Cons: May have performance issues in terms of speed, as we need to sort whole list.</p>
+<p>Cons: May have performance issues in terms of speed, as we need to sort the whole list.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Alternative 2:</strong> Sorts with sub-list that available to user.</p>
+<p><strong>Alternative 2:</strong> Sorts with sub-list that available to the user.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: It is faster than first choice as we only need to sort partial list.</p>
+<p>Pros: It is faster than the first choice as we only need to sort a partial list.</p>
 </li>
 <li>
-<p>Cons: The sub-list is not support sort function, its hard and time comsume to manipulate sorting and put it back to sub-list.</p>
+<p>Cons: The sub-list is not supported sort function, it&#8217;s hard and time consumed to manipulate sorting and put it back to sub-list.</p>
 </li>
 </ul>
 </div>
@@ -722,13 +723,13 @@ Additionally, it implements the following operations:</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>VersionedBookShelf#commit()</code>&#8201;&#8212;&#8201;Saves the current book shelf state in its history.</p>
+<p><code>VersionedBookShelf#commit()</code>&#8201;&#8212;&#8201;Saves the current bookshelf state in its history.</p>
 </li>
 <li>
-<p><code>VersionedBookShelf#undo()</code>&#8201;&#8212;&#8201;Restores the previous book shelf state from its history.</p>
+<p><code>VersionedBookShelf#undo()</code>&#8201;&#8212;&#8201;Restores the previous bookshelf state from its history.</p>
 </li>
 <li>
-<p><code>VersionedBookShelf#redo()</code>&#8201;&#8212;&#8201;Restores a previously undone book shelf state from its history.</p>
+<p><code>VersionedBookShelf#redo()</code>&#8201;&#8212;&#8201;Restores a previously undone bookshelf state from its history.</p>
 </li>
 </ul>
 </div>
@@ -739,7 +740,7 @@ Additionally, it implements the following operations:</p>
 <p>Given below is an example usage scenario and how the undo/redo mechanism behaves at each step.</p>
 </div>
 <div class="paragraph">
-<p>Step 1. The user launches the application for the first time. The <code>VersionedBookShelf</code> will be initialized with the initial book shelf state, and the <code>currentStatePointer</code> pointing to that single book shelf state.</p>
+<p>Step 1. The user launches the application for the first time. The <code>VersionedBookShelf</code> will be initialized with the initial bookshelf state, and the <code>currentStatePointer</code> pointing to that single bookshelf state.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -747,7 +748,7 @@ Additionally, it implements the following operations:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Step 2. The user executes <code>deleteBook 1</code> command to delete the first book in the book shelf. The <code>deleteBook</code> command calls <code>Model#commitBookShelf()</code>, causing the modified state of the book list after the <code>deleteBook 1</code> command executes to be saved in the <code>BookShelfStateList</code>, and the <code>currentStatePointer</code> is shifted to the newly inserted book list state.</p>
+<p>Step 2. The user executes <code>deleteBook 1</code> command to delete the first book in the bookshelf. The <code>deleteBook</code> command calls <code>Model#commitBookShelf()</code>, causing the modified state of the book list after the <code>deleteBook 1</code> command executes to be saved in the <code>BookShelfStateList</code>, and the <code>currentStatePointer</code> is shifted to the newly inserted book list state.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -769,13 +770,13 @@ Additionally, it implements the following operations:</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-If a command fails its execution, it will not call <code>Model#commitBookShelf()</code>, so the book shelf state will not be saved into the <code>BookShelfStateList</code>.
+If a command fails its execution, it will not call <code>Model#commitBookShelf()</code>, so the bookshelf state will not be saved into the <code>BookShelfStateList</code>.
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>Step 4. The user now decides that adding the book was a mistake, and decides to undo that action by executing the <code>undo</code> command. The <code>undo</code> command will call <code>Model#undoBookShelf()</code>, which will shift the <code>currentStatePointer</code> once to the left, pointing it to the previous book shelf state, and restores the book shelf to that state.</p>
+<p>Step 4. The user now decides that adding the book was a mistake, and decides to undo that action by executing the <code>undo</code> command. The <code>undo</code> command will call <code>Model#undoBookShelf()</code>, which will shift the <code>currentStatePointer</code> once to the left, pointing it to the previous bookshelf state, and restores the bookshelf to that state.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -789,13 +790,13 @@ If a command fails its execution, it will not call <code>Model#commitBookShelf()
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-If the <code>currentStatePointer</code> is at index 0, pointing to the initial book shelf state, then there are no previous book shelf states to restore. The <code>undo</code> command uses <code>Model#canundoBookShelf()</code> to check if this is the case. If so, it will return an error to the user rather than attempting to perform the undo.
+If the <code>currentStatePointer</code> is at index 0, pointing to the initial bookshelf state, then there are no previous bookshelf states to restore. The <code>undo</code> command uses <code>Model#canundoBookShelf()</code> to check if this is the case. If so, it will return an error to the user rather than attempting to perform the undo.
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>The following sequence diagram shows how the undo operation works:</p>
+<p>The following sequence diagram shows how to undo operation works:</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -803,7 +804,7 @@ If the <code>currentStatePointer</code> is at index 0, pointing to the initial b
 </div>
 </div>
 <div class="paragraph">
-<p>The <code>redo</code> command does the opposite&#8201;&#8212;&#8201;it calls <code>Model#redoBookShelf()</code>, which shifts the <code>currentStatePointer</code> once to the right, pointing to the previously undone state, and restores the book shelf to that state.</p>
+<p>The <code>redo</code> command does the opposite&#8201;&#8212;&#8201;it calls <code>Model#redoBookShelf()</code>, which shifts the <code>currentStatePointer</code> once to the right, pointing to the previously undone state, and restores the bookshelf to that state.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -812,7 +813,7 @@ If the <code>currentStatePointer</code> is at index 0, pointing to the initial b
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-If the <code>currentStatePointer</code> is at index <code>BookShelfStateList.size() - 1</code>, pointing to the latest book shelf state, then there are no undone book shelf states to restore. The <code>redo</code> command uses <code>Model#canredoBookShelf()</code> to check if this is the case. If so, it will return an error to the user rather than attempting to perform the redo.
+If the <code>currentStatePointer</code> is at index <code>BookShelfStateList.size() - 1</code>, pointing to the latest bookshelf state, then there are no undone bookshelf states to restore. The <code>redo</code> command uses <code>Model#canredoBookShelf()</code> to check if this is the case. If so, it will return an error to the user rather than attempting to perform the redo.
 </td>
 </tr>
 </table>
@@ -826,7 +827,7 @@ If the <code>currentStatePointer</code> is at index <code>BookShelfStateList.siz
 </div>
 </div>
 <div class="paragraph">
-<p>Step 6. The user executes <code>clear</code>, which calls <code>Model#commitBookShelf()</code>. Since the <code>currentStatePointer</code> is not pointing at the end of the <code>BookShelfStateList</code>, all book shelf states after the <code>currentStatePointer</code> will be purged. We designed it this way because it no longer makes sense to redo the <code>addBook n/David &#8230;&#8203;</code> command. This is the behavior that most modern desktop applications follow.</p>
+<p>Step 6. The user executes <code>clear</code>, which calls <code>Model#commitBookShelf()</code>. Since the <code>currentStatePointer</code> is not pointing at the end of the <code>BookShelfStateList</code>, all bookshelf states after the <code>currentStatePointer</code> will be purged. We designed it this way because it no longer makes sense to redo the <code>addBook n/David &#8230;&#8203;</code> command. This is the behavior that most modern desktop applications follow.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -869,7 +870,7 @@ If the <code>currentStatePointer</code> is at index <code>BookShelfStateList.siz
 <p>Pros: Will use less memory (e.g. for <code>deleteBook</code>, just save the book being deleted).</p>
 </li>
 <li>
-<p>Cons: We must ensure that the implementation of each individual command are correct.</p>
+<p>Cons: We must ensure that the implementation of each individual command is correct.</p>
 </li>
 </ul>
 </div>
@@ -979,16 +980,16 @@ Additionally, it uses the following operations from <code>BookShelf</code>:</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>These operations are exposed in the <code>Model</code> interface.</p>
+<p>These operations are exposed to the <code>Model</code> interface.</p>
 </div>
 <div class="paragraph">
 <p>Given below is an example usage scenario and how the addBook mechanism behaves at each step.</p>
 </div>
 <div class="paragraph">
-<p>Step 1. The user launches the application for the first time. The <code>VersionedBookShelf</code> will be initialized with the initial book shelf state, and the <code>currentStatePointer</code> pointing to that single book shelf state.</p>
+<p>Step 1. The user launches the application for the first time. The <code>VersionedBookShelf</code> will be initialized with the initial bookshelf state, and the <code>currentStatePointer</code> pointing to that single bookshelf state.</p>
 </div>
 <div class="paragraph">
-<p>Step 2. The user executes <code>addBook n/Alice a/HR m/5 tag/fantasy</code> command to add the book called Alice, written by HR, with rating of 5 and tag of fantasy in the book list. The <code>addBook</code> command calls <code>Model#hasBook()</code>, checking if the book already exists in the book shelf.</p>
+<p>Step 2. The user executes <code>addBook n/Alice a/HR m/5 tag/fantasy</code> command to add the book called Alice, written by HR, with a rating of 5 and tag of fantasy in the book list. The <code>addBook</code> command calls <code>Model#hasBook()</code>, checking if the book already exists in the bookshelf.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -997,13 +998,13 @@ Additionally, it uses the following operations from <code>BookShelf</code>:</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-If the book already exists, CommandException(MESSAGE_DUPLICATE_BOOK) will be thrown. It will not call <code>Model#commitBookShelf()</code>, so the book shelf state will not be saved into the <code>BookShelfStateList</code>.
+If the book already exists, CommandException(MESSAGE_DUPLICATE_BOOK) will be thrown. It will not call <code>Model#commitBookShelf()</code>, so the bookshelf state will not be saved into the <code>BookShelfStateList</code>.
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>Step 4. The book shelf now adds the book to the book list after making sure there is no duplicates, and calls Model#commitBookShelf(), causing the modified state of the book list after the <code>addBook</code> command executes to be saved in the BookShelfStateList</p>
+<p>Step 4. The bookshelf now adds the book to the book list after making sure there are no duplicates, and calls Model#commitBookShelf(), causing the modified state of the book list after the <code>addBook</code> command executes to be saved in the BookShelfStateList</p>
 </div>
 </div>
 <div class="sect3">
@@ -1017,23 +1018,23 @@ If the book already exists, CommandException(MESSAGE_DUPLICATE_BOOK) will be thr
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Easy to support other command such as addReview which search for the book based on its name.</p>
+<p>Pros: Easy to support other commands such as addReview which search for the book based on its name.</p>
 </li>
 <li>
-<p>Cons: User may encounter trouble if they read two books with same name but written by different authors.</p>
+<p>Cons: User may encounter trouble if they read two books with the same name but written by different authors.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Alternative 2:</strong> Books with multiple identical fields (eg. book name and author, book name and rating, etc) are considered same book.</p>
+<p><strong>Alternative 2:</strong> Books with multiple identical fields (eg. book name and author, book name and rating, etc) are considered as the same book.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Able to store books with same same but different in other fields.</p>
+<p>Pros: Able to store books with same but different in other fields.</p>
 </li>
 <li>
-<p>Cons: Causing trouble to executing other commands like addReview as more parameters must be provided to search for a certain book.</p>
+<p>Cons: Causing trouble in executing other commands like addReview as more parameters must be provided to search for a certain book.</p>
 </li>
 </ul>
 </div>
@@ -1053,7 +1054,7 @@ If the book already exists, CommandException(MESSAGE_DUPLICATE_BOOK) will be thr
 <p>Pros: Easy to implement delete and other features that change an entire book.</p>
 </li>
 <li>
-<p>Cons: May be more difficult to implement the summary feature which needs to obtain statistics of all separate components, eg. find the most popular author.</p>
+<p>Cons: Maybe more difficult to implement the summary feature which needs to obtain statistics of all separate components, eg. find the most popular author.</p>
 </li>
 </ul>
 </div>
@@ -1099,16 +1100,16 @@ Additionally, it uses the following operations from <code>BookShelf</code>:</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>These operations are exposed in the <code>Model</code> interface.</p>
+<p>These operations are exposed to the <code>Model</code> interface.</p>
 </div>
 <div class="paragraph">
 <p>Given below is an example usage scenario and how the addBook mechanism behaves at each step.</p>
 </div>
 <div class="paragraph">
-<p>Step 1. The user launches the application for the first time. The <code>VersionedBookShelf</code> will be initialized with the initial book shelf state, and the <code>currentStatePointer</code> pointing to that single book shelf state.</p>
+<p>Step 1. The user launches the application for the first time. The <code>VersionedBookShelf</code> will be initialized with the initial bookshelf state, and the <code>currentStatePointer</code> pointing to that single bookshelf state.</p>
 </div>
 <div class="paragraph">
-<p>Step 2. The user executes <code>editBook 1 n/Alice a/HR m/5 tag/fantasy</code> command to edit the first book present in the book list to be a book called Alice, written by HR, with rating of 5 and tag of fantasy in the book list. The <code>addBook</code> command calls <code>Model#hasBook()</code>, checking if the book already exists in the book shelf.</p>
+<p>Step 2. The user executes <code>editBook 1 n/Alice a/HR m/5 tag/fantasy</code> command to edit the first book present in the book list to be a book called Alice, written by HR, with a rating of 5 and tag of fantasy in the book list. The <code>addBook</code> command calls <code>Model#hasBook()</code>, checking if the book already exists in the bookshelf.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1117,13 +1118,13 @@ Additionally, it uses the following operations from <code>BookShelf</code>:</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-If the new book name already exists, CommandException(MESSAGE_DUPLICATE_BOOK) will be thrown. It will not call <code>Model#commitBookShelf()</code>, so the book shelf state will not be saved into the <code>BookShelfStateList</code>.
+If the new book name already exists, CommandException(MESSAGE_DUPLICATE_BOOK) will be thrown. It will not call <code>Model#commitBookShelf()</code>, so the bookshelf state will not be saved into the <code>BookShelfStateList</code>.
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>Step 4. The book shelf now set the fields of the first book to the new ones provided, and calls Model#commitBookShelf(), causing the modified state of the book list after the <code>addBook</code> command executes to be saved in the BookShelfStateList</p>
+<p>Step 4. The bookshelf now set the fields of the first book to the new ones provided, and calls Model#commitBookShelf(), causing the modified state of the book list after the <code>addBook</code> command executes to be saved in the BookShelfStateList</p>
 </div>
 </div>
 <div class="sect3">
@@ -1133,7 +1134,7 @@ If the new book name already exists, CommandException(MESSAGE_DUPLICATE_BOOK) wi
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Use index to figure out the book user wishes to edit.</p>
+<p><strong>Alternative 1 (current choice):</strong> Use the index to figure out the book user wishes to edit.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -1153,7 +1154,7 @@ If the new book name already exists, CommandException(MESSAGE_DUPLICATE_BOOK) wi
 <p>Pros: No need to first filter out a non-empty book list.</p>
 </li>
 <li>
-<p>Cons: Causing trouble for user to type in the full name of the book.</p>
+<p>Cons: Causing trouble for the user to type in the full name of the book.</p>
 </li>
 </ul>
 </div>
@@ -1171,22 +1172,22 @@ If the new book name already exists, CommandException(MESSAGE_DUPLICATE_BOOK) wi
 <p>The current version of listBook command works to help the user to search books that satisfy certain criteria. The user can look for books by giving keywords of book name, author, tag or rating.</p>
 </div>
 <div class="paragraph">
-<p>This would be handy when there are many books in the book shelf. It also makes the app more user-friendly as the user sometimes cannot remember the exact full name of a book but only know a few things about the book desired.</p>
+<p>This would be handy when there are many books on the bookshelf. It also makes the app more user-friendly as the user sometimes cannot remember the exact full name of a book but only know a few things about the book desired.</p>
 </div>
 <div class="paragraph">
-<p>Compared to to the <code>list</code> command in the address book app, our <code>listBookCommand</code> is an implementation of the combination of <code>list</code> and <code>find</code> and even more functionally helpful, as it accepts more filtering criteria than the original command does.</p>
+<p>Compared to the <code>list</code> command in the address book app, our <code>listBookCommand</code> is an implementation of the combination of <code>list</code> and <code>find</code> and even more functionally helpful, as it accepts more filtering criteria than the original command does.</p>
 </div>
 <div class="paragraph">
 <p>Given below is an example usage and how listBook feature behaves at each step.</p>
 </div>
 <div class="paragraph">
-<p>Step 1. The user launches the application for the first time. The <code>VersionedBookShelf</code> will be initialized with the initial book shelf state, and the <code>currentStatePointer</code> pointing to that single book shelf state.</p>
+<p>Step 1. The user launches the application for the first time. The <code>VersionedBookShelf</code> will be initialized with the initial bookshelf state, and the <code>currentStatePointer</code> pointing to that single bookshelf state.</p>
 </div>
 <div class="paragraph">
 <p>Step 2. The user executes <code>listBook n/Life</code>.</p>
 </div>
 <div class="paragraph">
-<p>Step 3. The <code>ListBookCommandParser</code> parses this command, and returns an <code>ListBookCommand</code>. Exception will be thrown if the command is invalid.</p>
+<p>Step 3. The <code>ListBookCommandParser</code> parses this command, and returns an <code>ListBookCommand</code>. The exception will be thrown if the command is invalid.</p>
 </div>
 <div class="paragraph">
 <p>Step 4. The <code>ListBookCommand</code> be executed. The command checks all the book in the <code>BookShelf</code>, selects out books whose name contain <code>Life</code> based on <code>BookNameContainsKeywordPredicate</code>.</p>
@@ -1199,27 +1200,27 @@ If the new book name already exists, CommandException(MESSAGE_DUPLICATE_BOOK) wi
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Only books match all criteria provided will be selected. For example, if the user give 2 book name keywords and 2 ratings, only books matching at least 1 name keyword and at least 1 rating will be selected. Books match 1 name keyword but no ratings will not be considered.</p>
+<p><strong>Alternative 1 (current choice):</strong> Only books match all criteria provided will be selected. For example, if the user gives 2 book name keywords and 2 ratings, only books matching at least 1 name keyword and at least 1 rating will be selected. Books match 1 name keyword but no ratings will not be considered.</p>
 <div class="ulist">
 <ul>
 <li>
 <p>Pros: Easy to test and manage.</p>
 </li>
 <li>
-<p>Cons: Such searching technique may fail to provide the user with enough inforamtion.</p>
+<p>Cons: Such search techniques may fail to provide the user with enough information.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Alternative 2:</strong> Books that match at least one criteria will be selected. For example, if the user give 2 book name keywords and 2 ratings, books that match 1 name keyword but no ratings will still be selected.</p>
+<p><strong>Alternative 2:</strong> Books that match at least one criteria will be selected. For example, if the user gives 2 book name keywords and 2 ratings, books that match 1 name keyword but no ratings will still be selected.</p>
 <div class="ulist">
 <ul>
 <li>
 <p>Pros: More likely to provide the user with the book that the user is looking for.</p>
 </li>
 <li>
-<p>Cons: Hard to test and manage. Such design also fails to narrow down search results when the user is providing more keywords for the targetd book.</p>
+<p>Cons: Hard to test and manage. Such a design also fails to narrow down search results when the user is providing more keywords for the targeted book.</p>
 </li>
 </ul>
 </div>
@@ -1234,13 +1235,13 @@ If the new book name already exists, CommandException(MESSAGE_DUPLICATE_BOOK) wi
 <div class="sect3">
 <h4 id="current-implementation-6"><a class="link" href="#current-implementation-6">4.8.1. Current Implementation</a></h4>
 <div class="paragraph">
-<p>The summary feature is a command works to summarize the books in the bookshlef. The user can have a rough overview of what he/she has read.</p>
+<p>The summary feature is a command works to summarize the books in the bookshelf. The user can have a rough overview of what he/she has read.</p>
 </div>
 <div class="paragraph">
-<p>Given below is an example usage and how summary feature works.</p>
+<p>Given below is an example of usage and how the summary feature works.</p>
 </div>
 <div class="paragraph">
-<p>Step 1. The user launches the application for the first time. The <code>VersionedBookShelf</code> will be initialized with the initial book shelf state, and the <code>currentStatePointer</code> pointing to that single book shelf state.</p>
+<p>Step 1. The user launches the application for the first time. The <code>VersionedBookShelf</code> will be initialized with the initial bookshelf state, and the <code>currentStatePointer</code> pointing to that single bookshelf state.</p>
 </div>
 <div class="paragraph">
 <p>Step 2. The user executes <code>summary</code></p>
@@ -1249,10 +1250,10 @@ If the new book name already exists, CommandException(MESSAGE_DUPLICATE_BOOK) wi
 <p>Step 3. The <code>SummaryCommandParser</code> parses this command.</p>
 </div>
 <div class="paragraph">
-<p>Step 4. The <code>SummaryCommandParser`returns an `SummaryCommand</code>. Exception will be thrown if the command is invalid.</p>
+<p>Step 4. The <code>SummaryCommandParser`returns an `SummaryCommand</code>. The exception will be thrown if the command is invalid.</p>
 </div>
 <div class="paragraph">
-<p>Step 5. The <code>SummaryCommand</code> executes. The command will traverse all books in the book shelf, checks if there are authors or tags appear more than once and give relative details. The command will also show the highest rating of books in the book shelf.</p>
+<p>Step 5. The <code>SummaryCommand</code> executes. The command will traverse all books in the bookshelf, checks, if there are authors or tags, appear more than once and give relative details. The command will also show the highest rating of books on the bookshelf.</p>
 </div>
 </div>
 <div class="sect3">
@@ -1266,10 +1267,10 @@ If the new book name already exists, CommandException(MESSAGE_DUPLICATE_BOOK) wi
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: This prevent the command from accessing data managed by the model manager, thus independency of different parts is guaranteed.</p>
+<p>Pros: This prevents the command from accessing data managed by the model manager, thus independency of different parts is guaranteed.</p>
 </li>
 <li>
-<p>Cons: More methods are introduced into the model manager. To get include more information in the summary, not ony the summary command should be modified, but also more information query methodS should be added in THE <code>Model</code>.</p>
+<p>Cons: More methods are introduced into the model manager. To get include more information in the summary, not only the summary command should be modified, but also more information query methodS should be added in THE <code>Model</code>.</p>
 </li>
 </ul>
 </div>
@@ -1282,7 +1283,7 @@ If the new book name already exists, CommandException(MESSAGE_DUPLICATE_BOOK) wi
 <p>Pros: More flexible as the command can extract any information it desires.</p>
 </li>
 <li>
-<p>Cons: This approach is unsafe and may leads to more bugs as it violates the principle of independency.</p>
+<p>Cons: This approach is unsafe and may lead to more bugs as it violates the principle of independence.</p>
 </li>
 </ul>
 </div>
@@ -1302,16 +1303,16 @@ If the new book name already exists, CommandException(MESSAGE_DUPLICATE_BOOK) wi
 <p>Given below is an example usage and how addReview feature behaves at each step.</p>
 </div>
 <div class="paragraph">
-<p>Step 1. The user launches the application for the first time. The <code>VersionedBookShelf</code> will be initialized with the initial book shelf state, and the <code>currentStatePointer</code> pointing to that single book shelf state.</p>
+<p>Step 1. The user launches the application for the first time. The <code>VersionedBookShelf</code> will be initialized with the initial bookshelf state, and the <code>currentStatePointer</code> pointing to that single bookshelf state.</p>
 </div>
 <div class="paragraph">
 <p>Step 2. The user executes <code>addReview n/Alice in Wonderland rt/Carroll has depicted a unique world I hadn&#8217;t seen before r/Alice&#8217;s Adventures in Wonderland by Lewis Carroll is a story about Alice who falls down a rabbit hole and lands into a fantasy world that is full of weird, wonderful people and animals.</code></p>
 </div>
 <div class="paragraph">
-<p>Step 3. The <code>AddReviewCommandParser</code> parses this command, and creates a <code>Review</code> object based on the parameters in user input.</p>
+<p>Step 3. The <code>AddReviewCommandParser</code> parses this command and creates a <code>Review</code> object based on the parameters in user input.</p>
 </div>
 <div class="paragraph">
-<p>Step 4. The <code>AddReviewCommandParser`returns an `AddReviewCommand</code>. Exception will be thrown if the command is invalid.</p>
+<p>Step 4. The <code>AddReviewCommandParser`returns an `AddReviewCommand</code>. The exception will be thrown if the command is invalid.</p>
 </div>
 <div class="paragraph">
 <p>Step 5. The <code>AddReviewCommand</code> executes. The command checks if the book to which the review is added exists in the <code>BookShelf</code>, based on <code>BookNameContainsExactKeywordPredicate</code>. If the book does not exist, an exception is thrown.</p>
@@ -1360,7 +1361,7 @@ If the new book name already exists, CommandException(MESSAGE_DUPLICATE_BOOK) wi
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Have another independent list for reviews in the book shelf.</p>
+<p><strong>Alternative 1 (current choice):</strong> Have another independent list for reviews in the bookshelf.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -1396,10 +1397,10 @@ If the new book name already exists, CommandException(MESSAGE_DUPLICATE_BOOK) wi
 <p>ReviewTitle has the same constraints as BookName, less than 50 characters.</p>
 </li>
 <li>
-<p>ReviewMessage should be less than or equal to 400 characters. This is because the
+<p>ReviewMessage should be less than or equal to 400 characters. This is because of the
 BookBrowserPanel used to display the ReviewMessage currently cannot hold more than 400 characters.
-Longer text also makes it more difficult to edit in the small CommandBox. Future releases would consider
-adding enhanced review input panel to make the review feature more user friendly.</p>
+The longer text also makes it more difficult to edit in the small CommandBox. Future releases would consider
+adding enhanced review input panel to make the review feature more user-friendly.</p>
 </li>
 </ul>
 </div>
@@ -1423,13 +1424,13 @@ is available where the date can be passed in as a parameter, to be used in testi
 <div class="sect4">
 <h5 id="current-implementation-8"><a class="link" href="#current-implementation-8">Current Implementation</a></h5>
 <div class="paragraph">
-<p>Given below is an example usage and program behaviour:</p>
+<p>Given below are an example of usage and program behavior:</p>
 </div>
 <div class="paragraph">
 <p>Step 1. The user executes <code>listReview 1</code></p>
 </div>
 <div class="paragraph">
-<p>Step 2. The ListReviewCommandParser parses this command, and returns a new ListReviewCommand with the specified index.</p>
+<p>Step 2. The ListReviewCommandParser parses this command and returns a new ListReviewCommand with the specified index.</p>
 </div>
 <div class="paragraph">
 <p>Step 3. The ListReviewCommand executes. The book with the specified index is selected.</p>
@@ -1474,7 +1475,7 @@ is available where the date can be passed in as a parameter, to be used in testi
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Command is more logical and user friendly because it is actually not intuitive to have two functions combined in one ListReview command.</p>
+<p>Pros: Command is more logical and user-friendly because it is actually not intuitive to have two functions combined in one ListReview command.</p>
 </li>
 <li>
 <p>Cons: Inconsistency with the ListBook command may cause confusion.</p>
@@ -1505,22 +1506,22 @@ is available where the date can be passed in as a parameter, to be used in testi
 <div class="sect4">
 <h5 id="current-implementation-10"><a class="link" href="#current-implementation-10">Current Implementation</a></h5>
 <div class="paragraph">
-<p>Selection of review is implemented the same way as selection of book.</p>
+<p>Selection of review is implemented the same way as the selection of a book.</p>
 </div>
 <div class="paragraph">
-<p>In addition, review message of selected review will be displayed in the book browser panel.</p>
+<p>In addition, review message of a selected review will be displayed in the book browser panel.</p>
 </div>
 <div class="paragraph">
 <p>Step 1. The user executes <code>selectReview 1</code></p>
 </div>
 <div class="paragraph">
-<p>Step 2. The SelectReviewCommandParser parses this command, and returns a new SelectReviewCommand with index 1.</p>
+<p>Step 2. The SelectReviewCommandParser parses this command and returns a new SelectReviewCommand with index 1.</p>
 </div>
 <div class="paragraph">
 <p>Step 3. The SelectReviewCommand executes. The review with the specified index is selected.</p>
 </div>
 <div class="paragraph">
-<p>Step 4. The BookBrowserPanel listens to the change in selected review, and displays its review message.</p>
+<p>Step 4. The BookBrowserPanel listens to the change in the selected review and displays its review message.</p>
 </div>
 </div>
 </div>
@@ -1529,13 +1530,13 @@ is available where the date can be passed in as a parameter, to be used in testi
 <div class="sect4">
 <h5 id="current-implementation-11"><a class="link" href="#current-implementation-11">Current Implementation</a></h5>
 <div class="paragraph">
-<p>Review is deleted based on index.</p>
+<p>The review is deleted based on the index.</p>
 </div>
 <div class="paragraph">
 <p>Step 1. The user executes <code>deleteReview 1</code></p>
 </div>
 <div class="paragraph">
-<p>Step 2. The DeleteReviewCommandParser parses this command, and returns a new DeleteReviewCommand with index 1.</p>
+<p>Step 2. The DeleteReviewCommandParser parses this command and returns a new DeleteReviewCommand with index 1.</p>
 </div>
 <div class="paragraph">
 <p>Step 3. The DeleteReviewCommand executes. The review with the specified index is deleted.</p>
@@ -1590,7 +1591,7 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 <div class="sect2">
 <h3 id="converting-documentation-to-pdf-format"><a class="link" href="#converting-documentation-to-pdf-format">5.3. Converting Documentation to PDF format</a></h3>
 <div class="paragraph">
-<p>We use <a href="https://www.google.com/chrome/browser/desktop/">Google Chrome</a> for converting documentation to PDF format, as Chrome&#8217;s PDF engine preserves hyperlinks used in webpages.</p>
+<p>We use <a href="https://www.google.com/chrome/browser/desktop/">Google Chrome</a> for converting the document to PDF format, as Chrome&#8217;s PDF engine preserves hyperlinks used in webpages.</p>
 </div>
 <div class="paragraph">
 <p>Here are the steps to convert the project documentation files to PDF format.</p>
@@ -1621,7 +1622,7 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 <div class="sect2">
 <h3 id="Docs-SiteWideDocSettings"><a class="link" href="#Docs-SiteWideDocSettings">5.4. Site-wide Documentation Settings</a></h3>
 <div class="paragraph">
-<p>The <a href="https://github.com/cs2103-ay1819s2-w11-4/main/tree/master/build.gradle"><code>build.gradle</code></a> file specifies some project-specific <a href="https://asciidoctor.org/docs/user-manual/#attributes">asciidoc attributes</a> which affects how all documentation files within this project are rendered.</p>
+<p>The <a href="https://github.com/cs2103-ay1819s2-w11-4/main/tree/master/build.gradle"><code>build.gradle</code></a>  file specifies some project-specific <a href="https://asciidoctor.org/docs/user-manual/#attributes">asciidoc attributes</a> which affects how all documentation files within this project are rendered.</p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -1630,7 +1631,7 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-Attributes left unset in the <code>build.gradle</code> file will use their <strong>default value</strong>, if any.
+Attributes left unset in the <code>build.gradle</code> file will use their <strong>default value</strong> if any.
 </td>
 </tr>
 </table>
@@ -1680,7 +1681,7 @@ This will render the SE-EDU navigation bar at the top of the page, and add some 
 <div class="sect2">
 <h3 id="Docs-PerFileDocSettings"><a class="link" href="#Docs-PerFileDocSettings">5.5. Per-file Documentation Settings</a></h3>
 <div class="paragraph">
-<p>Each <code>.adoc</code> file may also specify some file-specific <a href="https://asciidoctor.org/docs/user-manual/#attributes">asciidoc attributes</a> which affects how the file is rendered.</p>
+<p>Each <code>.adoc</code>  file may also specify some file-specific <a href="https://asciidoctor.org/docs/user-manual/#attributes">asciidoc attributes</a> which affects how the file is rendered.</p>
 </div>
 <div class="paragraph">
 <p>Asciidoctor&#8217;s <a href="https://asciidoctor.org/docs/user-manual/#builtin-attributes">built-in attributes</a> may be specified and used as well.</p>
@@ -1752,7 +1753,7 @@ These template files are written in a mixture of <a href="https://www.ruby-lang.
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Modifying the template files in <a href="https://github.com/cs2103-ay1819s2-w11-4/main/tree/master/docs/templates"><code>docs/templates</code></a> requires some knowledge and experience with Ruby and Asciidoctor&#8217;s API.
+<p>Modifying the template files in the <a href="https://github.com/cs2103-ay1819s2-w11-4/main/tree/master/docs/templates"><code>docs/templates</code></a> requires some knowledge and experience with Ruby and Asciidoctor&#8217;s API.
 You should only modify them if you need greater control over the site&#8217;s layout than what stylesheets can provide.
 The SE-EDU team does not provide support for modified template files.</p>
 </div>
@@ -1861,7 +1862,7 @@ e.g. <code>seedu.address.commons.StringUtilTest</code></p>
 e.g. <code>seedu.address.storage.StorageManagerTest</code></p>
 </li>
 <li>
-<p>Hybrids of unit and integration tests. These test are checking multiple code units as well as how the are connected together.<br>
+<p>Hybrids of unit and integration tests. These tests are checking multiple code units as well as how they are connected together.<br>
 e.g. <code>seedu.address.logic.LogicManagerTest</code></p>
 </li>
 </ol>
@@ -1912,7 +1913,7 @@ e.g. <code>seedu.address.logic.LogicManagerTest</code></p>
 <div class="sect2">
 <h3 id="documentation-previews"><a class="link" href="#documentation-previews">7.4. Documentation Previews</a></h3>
 <div class="paragraph">
-<p>When a pull request has changes to asciidoc files, you can use <a href="https://www.netlify.com/">Netlify</a> to see a preview of how the HTML version of those asciidoc files will look like when the pull request is merged. See <a href="UsingNetlify.html">UsingNetlify.adoc</a> for more details.</p>
+<p>When a pull request has changed asciidoc files, you can use <a href="https://www.netlify.com/">Netlify</a> to see a preview of how the HTML version of those asciidoc files will look like when the pull request is merged. See <a href="UsingNetlify.html">UsingNetlify.adoc</a> for more details.</p>
 </div>
 </div>
 <div class="sect2">
@@ -2218,7 +2219,7 @@ Expected: Shows the GUI with a set of sample books and reviews. The window size 
 </li>
 <li>
 <p>Re-launch the app by double-clicking the jar file.<br>
-Expected: The most recent window size and location is retained.</p>
+Expected: The most recent window size and the location is retained.</p>
 </li>
 </ol>
 </div>
@@ -2243,7 +2244,7 @@ Expected: First book is deleted from the list. Details of the deleted book shown
 </li>
 <li>
 <p>Test case: <code>deleteBook 0</code><br>
-Expected: No book is deleted. Error details shown in the status message. Status bar remains the same.</p>
+Expected: No book is deleted. Error details are shown in the status message. Status bar remains the same.</p>
 </li>
 <li>
 <p>Other incorrect delete commands to try: <code>deleteBook</code><br>
@@ -2256,7 +2257,51 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-data"><a class="link" href="#saving-data">F.3. Saving data</a></h3>
+<h3 id="sorting-the-booklist"><a class="link" href="#sorting-the-booklist">F.3. Sorting the bookList</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Sorting the current Booklist in a certain order.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: List all book using the <code>listBook</code> command. Multiple books on the list.</p>
+</li>
+<li>
+<p>Test case: <code>SortBook st/rating</code><br>
+Expected: Booklist will be sorted with the rating in ascending order.</p>
+</li>
+<li>
+<p>Test case: <code>SortBook st/rating st/author o/asc o2/des</code><br>
+Expected: The Booklist will be sorted in ascending order, if they are having the same rating then it will be sorted in ascending order of author <code>o2/des</code> will be ignored as <code>o/asc</code> is specified.</p>
+</li>
+<li>
+<p>Test case: <code>SortBook st/rating st/author o2/des</code><br>
+Expected: The Booklist will be sorted in ascending order, if they are having the same rating then it will be sorted in descending order of author `.</p>
+</li>
+<li>
+<p>Some incorrect sort commands to try:</p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p><code>sortBook</code><br>
+Error message: Sorting type is not provided.</p>
+</li>
+<li>
+<p><code>sortBook st/name o1/des o2/asc</code><br>
+Error message: Second sorting type does not exist.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="saving-data"><a class="link" href="#saving-data">F.4. Saving data</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -2267,10 +2312,10 @@ Expected: Similar to previous.</p>
 <p>Data is saved in <code>bookshelf.json</code>, which is under the <code>data</code> directory.</p>
 </li>
 <li>
-<p>After the installation, <code>bookshelf.json</code> is not present. The file is initialized after main app runs for the first time. At this point the file is loaded with the sample data.</p>
+<p>After the installation, <code>bookshelf.json</code> is not present. The file is initialized after the main app runs for the first time. At this point, the file is loaded with the sample data.</p>
 </li>
 <li>
-<p>The data will not be saved automatically. If the user does not exit the program using the <code>exit</code> command,the changes will not be kept.</p>
+<p>The data will not be saved automatically. If the user does not exit the program using the <code>exit</code> command, the changes will not be kept.</p>
 </li>
 <li>
 <p>If the developer modifies the storage component, to make the data structure and content consistent with the newly updated code, The developer should delete the file before relaunching the app.</p>
@@ -2285,4 +2330,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-12 08:47:15 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-12 09:01:24 UTC</div></div></div></body></html>

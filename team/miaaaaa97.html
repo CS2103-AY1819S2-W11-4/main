@@ -287,16 +287,16 @@ Format: <code>listReview INDEX</code></p>
 <p>Given below is an example usage and how addReview feature behaves at each step.</p>
 </div>
 <div class="paragraph">
-<p>Step 1. The user launches the application for the first time. The <code>VersionedBookShelf</code> will be initialized with the initial book shelf state, and the <code>currentStatePointer</code> pointing to that single book shelf state.</p>
+<p>Step 1. The user launches the application for the first time. The <code>VersionedBookShelf</code> will be initialized with the initial bookshelf state, and the <code>currentStatePointer</code> pointing to that single bookshelf state.</p>
 </div>
 <div class="paragraph">
 <p>Step 2. The user executes <code>addReview n/Alice in Wonderland rt/Carroll has depicted a unique world I hadn&#8217;t seen before r/Alice&#8217;s Adventures in Wonderland by Lewis Carroll is a story about Alice who falls down a rabbit hole and lands into a fantasy world that is full of weird, wonderful people and animals.</code></p>
 </div>
 <div class="paragraph">
-<p>Step 3. The <code>AddReviewCommandParser</code> parses this command, and creates a <code>Review</code> object based on the parameters in user input.</p>
+<p>Step 3. The <code>AddReviewCommandParser</code> parses this command and creates a <code>Review</code> object based on the parameters in user input.</p>
 </div>
 <div class="paragraph">
-<p>Step 4. The <code>AddReviewCommandParser`returns an `AddReviewCommand</code>. Exception will be thrown if the command is invalid.</p>
+<p>Step 4. The <code>AddReviewCommandParser`returns an `AddReviewCommand</code>. The exception will be thrown if the command is invalid.</p>
 </div>
 <div class="paragraph">
 <p>Step 5. The <code>AddReviewCommand</code> executes. The command checks if the book to which the review is added exists in the <code>BookShelf</code>, based on <code>BookNameContainsExactKeywordPredicate</code>. If the book does not exist, an exception is thrown.</p>
@@ -345,7 +345,7 @@ Format: <code>listReview INDEX</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Have another independent list for reviews in the book shelf.</p>
+<p><strong>Alternative 1 (current choice):</strong> Have another independent list for reviews in the bookshelf.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -381,10 +381,10 @@ Format: <code>listReview INDEX</code></p>
 <p>ReviewTitle has the same constraints as BookName, less than 50 characters.</p>
 </li>
 <li>
-<p>ReviewMessage should be less than or equal to 400 characters. This is because the
+<p>ReviewMessage should be less than or equal to 400 characters. This is because of the
 BookBrowserPanel used to display the ReviewMessage currently cannot hold more than 400 characters.
-Longer text also makes it more difficult to edit in the small CommandBox. Future releases would consider
-adding enhanced review input panel to make the review feature more user friendly.</p>
+The longer text also makes it more difficult to edit in the small CommandBox. Future releases would consider
+adding enhanced review input panel to make the review feature more user-friendly.</p>
 </li>
 </ul>
 </div>
@@ -408,13 +408,13 @@ is available where the date can be passed in as a parameter, to be used in testi
 <div class="sect4">
 <h5 id="current-implementation-2"><a class="link" href="#current-implementation-2">Current Implementation</a></h5>
 <div class="paragraph">
-<p>Given below is an example usage and program behaviour:</p>
+<p>Given below are an example of usage and program behavior:</p>
 </div>
 <div class="paragraph">
 <p>Step 1. The user executes <code>listReview 1</code></p>
 </div>
 <div class="paragraph">
-<p>Step 2. The ListReviewCommandParser parses this command, and returns a new ListReviewCommand with the specified index.</p>
+<p>Step 2. The ListReviewCommandParser parses this command and returns a new ListReviewCommand with the specified index.</p>
 </div>
 <div class="paragraph">
 <p>Step 3. The ListReviewCommand executes. The book with the specified index is selected.</p>
@@ -459,7 +459,7 @@ is available where the date can be passed in as a parameter, to be used in testi
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Command is more logical and user friendly because it is actually not intuitive to have two functions combined in one ListReview command.</p>
+<p>Pros: Command is more logical and user-friendly because it is actually not intuitive to have two functions combined in one ListReview command.</p>
 </li>
 <li>
 <p>Cons: Inconsistency with the ListBook command may cause confusion.</p>
@@ -490,22 +490,22 @@ is available where the date can be passed in as a parameter, to be used in testi
 <div class="sect4">
 <h5 id="current-implementation-4"><a class="link" href="#current-implementation-4">Current Implementation</a></h5>
 <div class="paragraph">
-<p>Selection of review is implemented the same way as selection of book.</p>
+<p>Selection of review is implemented the same way as the selection of a book.</p>
 </div>
 <div class="paragraph">
-<p>In addition, review message of selected review will be displayed in the book browser panel.</p>
+<p>In addition, review message of a selected review will be displayed in the book browser panel.</p>
 </div>
 <div class="paragraph">
 <p>Step 1. The user executes <code>selectReview 1</code></p>
 </div>
 <div class="paragraph">
-<p>Step 2. The SelectReviewCommandParser parses this command, and returns a new SelectReviewCommand with index 1.</p>
+<p>Step 2. The SelectReviewCommandParser parses this command and returns a new SelectReviewCommand with index 1.</p>
 </div>
 <div class="paragraph">
 <p>Step 3. The SelectReviewCommand executes. The review with the specified index is selected.</p>
 </div>
 <div class="paragraph">
-<p>Step 4. The BookBrowserPanel listens to the change in selected review, and displays its review message.</p>
+<p>Step 4. The BookBrowserPanel listens to the change in the selected review and displays its review message.</p>
 </div>
 </div>
 </div>
@@ -514,13 +514,13 @@ is available where the date can be passed in as a parameter, to be used in testi
 <div class="sect4">
 <h5 id="current-implementation-5"><a class="link" href="#current-implementation-5">Current Implementation</a></h5>
 <div class="paragraph">
-<p>Review is deleted based on index.</p>
+<p>The review is deleted based on the index.</p>
 </div>
 <div class="paragraph">
 <p>Step 1. The user executes <code>deleteReview 1</code></p>
 </div>
 <div class="paragraph">
-<p>Step 2. The DeleteReviewCommandParser parses this command, and returns a new DeleteReviewCommand with index 1.</p>
+<p>Step 2. The DeleteReviewCommandParser parses this command and returns a new DeleteReviewCommand with index 1.</p>
 </div>
 <div class="paragraph">
 <p>Step 3. The DeleteReviewCommand executes. The review with the specified index is deleted.</p>
@@ -540,4 +540,4 @@ the original review and add a new one. Hence. EditReview is currently not implem
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-12 08:47:15 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-12 09:01:24 UTC</div></div></div></body></html>

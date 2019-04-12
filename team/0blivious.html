@@ -339,16 +339,16 @@ Additionally, it uses the following operations from <code>BookShelf</code>:</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>These operations are exposed in the <code>Model</code> interface.</p>
+<p>These operations are exposed to the <code>Model</code> interface.</p>
 </div>
 <div class="paragraph">
 <p>Given below is an example usage scenario and how the addBook mechanism behaves at each step.</p>
 </div>
 <div class="paragraph">
-<p>Step 1. The user launches the application for the first time. The <code>VersionedBookShelf</code> will be initialized with the initial book shelf state, and the <code>currentStatePointer</code> pointing to that single book shelf state.</p>
+<p>Step 1. The user launches the application for the first time. The <code>VersionedBookShelf</code> will be initialized with the initial bookshelf state, and the <code>currentStatePointer</code> pointing to that single bookshelf state.</p>
 </div>
 <div class="paragraph">
-<p>Step 2. The user executes <code>addBook n/Alice a/HR m/5 tag/fantasy</code> command to add the book called Alice, written by HR, with rating of 5 and tag of fantasy in the book list. The <code>addBook</code> command calls <code>Model#hasBook()</code>, checking if the book already exists in the book shelf.</p>
+<p>Step 2. The user executes <code>addBook n/Alice a/HR m/5 tag/fantasy</code> command to add the book called Alice, written by HR, with a rating of 5 and tag of fantasy in the book list. The <code>addBook</code> command calls <code>Model#hasBook()</code>, checking if the book already exists in the bookshelf.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -357,13 +357,13 @@ Additionally, it uses the following operations from <code>BookShelf</code>:</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-If the book already exists, CommandException(MESSAGE_DUPLICATE_BOOK) will be thrown. It will not call <code>Model#commitBookShelf()</code>, so the book shelf state will not be saved into the <code>BookShelfStateList</code>.
+If the book already exists, CommandException(MESSAGE_DUPLICATE_BOOK) will be thrown. It will not call <code>Model#commitBookShelf()</code>, so the bookshelf state will not be saved into the <code>BookShelfStateList</code>.
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>Step 4. The book shelf now adds the book to the book list after making sure there is no duplicates, and calls Model#commitBookShelf(), causing the modified state of the book list after the <code>addBook</code> command executes to be saved in the BookShelfStateList</p>
+<p>Step 4. The bookshelf now adds the book to the book list after making sure there are no duplicates, and calls Model#commitBookShelf(), causing the modified state of the book list after the <code>addBook</code> command executes to be saved in the BookShelfStateList</p>
 </div>
 </div>
 <div class="sect3">
@@ -377,23 +377,23 @@ If the book already exists, CommandException(MESSAGE_DUPLICATE_BOOK) will be thr
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Easy to support other command such as addReview which search for the book based on its name.</p>
+<p>Pros: Easy to support other commands such as addReview which search for the book based on its name.</p>
 </li>
 <li>
-<p>Cons: User may encounter trouble if they read two books with same name but written by different authors.</p>
+<p>Cons: User may encounter trouble if they read two books with the same name but written by different authors.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Alternative 2:</strong> Books with multiple identical fields (eg. book name and author, book name and rating, etc) are considered same book.</p>
+<p><strong>Alternative 2:</strong> Books with multiple identical fields (eg. book name and author, book name and rating, etc) are considered as the same book.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Able to store books with same same but different in other fields.</p>
+<p>Pros: Able to store books with same but different in other fields.</p>
 </li>
 <li>
-<p>Cons: Causing trouble to executing other commands like addReview as more parameters must be provided to search for a certain book.</p>
+<p>Cons: Causing trouble in executing other commands like addReview as more parameters must be provided to search for a certain book.</p>
 </li>
 </ul>
 </div>
@@ -413,7 +413,7 @@ If the book already exists, CommandException(MESSAGE_DUPLICATE_BOOK) will be thr
 <p>Pros: Easy to implement delete and other features that change an entire book.</p>
 </li>
 <li>
-<p>Cons: May be more difficult to implement the summary feature which needs to obtain statistics of all separate components, eg. find the most popular author.</p>
+<p>Cons: Maybe more difficult to implement the summary feature which needs to obtain statistics of all separate components, eg. find the most popular author.</p>
 </li>
 </ul>
 </div>
@@ -459,16 +459,16 @@ Additionally, it uses the following operations from <code>BookShelf</code>:</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>These operations are exposed in the <code>Model</code> interface.</p>
+<p>These operations are exposed to the <code>Model</code> interface.</p>
 </div>
 <div class="paragraph">
 <p>Given below is an example usage scenario and how the addBook mechanism behaves at each step.</p>
 </div>
 <div class="paragraph">
-<p>Step 1. The user launches the application for the first time. The <code>VersionedBookShelf</code> will be initialized with the initial book shelf state, and the <code>currentStatePointer</code> pointing to that single book shelf state.</p>
+<p>Step 1. The user launches the application for the first time. The <code>VersionedBookShelf</code> will be initialized with the initial bookshelf state, and the <code>currentStatePointer</code> pointing to that single bookshelf state.</p>
 </div>
 <div class="paragraph">
-<p>Step 2. The user executes <code>editBook 1 n/Alice a/HR m/5 tag/fantasy</code> command to edit the first book present in the book list to be a book called Alice, written by HR, with rating of 5 and tag of fantasy in the book list. The <code>addBook</code> command calls <code>Model#hasBook()</code>, checking if the book already exists in the book shelf.</p>
+<p>Step 2. The user executes <code>editBook 1 n/Alice a/HR m/5 tag/fantasy</code> command to edit the first book present in the book list to be a book called Alice, written by HR, with a rating of 5 and tag of fantasy in the book list. The <code>addBook</code> command calls <code>Model#hasBook()</code>, checking if the book already exists in the bookshelf.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -477,13 +477,13 @@ Additionally, it uses the following operations from <code>BookShelf</code>:</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-If the new book name already exists, CommandException(MESSAGE_DUPLICATE_BOOK) will be thrown. It will not call <code>Model#commitBookShelf()</code>, so the book shelf state will not be saved into the <code>BookShelfStateList</code>.
+If the new book name already exists, CommandException(MESSAGE_DUPLICATE_BOOK) will be thrown. It will not call <code>Model#commitBookShelf()</code>, so the bookshelf state will not be saved into the <code>BookShelfStateList</code>.
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>Step 4. The book shelf now set the fields of the first book to the new ones provided, and calls Model#commitBookShelf(), causing the modified state of the book list after the <code>addBook</code> command executes to be saved in the BookShelfStateList</p>
+<p>Step 4. The bookshelf now set the fields of the first book to the new ones provided, and calls Model#commitBookShelf(), causing the modified state of the book list after the <code>addBook</code> command executes to be saved in the BookShelfStateList</p>
 </div>
 </div>
 <div class="sect3">
@@ -493,7 +493,7 @@ If the new book name already exists, CommandException(MESSAGE_DUPLICATE_BOOK) wi
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Use index to figure out the book user wishes to edit.</p>
+<p><strong>Alternative 1 (current choice):</strong> Use the index to figure out the book user wishes to edit.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -513,7 +513,7 @@ If the new book name already exists, CommandException(MESSAGE_DUPLICATE_BOOK) wi
 <p>Pros: No need to first filter out a non-empty book list.</p>
 </li>
 <li>
-<p>Cons: Causing trouble for user to type in the full name of the book.</p>
+<p>Cons: Causing trouble for the user to type in the full name of the book.</p>
 </li>
 </ul>
 </div>
@@ -524,4 +524,4 @@ If the new book name already exists, CommandException(MESSAGE_DUPLICATE_BOOK) wi
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-12 08:47:15 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-12 09:01:24 UTC</div></div></div></body></html>
