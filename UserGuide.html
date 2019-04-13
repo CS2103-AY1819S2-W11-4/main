@@ -1,6 +1,6 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>Book Squirrel - User Guide</title><link rel="stylesheet" href="stylesheets/gh-pages.css">
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>BookSquirrel - User Guide</title><link rel="stylesheet" href="stylesheets/gh-pages.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="index.html">Book-Squirrel</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link active" href="UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/cs2103-ay1819s2-w11-4/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>Book Squirrel - User Guide</h1></div><div id="content"><div id="preamble">
+<link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="index.html">Book-Squirrel</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link active" href="UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/cs2103-ay1819s2-w11-4/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>BookSquirrel - User Guide</h1></div><div id="content"><div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
 <p>By: <code>Team W11-04</code>      Since: <code>Feb 2019</code>      Licence: <code>MIT</code></p>
@@ -145,7 +145,7 @@ E.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <p>Author and tag should only contain alphanumeric characters and spaces.</p>
 </li>
 <li>
-<p>Book name and author should not exceed 50 characters (space included).</p>
+<p>The Book name and author should not exceed 50 characters (space included).</p>
 </li>
 <li>
 <p>Review title should not exceed 50 characters (space included).</p>
@@ -168,7 +168,7 @@ E.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <div class="sect3">
 <h4 id="adding-a-book-code-addbook-code"><a class="link" href="#adding-a-book-code-addbook-code">3.1.1. Adding a book: <code>addBook</code></a></h4>
 <div class="paragraph">
-<p>Adds a book to the book shelf<br>
+<p>Adds a book to the Bookshelf<br>
 Format: <code>addBook n/BOOKNAME a/author m/RATING [t/TAG]…​</code></p>
 </div>
 <div class="paragraph">
@@ -218,7 +218,7 @@ Format: <code>editBook INDEX [n/BOOKNAME] [a/AUTHOR] [m/RATING] [t/TAG]&#8230;&#
 <div class="ulist">
 <ul>
 <li>
-<p>Edit the book at the specified INDEX. The index refers to the index number shown in the displayed book list. The index must be a positive integer 1, 2, 3, …​</p>
+<p>Edit the book at the specified INDEX. The index refers to the index number shown in the displayed Bookshelf. The index must be a positive integer 1, 2, 3, …​</p>
 </li>
 <li>
 <p>Edit a book with a new name that  already exists in the bookshelf is not allowed</p>
@@ -261,7 +261,7 @@ Clear all the existing tags of the second book in the result list.</p>
 <div class="sect3">
 <h4 id="deleting-a-book-code-deletebook-code"><a class="link" href="#deleting-a-book-code-deletebook-code">3.1.3. Deleting a book : <code>deleteBook</code></a></h4>
 <div class="paragraph">
-<p>Deletes the specified book from the book list.<br>
+<p>Deletes the specified book from the Bookshelf.<br>
 Format: <code>deleteBook INDEX</code></p>
 </div>
 <div class="sidebarblock">
@@ -275,7 +275,7 @@ Format: <code>deleteBook INDEX</code></p>
 <p>All the reviews of the deleted book will also be deleted.</p>
 </li>
 <li>
-<p>The index refers to the index number shown in the displayed book list.</p>
+<p>The index refers to the index number shown in the displayed Bookshelf.</p>
 </li>
 <li>
 <p>The index must be a positive integer 1, 2, 3, …​</p>
@@ -358,7 +358,7 @@ Format: <code>listBook [n/BOOKNAME] [a/AUTHOR] [t/TAG] [m/RATING]</code></p>
 <div class="sect3">
 <h4 id="sort-books-command-code-sortbook-code"><a class="link" href="#sort-books-command-code-sortbook-code">3.1.5. Sort books command : <code>sortBook</code></a></h4>
 <div class="paragraph">
-<p>sort bookList in specify order.<br>
+<p>sort booklist in specify order.<br>
 Format: <code>sortBook st/TYPE&#8230;&#8203; [o/ORDER] [o1/ORDER] [o2/ORDER] [o3/ORDER]</code></p>
 </div>
 <div class="sidebarblock">
@@ -420,7 +420,7 @@ sort bookList by rating in descending order and since the o2 order is not specif
 <div class="sect3">
 <h4 id="adding-a-book-review-code-addreview-code"><a class="link" href="#adding-a-book-review-code-addreview-code">3.2.1. Adding a book review: <code>addReview</code></a></h4>
 <div class="paragraph">
-<p>Adds a book review to a certain book in the book list<br></p>
+<p>Adds a book review to a certain book in the Bookshelf<br></p>
 </div>
 <div class="paragraph">
 <p>Format: <code>addReview n/BOOKNAME rt/REVIEW TITLE r/REVIEW MESSAGE</code></p>
@@ -443,7 +443,7 @@ sort bookList by rating in descending order and since the o2 order is not specif
 <div class="ulist">
 <ul>
 <li>
-<p>The book has specified <code>BOOKNAME</code> must already exist in the Book Shelf.</p>
+<p>The book has specified <code>BOOKNAME</code> must already exist in the BookShelf.</p>
 </li>
 <li>
 <p><code>BOOKNAME</code> and <code>REVIEW TITLE</code> should not contain more than 50 characters.</p>
@@ -493,14 +493,14 @@ Format: <code>deleteReview INDEX</code></p>
 <div class="sect3">
 <h4 id="listing-all-book-reviews-code-listallreviews-code"><a class="link" href="#listing-all-book-reviews-code-listallreviews-code">3.2.3. Listing all book reviews: <code>listAllReviews</code></a></h4>
 <div class="paragraph">
-<p>Lists all the reviews in the Book Shelf.<br>
+<p>Lists all the reviews in the BookShelf.<br>
 Format: <code>listAllReviews</code></p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="listing-book-reviews-of-a-certain-book-code-listreview-code"><a class="link" href="#listing-book-reviews-of-a-certain-book-code-listreview-code">3.2.4. Listing book reviews of a certain book : <code>listReview</code></a></h4>
 <div class="paragraph">
-<p>Lists the reviews of the book identified by the index number used in the displayed book list.<br>
+<p>Lists the reviews of the book identified by the index number used in the displayed Bookshelf.<br>
 Format: <code>listReview INDEX</code></p>
 </div>
 <div class="paragraph">
@@ -521,7 +521,7 @@ Format: <code>listReview INDEX</code></p>
 <p>Lists the review of the book at the specified <code>INDEX</code>.</p>
 </li>
 <li>
-<p>The index refers to the index number shown in the displayed book list.</p>
+<p>The index refers to the index number shown in the displayed Bookshelf.</p>
 </li>
 <li>
 <p>The index must be a positive integer 1, 2, 3, …​</p>
@@ -706,7 +706,7 @@ Format: <code>summary</code></p>
 <ul>
 <li>
 <p><code>summary</code>
-An example of a summary <code>You&#8217;ve read 9 books. You preferred books by Erika Leonard, as you&#8217;ve read: Fifty Shades of Grey, Fifty Shades Darker. These books receive a rating of 10 from you: To Kill a Mocking Bird. You preferred books that you labeled as fantasy(including The Hunger Games, Life of Pi).</code></p>
+An example of a summary <code>You&#8217;ve read 9 books. You prefer books by Erika Leonard, as you&#8217;ve read: Fifty Shades of Grey, Fifty Shades Darker. Book(s) receive a rating of 10 from you: To Kill a Mocking Bird. You prefer books that you labeled as fantasy(including The Hunger Games, Life of Pi).</code></p>
 </li>
 </ul>
 </div>
@@ -740,7 +740,7 @@ There is no need to save manually.</p>
 <div class="sectionbody">
 <div class="paragraph">
 <p><strong>Q</strong>: How do I transfer my data to another Computer?<br>
-<strong>A</strong>: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous Book Squirrel folder.</p>
+<strong>A</strong>: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous BookSquirrel folder.</p>
 </div>
 </div>
 </div>
@@ -830,4 +830,4 @@ e.g. <code>selectReview 1</code></p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-12 09:01:24 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-13 03:50:40 UTC</div></div></div></body></html>

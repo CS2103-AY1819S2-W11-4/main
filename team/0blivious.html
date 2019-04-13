@@ -1,12 +1,12 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>0blivious - Project Portfolio for Book Squirrel</title><link rel="stylesheet" href="../stylesheets/gh-pages.css">
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>0blivious - Project Portfolio for BookSquirrel</title><link rel="stylesheet" href="../stylesheets/gh-pages.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="../index.html">Book-Squirrel</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="../UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="../DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link active" href="../AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="../ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/cs2103-ay1819s2-w11-4/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>0blivious - Project Portfolio for Book Squirrel</h1></div><div id="content"><div class="sect1">
+<link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="../index.html">Book-Squirrel</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="../UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="../DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link active" href="../AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="../ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/cs2103-ay1819s2-w11-4/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>0blivious - Project Portfolio for BookSquirrel</h1></div><div id="content"><div class="sect1">
 <h2 id="about-the-project"><a class="link" href="#about-the-project">About the Project</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>My team and I were tasked with enhancing a application addressbook-level4 for our
 Software Engineering project. We chose to morph it into an book review recording application called
-Book Squirrel. This enhanced application enables readers to keep track of their reading, recording down their
+BookSquirrel. This enhanced application enables readers to keep track of their reading, recording down their
 reviews of books and obtain statistics of their past reading habits.</p>
 </div>
 <div class="paragraph">
@@ -114,7 +114,7 @@ analysis of design alternatives. The implementation too was challenging as it re
 <div class="sectionbody">
 <div class="paragraph">
 <p>We had to update the original addressbook User Guide with instructions for the enhancements that
-we had added. The following is an excerpt from our Book Squirrel User Guide, showing additions that I have
+we had added. The following is an excerpt from our BookSquirrel User Guide, showing additions that I have
 made for the CRUD features for book.</p>
 </div>
 </div>
@@ -154,7 +154,7 @@ made for the CRUD features for book.</p>
 <p>Author and tag should only contain alphanumeric characters and spaces.</p>
 </li>
 <li>
-<p>Book name and author should not exceed 50 characters (space included).</p>
+<p>The Book name and author should not exceed 50 characters (space included).</p>
 </li>
 <li>
 <p>Review title should not exceed 50 characters (space included).</p>
@@ -177,7 +177,7 @@ made for the CRUD features for book.</p>
 <div class="sect3">
 <h4 id="adding-a-book-code-addbook-code"><a class="link" href="#adding-a-book-code-addbook-code">Adding a book: <code>addBook</code></a></h4>
 <div class="paragraph">
-<p>Adds a book to the book shelf<br>
+<p>Adds a book to the Bookshelf<br>
 Format: <code>addBook n/BOOKNAME a/author m/RATING [t/TAG]…​</code></p>
 </div>
 <div class="paragraph">
@@ -227,7 +227,7 @@ Format: <code>editBook INDEX [n/BOOKNAME] [a/AUTHOR] [m/RATING] [t/TAG]&#8230;&#
 <div class="ulist">
 <ul>
 <li>
-<p>Edit the book at the specified INDEX. The index refers to the index number shown in the displayed book list. The index must be a positive integer 1, 2, 3, …​</p>
+<p>Edit the book at the specified INDEX. The index refers to the index number shown in the displayed Bookshelf. The index must be a positive integer 1, 2, 3, …​</p>
 </li>
 <li>
 <p>Edit a book with a new name that  already exists in the bookshelf is not allowed</p>
@@ -270,7 +270,7 @@ Clear all the existing tags of the second book in the result list.</p>
 <div class="sect3">
 <h4 id="deleting-a-book-code-deletebook-code"><a class="link" href="#deleting-a-book-code-deletebook-code">Deleting a book : <code>deleteBook</code></a></h4>
 <div class="paragraph">
-<p>Deletes the specified book from the book list.<br>
+<p>Deletes the specified book from the Bookshelf.<br>
 Format: <code>deleteBook INDEX</code></p>
 </div>
 <div class="sidebarblock">
@@ -284,7 +284,7 @@ Format: <code>deleteBook INDEX</code></p>
 <p>All the reviews of the deleted book will also be deleted.</p>
 </li>
 <li>
-<p>The index refers to the index number shown in the displayed book list.</p>
+<p>The index refers to the index number shown in the displayed Bookshelf.</p>
 </li>
 <li>
 <p>The index must be a positive integer 1, 2, 3, …​</p>
@@ -313,7 +313,7 @@ Deletes the 1st book in the results of the listBook command.</p>
 <h2 id="contributions-to-the-developer-guide"><a class="link" href="#contributions-to-the-developer-guide">Contributions to the Developer Guide</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The following section shows my additions to the Book Squirrel Developer Guide for the addBook
+<p>The following section shows my additions to the BookSquirrel Developer Guide for the addBook
 features.</p>
 </div>
 <div class="sect2">
@@ -328,13 +328,13 @@ Additionally, it uses the following operations from <code>BookShelf</code>:</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>model#hasBook()</code>&#8201;&#8212;&#8201;Check if the book already exists in the book shelf.</p>
+<p><code>model#hasBook()</code>&#8201;&#8212;&#8201;Check if the book already exists in the Bookshelf.</p>
 </li>
 <li>
-<p><code>model#addBook()</code>&#8201;&#8212;&#8201;To add the new book into book shelf.</p>
+<p><code>model#addBook()</code>&#8201;&#8212;&#8201;To add the new book into Bookshelf.</p>
 </li>
 <li>
-<p><code>model#commitBookShelf()</code>&#8201;&#8212;&#8201;Saves the current book shelf state for undo/redo..</p>
+<p><code>model#commitBookShelf()</code>&#8201;&#8212;&#8201;Saves the current Bookshelf state for undo/redo..</p>
 </li>
 </ul>
 </div>
@@ -348,7 +348,7 @@ Additionally, it uses the following operations from <code>BookShelf</code>:</p>
 <p>Step 1. The user launches the application for the first time. The <code>VersionedBookShelf</code> will be initialized with the initial bookshelf state, and the <code>currentStatePointer</code> pointing to that single bookshelf state.</p>
 </div>
 <div class="paragraph">
-<p>Step 2. The user executes <code>addBook n/Alice a/HR m/5 tag/fantasy</code> command to add the book called Alice, written by HR, with a rating of 5 and tag of fantasy in the book list. The <code>addBook</code> command calls <code>Model#hasBook()</code>, checking if the book already exists in the bookshelf.</p>
+<p>Step 2. The user executes <code>addBook n/Alice a/HR m/5 tag/fantasy</code> command to add the book called Alice, written by HR, with a rating of 5 and tag of fantasy in the Bookshelf. The <code>addBook</code> command calls <code>Model#hasBook()</code>, checking if the book already exists in the bookshelf.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -363,7 +363,7 @@ If the book already exists, CommandException(MESSAGE_DUPLICATE_BOOK) will be thr
 </table>
 </div>
 <div class="paragraph">
-<p>Step 4. The bookshelf now adds the book to the book list after making sure there are no duplicates, and calls Model#commitBookShelf(), causing the modified state of the book list after the <code>addBook</code> command executes to be saved in the BookShelfStateList</p>
+<p>Step 4. The bookshelf now adds the book to the Bookshelf after making sure there are no duplicates, and calls Model#commitBookShelf(), causing the modified state of the Bookshelf after the <code>addBook</code> command executes to be saved in the BookShelfStateList</p>
 </div>
 </div>
 <div class="sect3">
@@ -448,13 +448,13 @@ Additionally, it uses the following operations from <code>BookShelf</code>:</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>model#hasBook()</code>&#8201;&#8212;&#8201;Check if the book already exists in the book shelf.</p>
+<p><code>model#hasBook()</code>&#8201;&#8212;&#8201;Check if the book already exists in the Bookshelf.</p>
 </li>
 <li>
 <p><code>model#setBook()</code>&#8201;&#8212;&#8201;To set a book with field values provided.</p>
 </li>
 <li>
-<p><code>model#commitBookShelf()</code>&#8201;&#8212;&#8201;Saves the current book shelf state for undo/redo..</p>
+<p><code>model#commitBookShelf()</code>&#8201;&#8212;&#8201;Saves the current Bookshelf state for undo/redo..</p>
 </li>
 </ul>
 </div>
@@ -468,7 +468,7 @@ Additionally, it uses the following operations from <code>BookShelf</code>:</p>
 <p>Step 1. The user launches the application for the first time. The <code>VersionedBookShelf</code> will be initialized with the initial bookshelf state, and the <code>currentStatePointer</code> pointing to that single bookshelf state.</p>
 </div>
 <div class="paragraph">
-<p>Step 2. The user executes <code>editBook 1 n/Alice a/HR m/5 tag/fantasy</code> command to edit the first book present in the book list to be a book called Alice, written by HR, with a rating of 5 and tag of fantasy in the book list. The <code>addBook</code> command calls <code>Model#hasBook()</code>, checking if the book already exists in the bookshelf.</p>
+<p>Step 2. The user executes <code>editBook 1 n/Alice a/HR m/5 tag/fantasy</code> command to edit the first book present in the Bookshelf to be a book called Alice, written by HR, with a rating of 5 and tag of fantasy in the Bookshelf. The <code>addBook</code> command calls <code>Model#hasBook()</code>, checking if the book already exists in the bookshelf.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -483,7 +483,7 @@ If the new book name already exists, CommandException(MESSAGE_DUPLICATE_BOOK) wi
 </table>
 </div>
 <div class="paragraph">
-<p>Step 4. The bookshelf now set the fields of the first book to the new ones provided, and calls Model#commitBookShelf(), causing the modified state of the book list after the <code>addBook</code> command executes to be saved in the BookShelfStateList</p>
+<p>Step 4. The bookshelf now set the fields of the first book to the new ones provided, and calls Model#commitBookShelf(), causing the modified state of the Bookshelf after the <code>addBook</code> command executes to be saved in the BookShelfStateList</p>
 </div>
 </div>
 <div class="sect3">
@@ -500,7 +500,7 @@ If the new book name already exists, CommandException(MESSAGE_DUPLICATE_BOOK) wi
 <p>Pros: Easy to select the book user wish to edit with the support of our UI.</p>
 </li>
 <li>
-<p>Cons: A listBook command might be needed before executing editBook if the current filtered book list is empty</p>
+<p>Cons: A listBook command might be needed before executing editBook if the current filtered Bookshelf is empty</p>
 </li>
 </ul>
 </div>
@@ -510,7 +510,7 @@ If the new book name already exists, CommandException(MESSAGE_DUPLICATE_BOOK) wi
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: No need to first filter out a non-empty book list.</p>
+<p>Pros: No need to first filter out a non-empty Bookshelf.</p>
 </li>
 <li>
 <p>Cons: Causing trouble for the user to type in the full name of the book.</p>
@@ -524,4 +524,4 @@ If the new book name already exists, CommandException(MESSAGE_DUPLICATE_BOOK) wi
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-12 09:01:24 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-13 03:50:40 UTC</div></div></div></body></html>

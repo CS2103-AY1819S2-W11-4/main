@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>Zhang Tieze - Project Portfolio</title><link rel="stylesheet" href="../stylesheets/gh-pages.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="../index.html">Book-Squirrel</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="../UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="../DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link active" href="../AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="../ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/cs2103-ay1819s2-w11-4/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>Zhang Tieze - Project Portfolio</h1></div><div id="content"><div class="sect1">
-<h2 id="project-book-squirrel"><a class="link" href="#project-book-squirrel">PROJECT: Book Squirrel</a></h2>
+<h2 id="project-booksquirrel"><a class="link" href="#project-booksquirrel">PROJECT: BookSquirrel</a></h2>
 <div class="sectionbody">
 <hr>
 </div>
@@ -111,7 +111,7 @@ Extra care was taken to integrate Reviews with existing Book commands, such as t
 <div class="sect3">
 <h4 id="adding-a-book-review-code-addreview-code"><a class="link" href="#adding-a-book-review-code-addreview-code">Adding a book review: <code>addReview</code></a></h4>
 <div class="paragraph">
-<p>Adds a book review to a certain book in the book list<br></p>
+<p>Adds a book review to a certain book in the Bookshelf<br></p>
 </div>
 <div class="paragraph">
 <p>Format: <code>addReview n/BOOKNAME rt/REVIEW TITLE r/REVIEW MESSAGE</code></p>
@@ -134,7 +134,7 @@ Extra care was taken to integrate Reviews with existing Book commands, such as t
 <div class="ulist">
 <ul>
 <li>
-<p>The book has specified <code>BOOKNAME</code> must already exist in the Book Shelf.</p>
+<p>The book has specified <code>BOOKNAME</code> must already exist in the BookShelf.</p>
 </li>
 <li>
 <p><code>BOOKNAME</code> and <code>REVIEW TITLE</code> should not contain more than 50 characters.</p>
@@ -184,14 +184,14 @@ Format: <code>deleteReview INDEX</code></p>
 <div class="sect3">
 <h4 id="listing-all-book-reviews-code-listallreviews-code"><a class="link" href="#listing-all-book-reviews-code-listallreviews-code">Listing all book reviews: <code>listAllReviews</code></a></h4>
 <div class="paragraph">
-<p>Lists all the reviews in the Book Shelf.<br>
+<p>Lists all the reviews in the BookShelf.<br>
 Format: <code>listAllReviews</code></p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="listing-book-reviews-of-a-certain-book-code-listreview-code"><a class="link" href="#listing-book-reviews-of-a-certain-book-code-listreview-code">Listing book reviews of a certain book : <code>listReview</code></a></h4>
 <div class="paragraph">
-<p>Lists the reviews of the book identified by the index number used in the displayed book list.<br>
+<p>Lists the reviews of the book identified by the index number used in the displayed Bookshelf.<br>
 Format: <code>listReview INDEX</code></p>
 </div>
 <div class="paragraph">
@@ -212,7 +212,7 @@ Format: <code>listReview INDEX</code></p>
 <p>Lists the review of the book at the specified <code>INDEX</code>.</p>
 </li>
 <li>
-<p>The index refers to the index number shown in the displayed book list.</p>
+<p>The index refers to the index number shown in the displayed Bookshelf.</p>
 </li>
 <li>
 <p>The index must be a positive integer 1, 2, 3, …​</p>
@@ -278,11 +278,9 @@ Format: <code>listReview INDEX</code></p>
 </tbody>
 </table>
 <div class="sect2">
-<h3 id="review-features"><a class="link" href="#review-features">Review Features</a></h3>
+<h3 id="addreview-feature"><a class="link" href="#addreview-feature">AddReview Feature</a></h3>
 <div class="sect3">
-<h4 id="addreview-feature"><a class="link" href="#addreview-feature">AddReview Feature</a></h4>
-<div class="sect4">
-<h5 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h5>
+<h4 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h4>
 <div class="paragraph">
 <p>Given below is an example usage and how addReview feature behaves at each step.</p>
 </div>
@@ -302,13 +300,13 @@ Format: <code>listReview INDEX</code></p>
 <p>Step 5. The <code>AddReviewCommand</code> executes. The command checks if the book to which the review is added exists in the <code>BookShelf</code>, based on <code>BookNameContainsExactKeywordPredicate</code>. If the book does not exist, an exception is thrown.</p>
 </div>
 <div class="paragraph">
-<p>Step 6. If the book exists, the review is added to the review list of the Book Shelf.</p>
+<p>Step 6. If the book exists, the review is added to the review list of the Bookshelf.</p>
 </div>
 </div>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
 <div class="sect4">
-<h5 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h5>
-<div class="sect5">
-<h6 id="aspect-data-structure-to-store-reviews"><a class="link" href="#aspect-data-structure-to-store-reviews">Aspect: Data structure to store Reviews</a></h6>
+<h5 id="aspect-data-structure-to-store-reviews"><a class="link" href="#aspect-data-structure-to-store-reviews">Aspect: Data structure to store Reviews</a></h5>
 <div class="ulist">
 <ul>
 <li>
@@ -340,8 +338,8 @@ Format: <code>listReview INDEX</code></p>
 </ul>
 </div>
 </div>
-<div class="sect5">
-<h6 id="aspect-where-to-store-reviews"><a class="link" href="#aspect-where-to-store-reviews">Aspect: Where to store Reviews</a></h6>
+<div class="sect4">
+<h5 id="aspect-where-to-store-reviews"><a class="link" href="#aspect-where-to-store-reviews">Aspect: Where to store Reviews</a></h5>
 <div class="ulist">
 <ul>
 <li>
@@ -373,8 +371,8 @@ Format: <code>listReview INDEX</code></p>
 </ul>
 </div>
 </div>
-<div class="sect5">
-<h6 id="aspect-constraints-on-review-parameters"><a class="link" href="#aspect-constraints-on-review-parameters">Aspect: Constraints on Review Parameters</a></h6>
+<div class="sect4">
+<h5 id="aspect-constraints-on-review-parameters"><a class="link" href="#aspect-constraints-on-review-parameters">Aspect: Constraints on Review Parameters</a></h5>
 <div class="ulist">
 <ul>
 <li>
@@ -389,8 +387,8 @@ adding enhanced review input panel to make the review feature more user-friendly
 </ul>
 </div>
 </div>
-<div class="sect5">
-<h6 id="aspect-auto-creation-of-date-for-the-review"><a class="link" href="#aspect-auto-creation-of-date-for-the-review">Aspect: Auto-creation of Date for the Review</a></h6>
+<div class="sect4">
+<h5 id="aspect-auto-creation-of-date-for-the-review"><a class="link" href="#aspect-auto-creation-of-date-for-the-review">Aspect: Auto-creation of Date for the Review</a></h5>
 <div class="ulist">
 <ul>
 <li>
@@ -403,10 +401,10 @@ is available where the date can be passed in as a parameter, to be used in testi
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="listreview-feature"><a class="link" href="#listreview-feature">ListReview Feature</a></h3>
 <div class="sect3">
-<h4 id="listreview-feature"><a class="link" href="#listreview-feature">ListReview Feature</a></h4>
-<div class="sect4">
-<h5 id="current-implementation-2"><a class="link" href="#current-implementation-2">Current Implementation</a></h5>
+<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">Current Implementation</a></h4>
 <div class="paragraph">
 <p>Given below are an example of usage and program behavior:</p>
 </div>
@@ -425,16 +423,16 @@ is available where the date can be passed in as a parameter, to be used in testi
 <div class="paragraph">
 <p>Alternatively, the user can click the book to select it.</p>
 </div>
-<div class="sect5">
-<h6 id="aspect"><a class="link" href="#aspect">Aspect:</a></h6>
+<div class="sect4">
+<h5 id="aspect"><a class="link" href="#aspect">Aspect:</a></h5>
 
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="listallreviews-feature"><a class="link" href="#listallreviews-feature">ListAllReviews Feature</a></h3>
 <div class="sect3">
-<h4 id="listallreviews-feature"><a class="link" href="#listallreviews-feature">ListAllReviews Feature</a></h4>
-<div class="sect4">
-<h5 id="current-implementation-3"><a class="link" href="#current-implementation-3">Current Implementation</a></h5>
+<h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">Current Implementation</a></h4>
 <div class="paragraph">
 <p>The ListAllReviews Feature uses the same implementation as the ListBook feature:</p>
 </div>
@@ -448,10 +446,10 @@ is available where the date can be passed in as a parameter, to be used in testi
 <p>Step 3. The ListAllReviewsCommand executes. Review list panel is updated to show all reviews.</p>
 </div>
 </div>
+<div class="sect3">
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">Design Considerations</a></h4>
 <div class="sect4">
-<h5 id="design-considerations-2"><a class="link" href="#design-considerations-2">Design Considerations</a></h5>
-<div class="sect5">
-<h6 id="aspect-whether-to-combine-listallreviews-command-with-listreview-command"><a class="link" href="#aspect-whether-to-combine-listallreviews-command-with-listreview-command">Aspect: Whether to combine ListAllReviews command with ListReview command</a></h6>
+<h5 id="aspect-whether-to-combine-listallreviews-command-with-listreview-command"><a class="link" href="#aspect-whether-to-combine-listallreviews-command-with-listreview-command">Aspect: Whether to combine ListAllReviews command with ListReview command</a></h5>
 <div class="ulist">
 <ul>
 <li>
@@ -485,10 +483,10 @@ is available where the date can be passed in as a parameter, to be used in testi
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="selectreview-feature"><a class="link" href="#selectreview-feature">SelectReview Feature</a></h3>
 <div class="sect3">
-<h4 id="selectreview-feature"><a class="link" href="#selectreview-feature">SelectReview Feature</a></h4>
-<div class="sect4">
-<h5 id="current-implementation-4"><a class="link" href="#current-implementation-4">Current Implementation</a></h5>
+<h4 id="current-implementation-4"><a class="link" href="#current-implementation-4">Current Implementation</a></h4>
 <div class="paragraph">
 <p>Selection of review is implemented the same way as the selection of a book.</p>
 </div>
@@ -509,10 +507,10 @@ is available where the date can be passed in as a parameter, to be used in testi
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="deletereview-feature"><a class="link" href="#deletereview-feature">DeleteReview Feature</a></h3>
 <div class="sect3">
-<h4 id="deletereview-feature"><a class="link" href="#deletereview-feature">DeleteReview Feature</a></h4>
-<div class="sect4">
-<h5 id="current-implementation-5"><a class="link" href="#current-implementation-5">Current Implementation</a></h5>
+<h4 id="current-implementation-5"><a class="link" href="#current-implementation-5">Current Implementation</a></h4>
 <div class="paragraph">
 <p>The review is deleted based on the index.</p>
 </div>
@@ -527,10 +525,10 @@ is available where the date can be passed in as a parameter, to be used in testi
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="other-design-considerations"><a class="link" href="#other-design-considerations">Other Design Considerations</a></h3>
 <div class="sect3">
-<h4 id="other-design-considerations"><a class="link" href="#other-design-considerations">Other Design Considerations</a></h4>
-<div class="sect4">
-<h5 id="whether-to-implement-editreview"><a class="link" href="#whether-to-implement-editreview">Whether to Implement EditReview</a></h5>
+<h4 id="whether-to-implement-editreview"><a class="link" href="#whether-to-implement-editreview">Whether to Implement EditReview</a></h4>
 <div class="paragraph">
 <p>It seems natural to implement EditReview as one component of the CRUD features. However,
 editing an existing review requires re-typing everything and seems painstaking to the user. It makes much more sense to just delete
@@ -539,5 +537,4 @@ the original review and add a new one. Hence. EditReview is currently not implem
 </div>
 </div>
 </div>
-</div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-12 09:01:24 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-13 03:50:40 UTC</div></div></div></body></html>

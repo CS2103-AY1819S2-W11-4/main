@@ -1,6 +1,6 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>Book Squirrel - Developer Guide</title><link rel="stylesheet" href="stylesheets/gh-pages.css">
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>BookSquirrel - Developer Guide</title><link rel="stylesheet" href="stylesheets/gh-pages.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="index.html">Book-Squirrel</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link active" href="DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/cs2103-ay1819s2-w11-4/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>Book Squirrel - Developer Guide</h1></div><div id="content"><div id="preamble">
+<link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="index.html">Book-Squirrel</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link active" href="DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/cs2103-ay1819s2-w11-4/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>BookSquirrel - Developer Guide</h1></div><div id="content"><div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
 <p>By: <code>Team W11-4</code>      Since: <code>Jun 2019</code>      Licence: <code>MIT</code></p>
@@ -38,7 +38,12 @@
 <li><a href="#editbook-feature">4.6. EditBook feature</a></li>
 <li><a href="#listbook-feature">4.7. ListBook Feature</a></li>
 <li><a href="#summary-feature">4.8. Summary Feature</a></li>
-<li><a href="#review-features">4.9. Review Features</a></li>
+<li><a href="#addreview-feature">4.9. AddReview Feature</a></li>
+<li><a href="#listreview-feature">4.10. ListReview Feature</a></li>
+<li><a href="#listallreviews-feature">4.11. ListAllReviews Feature</a></li>
+<li><a href="#selectreview-feature">4.12. SelectReview Feature</a></li>
+<li><a href="#deletereview-feature">4.13. DeleteReview Feature</a></li>
+<li><a href="#other-design-considerations">4.14. Other Design Considerations</a></li>
 </ul>
 </li>
 <li><a href="#documentation">5. Documentation</a>
@@ -70,14 +75,18 @@
 </li>
 <li><a href="#product-scope">Appendix A: Product Scope</a></li>
 <li><a href="#user-stories">Appendix B: User Stories</a></li>
-<li><a href="#use-cases">Appendix C: Use Cases</a></li>
+<li><a href="#use-cases">Appendix C: Use Cases</a>
+<ul class="sectlevel2">
+<li><a href="#use-case-delete-book">C.1. Use case: Delete book</a></li>
+</ul>
+</li>
 <li><a href="#non-functional-requirements">Appendix D: Non Functional Requirements</a></li>
 <li><a href="#glossary">Appendix E: Glossary</a></li>
 <li><a href="#instructions-for-manual-testing">Appendix F: Instructions for Manual Testing</a>
 <ul class="sectlevel2">
 <li><a href="#launch-and-shutdown">F.1. Launch and Shutdown</a></li>
 <li><a href="#deleting-a-book">F.2. Deleting a book</a></li>
-<li><a href="#sorting-the-booklist">F.3. Sorting the bookList</a></li>
+<li><a href="#sorting-the-booklist">F.3. Sorting the booklist</a></li>
 <li><a href="#saving-data">F.4. Saving data</a></li>
 </ul>
 </li>
@@ -88,7 +97,7 @@
 <h2 id="introduction"><a class="link" href="#introduction">1. Introduction</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>BookSquirrel is for those who <strong>want to keep a record of books they&#8217;ve read</strong>. More importantly, BookSquirrel is <strong>optimized for those who prefer to work with a Command Line Interface</strong> (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, BookSquirrel can get your contact management tasks done faster than traditional GUI apps. Interested? Jump to the <a href="#Quick Start">[Quick Start]</a> to get started. Enjoy!</p>
+<p>BookSquirrel is for those who <strong>want to keep a record of books they&#8217;ve read</strong>. More importantly, BookSquirrel is <strong>optimized for those who prefer to work with a Command Line Interface</strong> (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, BookSquirrel can get your contact management tasks done faster than traditional GUI apps.</p>
 </div>
 </div>
 </div>
@@ -427,7 +436,7 @@ The following class plays an important role at the architecture level:</p>
 <p><strong>API</strong> : <a href="https://github.com/cs2103-ay1819s2-w11-4/main/tree/master/src/main/java/seedu/address/ui/Ui.java"><code>Ui.java</code></a></p>
 </div>
 <div class="paragraph">
-<p>The UI consists of a <code>MainWindow</code> that is made up of parts e.g.<code>CommandBox</code>, <code>ResultDisplay</code>, <code>BookListPanel</code>, <code>StatusBarFooter</code>, <code>BrowserPanel</code> etc. All these, including the <code>MainWindow</code>, inherit from the abstract <code>UiPart</code> class.</p>
+<p>The UI consists of a <code>MainWindow</code> that is made up of parts e.g.<code>CommandBox</code>, <code>ResultDisplay</code>, <code>BookListPanel</code>, <code>ReviewListPanel</code>, <code>StatusBarFooter</code>, <code>ReviewBrowserPanel</code> etc. All these, including the <code>MainWindow</code>, inherit from the abstract <code>UiPart</code> class.</p>
 </div>
 <div class="paragraph">
 <p>The <code>UI</code> component uses JavaFx UI framework. The layout of these UI parts are defined in matching <code>.fxml</code> files that are in the <code>src/main/resources/view</code> folder. For example, the layout of the <a href="https://github.com/cs2103-ay1819s2-w11-4/main/tree/master/src/main/java/seedu/address/ui/MainWindow.java"><code>MainWindow</code></a> is specified in <a href="https://github.com/cs2103-ay1819s2-w11-4/main/tree/master/src/main/resources/view/MainWindow.fxml"><code>MainWindow.fxml</code></a></p>
@@ -507,7 +516,7 @@ The following class plays an important role at the architecture level:</p>
 <p>stores a <code>UserPref</code> object that represents the user&#8217;s preferences.</p>
 </li>
 <li>
-<p>stores the Book Shelf data.</p>
+<p>stores the BookShelf data.</p>
 </li>
 <li>
 <p>exposes an unmodifiable <code>ObservableList&lt;Book&gt;</code> that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.</p>
@@ -524,7 +533,7 @@ The following class plays an important role at the architecture level:</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-As a more OOP model, we can store a <code>Tag</code> list in <code>Book Shelf</code>, which <code>Book</code> can reference. This would allow <code>Book Shelf</code> to only require one <code>Tag</code> object per unique <code>Tag</code>, instead of each <code>Book</code> needing their own <code>Tag</code> object. An example of how such a model may look like is given below.<br>
+As a more OOP model, we can store a <code>Tag</code> list in <code>BookShelf</code>, which <code>Book</code> can reference. This would allow <code>BookShelf</code> to only require one <code>Tag</code> object per unique <code>Tag</code>, instead of each <code>Book</code> needing their own <code>Tag</code> object. An example of how such a model may look like is given below.<br>
 <br>
 <span class="image"><img src="images/ModelClassBetterOopDiagram.png" alt="ModelClassBetterOopDiagram" width="800"></span>
 </td>
@@ -552,7 +561,7 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>Book Shelf</c
 <p>can save <code>UserPref</code> objects in JSON format and read it back.</p>
 </li>
 <li>
-<p>can save the Book Shelf data in JSON format and read it back.</p>
+<p>can save the BookShelf data in JSON format and read it back.</p>
 </li>
 <li>
 <p>both the data of books and reviews will be saved.</p>
@@ -586,7 +595,7 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>Book Shelf</c
 <h4 id="current-implementation"><a class="link" href="#current-implementation">4.1.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The sortBook mechanism is facilitated by <code>VersionedBookShelf</code>.
-It extends <code>BookShelf</code> with the sort function which will sort the <code>UniqueBookList</code>. <code>UniqueBookList</code> implemented the Booklist as <code>ObservableList&lt;Book&gt;</code>. sortBook command sort the book list in specify order by implementing the <code>Comaparator&lt;Book&gt;</code>.</p>
+It extends <code>BookShelf</code> with the sort function which will sort the <code>UniqueBookList</code>. <code>UniqueBookList</code> implemented the BookList as <code>ObservableList&lt;Book&gt;</code>. sortBook command sort the booklist in specify order by implementing the <code>Comparator&lt;Book&gt;</code>.</p>
 </div>
 <div class="paragraph">
 <p>Additionally, it uses/implements the following operations:</p>
@@ -600,7 +609,7 @@ It extends <code>BookShelf</code> with the sort function which will sort the <co
 <p><code>BookShelf#indicateModified()</code>&#8201;&#8212;&#8201;Notifies listeners that the bookshelf has been modified.</p>
 </li>
 <li>
-<p><code>UniqueBookList#sortBooks()</code>&#8201;&#8212;&#8201;Implement the comparaotr, call <code>ObservableList&lt;Book&gt;</code> and pass in the comparator.</p>
+<p><code>UniqueBookList#sortBooks()</code>&#8201;&#8212;&#8201;Implement the comparator, call <code>ObservableList&lt;Book&gt;</code> and pass in the comparator.</p>
 </li>
 <li>
 <p><code>ObservableList&lt;Book&gt;#sort()</code>&#8201;&#8212;&#8201;sort the internalList is specify order.</p>
@@ -617,7 +626,7 @@ It extends <code>BookShelf</code> with the sort function which will sort the <co
 <p>Step 2. The user executes <code>sortBook st/rating</code> command to sort all the books in the bookshelf in ascending order. The command will be pass to SortBookCommand Parser to convert it to SortBook command, the parser will check the correctness of the command. If the command is in an incorrect format, the parser will show correct command instruction to the user, otherwise, the parser will call the constructor of SortBook command.</p>
 </div>
 <div class="paragraph">
-<p>Step 3. <code>SortBookCommand#execute</code> will be call, it will check whether the book list is empty before proceed to call <code>ModelManager#sort()</code>.</p>
+<p>Step 3. <code>SortBookCommand#execute</code> will be call, it will check whether the Bookshelf is empty before proceed to call <code>ModelManager#sort()</code>.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -626,7 +635,7 @@ It extends <code>BookShelf</code> with the sort function which will sort the <co
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-If the book list is empty, CommandException(MESSAGE_BOOK_LIST_EMPTY) will be thrown.
+If the Bookshelf is empty, CommandException(MESSAGE_BOOK_LIST_EMPTY) will be thrown.
 </td>
 </tr>
 </table>
@@ -638,7 +647,7 @@ If the book list is empty, CommandException(MESSAGE_BOOK_LIST_EMPTY) will be thr
 <p>Step 5. <code>ObservableList&lt;Book&gt;</code> was implemented in <code>UniqueBookList</code> as internal list. <code>UniqueBookList#sortBooks</code> will call <code>ObservableList&lt;Book&gt;#sort</code> to sort the internal list by providing custom Comparator.</p>
 </div>
 <div class="paragraph">
-<p>Step 6. ` model#commitBookShelf()` will be executed to store the current book list into <code>List&lt;ReadOnlyBookShelf&gt;</code> for support undo/redo command after the list is sorted and notify the listener.</p>
+<p>Step 6. ` model#commitBookShelf()` will be executed to store the current Bookshelf into <code>List&lt;ReadOnlyBookShelf&gt;</code> for support undo/redo command after the list is sorted and notify the listener.</p>
 </div>
 </div>
 <div class="sect3">
@@ -717,7 +726,7 @@ If the book list is empty, CommandException(MESSAGE_BOOK_LIST_EMPTY) will be thr
 <h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">4.2.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The undo/redo mechanism is facilitated by <code>VersionedBookShelf</code>.
-It extends <code>BookShelf</code> with an undo/redo history, stored internally as an <code>BookStateList</code> and <code>currentStatePointer</code>.
+It extends <code>BookShelf</code> with an undo/redo history, stored internally as a <code>BookStateList</code> and <code>currentStatePointer</code>.
 Additionally, it implements the following operations:</p>
 </div>
 <div class="ulist">
@@ -748,7 +757,7 @@ Additionally, it implements the following operations:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Step 2. The user executes <code>deleteBook 1</code> command to delete the first book in the bookshelf. The <code>deleteBook</code> command calls <code>Model#commitBookShelf()</code>, causing the modified state of the book list after the <code>deleteBook 1</code> command executes to be saved in the <code>BookShelfStateList</code>, and the <code>currentStatePointer</code> is shifted to the newly inserted book list state.</p>
+<p>Step 2. The user executes <code>deleteBook 1</code> command to delete the first book in the bookshelf. The <code>deleteBook</code> command calls <code>Model#commitBookShelf()</code>, causing the modified state of the Bookshelf after the <code>deleteBook 1</code> command executes to be saved in the <code>BookShelfStateList</code>, and the <code>currentStatePointer</code> is shifted to the newly inserted Bookshelf state.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -813,13 +822,13 @@ If the <code>currentStatePointer</code> is at index 0, pointing to the initial b
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-If the <code>currentStatePointer</code> is at index <code>BookShelfStateList.size() - 1</code>, pointing to the latest bookshelf state, then there are no undone bookshelf states to restore. The <code>redo</code> command uses <code>Model#canredoBookShelf()</code> to check if this is the case. If so, it will return an error to the user rather than attempting to perform the redo.
+If the <code>currentStatePointer</code> is at index <code>BookShelfStateList.size() - 1</code>, pointing to the latest Bookshelf state, then there are no undone bookshelf states to restore. The <code>redo</code> command uses <code>Model#canredoBookShelf()</code> to check if this is the case. If so, it will return an error to the user rather than attempting to perform the redo.
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>Step 5. The user then decides to execute the command <code>listBook</code>. Commands that do not modify the book shelf, such as <code>listBook</code>, will usually not call <code>Model#commitBookShelf()</code>, <code>Model#undoBookShelf()</code> or <code>Model#redoBookShelf()</code>. Thus, the <code>BookShelfStateList</code> remains unchanged.</p>
+<p>Step 5. The user then decides to execute the command <code>listBook</code>. Commands that do not modify the Bookshelf, such as <code>listBook</code>, will usually not call <code>Model#commitBookShelf()</code>, <code>Model#undoBookShelf()</code> or <code>Model#redoBookShelf()</code>. Thus, the <code>BookShelfStateList</code> remains unchanged.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -850,7 +859,7 @@ If the <code>currentStatePointer</code> is at index <code>BookShelfStateList.siz
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Saves the entire book list.</p>
+<p><strong>Alternative 1 (current choice):</strong> Saves the entire Bookshelf.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -883,7 +892,7 @@ If the <code>currentStatePointer</code> is at index <code>BookShelfStateList.siz
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Use a list to store the history of book list states.</p>
+<p><strong>Alternative 1 (current choice):</strong> Use a list to store the history of Bookshelf states.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -969,13 +978,13 @@ Additionally, it uses the following operations from <code>BookShelf</code>:</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>model#hasBook()</code>&#8201;&#8212;&#8201;Check if the book already exists in the book shelf.</p>
+<p><code>model#hasBook()</code>&#8201;&#8212;&#8201;Check if the book already exists in the Bookshelf.</p>
 </li>
 <li>
-<p><code>model#addBook()</code>&#8201;&#8212;&#8201;To add the new book into book shelf.</p>
+<p><code>model#addBook()</code>&#8201;&#8212;&#8201;To add the new book into Bookshelf.</p>
 </li>
 <li>
-<p><code>model#commitBookShelf()</code>&#8201;&#8212;&#8201;Saves the current book shelf state for undo/redo..</p>
+<p><code>model#commitBookShelf()</code>&#8201;&#8212;&#8201;Saves the current Bookshelf state for undo/redo..</p>
 </li>
 </ul>
 </div>
@@ -989,7 +998,7 @@ Additionally, it uses the following operations from <code>BookShelf</code>:</p>
 <p>Step 1. The user launches the application for the first time. The <code>VersionedBookShelf</code> will be initialized with the initial bookshelf state, and the <code>currentStatePointer</code> pointing to that single bookshelf state.</p>
 </div>
 <div class="paragraph">
-<p>Step 2. The user executes <code>addBook n/Alice a/HR m/5 tag/fantasy</code> command to add the book called Alice, written by HR, with a rating of 5 and tag of fantasy in the book list. The <code>addBook</code> command calls <code>Model#hasBook()</code>, checking if the book already exists in the bookshelf.</p>
+<p>Step 2. The user executes <code>addBook n/Alice a/HR m/5 tag/fantasy</code> command to add the book called Alice, written by HR, with a rating of 5 and tag of fantasy in the Bookshelf. The <code>addBook</code> command calls <code>Model#hasBook()</code>, checking if the book already exists in the bookshelf.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1004,7 +1013,7 @@ If the book already exists, CommandException(MESSAGE_DUPLICATE_BOOK) will be thr
 </table>
 </div>
 <div class="paragraph">
-<p>Step 4. The bookshelf now adds the book to the book list after making sure there are no duplicates, and calls Model#commitBookShelf(), causing the modified state of the book list after the <code>addBook</code> command executes to be saved in the BookShelfStateList</p>
+<p>Step 4. The bookshelf now adds the book to the Bookshelf after making sure there are no duplicates, and calls Model#commitBookShelf(), causing the modified state of the Bookshelf after the <code>addBook</code> command executes to be saved in the BookShelfStateList</p>
 </div>
 </div>
 <div class="sect3">
@@ -1089,13 +1098,13 @@ Additionally, it uses the following operations from <code>BookShelf</code>:</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>model#hasBook()</code>&#8201;&#8212;&#8201;Check if the book already exists in the book shelf.</p>
+<p><code>model#hasBook()</code>&#8201;&#8212;&#8201;Check if the book already exists in the Bookshelf.</p>
 </li>
 <li>
 <p><code>model#setBook()</code>&#8201;&#8212;&#8201;To set a book with field values provided.</p>
 </li>
 <li>
-<p><code>model#commitBookShelf()</code>&#8201;&#8212;&#8201;Saves the current book shelf state for undo/redo..</p>
+<p><code>model#commitBookShelf()</code>&#8201;&#8212;&#8201;Saves the current Bookshelf state for undo/redo..</p>
 </li>
 </ul>
 </div>
@@ -1109,7 +1118,7 @@ Additionally, it uses the following operations from <code>BookShelf</code>:</p>
 <p>Step 1. The user launches the application for the first time. The <code>VersionedBookShelf</code> will be initialized with the initial bookshelf state, and the <code>currentStatePointer</code> pointing to that single bookshelf state.</p>
 </div>
 <div class="paragraph">
-<p>Step 2. The user executes <code>editBook 1 n/Alice a/HR m/5 tag/fantasy</code> command to edit the first book present in the book list to be a book called Alice, written by HR, with a rating of 5 and tag of fantasy in the book list. The <code>addBook</code> command calls <code>Model#hasBook()</code>, checking if the book already exists in the bookshelf.</p>
+<p>Step 2. The user executes <code>editBook 1 n/Alice a/HR m/5 tag/fantasy</code> command to edit the first book present in the Bookshelf to be a book called Alice, written by HR, with a rating of 5 and tag of fantasy in the Bookshelf. The <code>addBook</code> command calls <code>Model#hasBook()</code>, checking if the book already exists in the bookshelf.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1124,7 +1133,7 @@ If the new book name already exists, CommandException(MESSAGE_DUPLICATE_BOOK) wi
 </table>
 </div>
 <div class="paragraph">
-<p>Step 4. The bookshelf now set the fields of the first book to the new ones provided, and calls Model#commitBookShelf(), causing the modified state of the book list after the <code>addBook</code> command executes to be saved in the BookShelfStateList</p>
+<p>Step 4. The bookshelf now set the fields of the first book to the new ones provided, and calls Model#commitBookShelf(), causing the modified state of the Bookshelf after the <code>addBook</code> command executes to be saved in the BookShelfStateList</p>
 </div>
 </div>
 <div class="sect3">
@@ -1141,7 +1150,7 @@ If the new book name already exists, CommandException(MESSAGE_DUPLICATE_BOOK) wi
 <p>Pros: Easy to select the book user wish to edit with the support of our UI.</p>
 </li>
 <li>
-<p>Cons: A listBook command might be needed before executing editBook if the current filtered book list is empty</p>
+<p>Cons: A listBook command might be needed before executing editBook if the current filtered Bookshelf is empty</p>
 </li>
 </ul>
 </div>
@@ -1151,7 +1160,7 @@ If the new book name already exists, CommandException(MESSAGE_DUPLICATE_BOOK) wi
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: No need to first filter out a non-empty book list.</p>
+<p>Pros: No need to first filter out a non-empty Bookshelf.</p>
 </li>
 <li>
 <p>Cons: Causing trouble for the user to type in the full name of the book.</p>
@@ -1276,7 +1285,7 @@ If the new book name already exists, CommandException(MESSAGE_DUPLICATE_BOOK) wi
 </div>
 </li>
 <li>
-<p><strong>Alternative 2:</strong> Model manager pass the whole book list to the command, then command process the data according to this list.</p>
+<p><strong>Alternative 2:</strong> Model manager pass the whole Bookshelf to the command, then command process the data according to this list.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -1294,11 +1303,9 @@ If the new book name already exists, CommandException(MESSAGE_DUPLICATE_BOOK) wi
 </div>
 </div>
 <div class="sect2">
-<h3 id="review-features"><a class="link" href="#review-features">4.9. Review Features</a></h3>
+<h3 id="addreview-feature"><a class="link" href="#addreview-feature">4.9. AddReview Feature</a></h3>
 <div class="sect3">
-<h4 id="addreview-feature"><a class="link" href="#addreview-feature">4.9.1. AddReview Feature</a></h4>
-<div class="sect4">
-<h5 id="current-implementation-7"><a class="link" href="#current-implementation-7">Current Implementation</a></h5>
+<h4 id="current-implementation-7"><a class="link" href="#current-implementation-7">4.9.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>Given below is an example usage and how addReview feature behaves at each step.</p>
 </div>
@@ -1318,13 +1325,13 @@ If the new book name already exists, CommandException(MESSAGE_DUPLICATE_BOOK) wi
 <p>Step 5. The <code>AddReviewCommand</code> executes. The command checks if the book to which the review is added exists in the <code>BookShelf</code>, based on <code>BookNameContainsExactKeywordPredicate</code>. If the book does not exist, an exception is thrown.</p>
 </div>
 <div class="paragraph">
-<p>Step 6. If the book exists, the review is added to the review list of the Book Shelf.</p>
+<p>Step 6. If the book exists, the review is added to the review list of the Bookshelf.</p>
 </div>
 </div>
+<div class="sect3">
+<h4 id="design-considerations-6"><a class="link" href="#design-considerations-6">4.9.2. Design Considerations</a></h4>
 <div class="sect4">
-<h5 id="design-considerations-6"><a class="link" href="#design-considerations-6">Design Considerations</a></h5>
-<div class="sect5">
-<h6 id="aspect-data-structure-to-store-reviews"><a class="link" href="#aspect-data-structure-to-store-reviews">Aspect: Data structure to store Reviews</a></h6>
+<h5 id="aspect-data-structure-to-store-reviews"><a class="link" href="#aspect-data-structure-to-store-reviews">Aspect: Data structure to store Reviews</a></h5>
 <div class="ulist">
 <ul>
 <li>
@@ -1356,8 +1363,8 @@ If the new book name already exists, CommandException(MESSAGE_DUPLICATE_BOOK) wi
 </ul>
 </div>
 </div>
-<div class="sect5">
-<h6 id="aspect-where-to-store-reviews"><a class="link" href="#aspect-where-to-store-reviews">Aspect: Where to store Reviews</a></h6>
+<div class="sect4">
+<h5 id="aspect-where-to-store-reviews"><a class="link" href="#aspect-where-to-store-reviews">Aspect: Where to store Reviews</a></h5>
 <div class="ulist">
 <ul>
 <li>
@@ -1389,8 +1396,8 @@ If the new book name already exists, CommandException(MESSAGE_DUPLICATE_BOOK) wi
 </ul>
 </div>
 </div>
-<div class="sect5">
-<h6 id="aspect-constraints-on-review-parameters"><a class="link" href="#aspect-constraints-on-review-parameters">Aspect: Constraints on Review Parameters</a></h6>
+<div class="sect4">
+<h5 id="aspect-constraints-on-review-parameters"><a class="link" href="#aspect-constraints-on-review-parameters">Aspect: Constraints on Review Parameters</a></h5>
 <div class="ulist">
 <ul>
 <li>
@@ -1405,8 +1412,8 @@ adding enhanced review input panel to make the review feature more user-friendly
 </ul>
 </div>
 </div>
-<div class="sect5">
-<h6 id="aspect-auto-creation-of-date-for-the-review"><a class="link" href="#aspect-auto-creation-of-date-for-the-review">Aspect: Auto-creation of Date for the Review</a></h6>
+<div class="sect4">
+<h5 id="aspect-auto-creation-of-date-for-the-review"><a class="link" href="#aspect-auto-creation-of-date-for-the-review">Aspect: Auto-creation of Date for the Review</a></h5>
 <div class="ulist">
 <ul>
 <li>
@@ -1419,10 +1426,10 @@ is available where the date can be passed in as a parameter, to be used in testi
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="listreview-feature"><a class="link" href="#listreview-feature">4.10. ListReview Feature</a></h3>
 <div class="sect3">
-<h4 id="listreview-feature"><a class="link" href="#listreview-feature">4.9.2. ListReview Feature</a></h4>
-<div class="sect4">
-<h5 id="current-implementation-8"><a class="link" href="#current-implementation-8">Current Implementation</a></h5>
+<h4 id="current-implementation-8"><a class="link" href="#current-implementation-8">4.10.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>Given below are an example of usage and program behavior:</p>
 </div>
@@ -1441,16 +1448,16 @@ is available where the date can be passed in as a parameter, to be used in testi
 <div class="paragraph">
 <p>Alternatively, the user can click the book to select it.</p>
 </div>
-<div class="sect5">
-<h6 id="aspect"><a class="link" href="#aspect">Aspect:</a></h6>
+<div class="sect4">
+<h5 id="aspect"><a class="link" href="#aspect">Aspect:</a></h5>
 
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="listallreviews-feature"><a class="link" href="#listallreviews-feature">4.11. ListAllReviews Feature</a></h3>
 <div class="sect3">
-<h4 id="listallreviews-feature"><a class="link" href="#listallreviews-feature">4.9.3. ListAllReviews Feature</a></h4>
-<div class="sect4">
-<h5 id="current-implementation-9"><a class="link" href="#current-implementation-9">Current Implementation</a></h5>
+<h4 id="current-implementation-9"><a class="link" href="#current-implementation-9">4.11.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The ListAllReviews Feature uses the same implementation as the ListBook feature:</p>
 </div>
@@ -1464,10 +1471,10 @@ is available where the date can be passed in as a parameter, to be used in testi
 <p>Step 3. The ListAllReviewsCommand executes. Review list panel is updated to show all reviews.</p>
 </div>
 </div>
+<div class="sect3">
+<h4 id="design-considerations-7"><a class="link" href="#design-considerations-7">4.11.2. Design Considerations</a></h4>
 <div class="sect4">
-<h5 id="design-considerations-7"><a class="link" href="#design-considerations-7">Design Considerations</a></h5>
-<div class="sect5">
-<h6 id="aspect-whether-to-combine-listallreviews-command-with-listreview-command"><a class="link" href="#aspect-whether-to-combine-listallreviews-command-with-listreview-command">Aspect: Whether to combine ListAllReviews command with ListReview command</a></h6>
+<h5 id="aspect-whether-to-combine-listallreviews-command-with-listreview-command"><a class="link" href="#aspect-whether-to-combine-listallreviews-command-with-listreview-command">Aspect: Whether to combine ListAllReviews command with ListReview command</a></h5>
 <div class="ulist">
 <ul>
 <li>
@@ -1501,10 +1508,10 @@ is available where the date can be passed in as a parameter, to be used in testi
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="selectreview-feature"><a class="link" href="#selectreview-feature">4.12. SelectReview Feature</a></h3>
 <div class="sect3">
-<h4 id="selectreview-feature"><a class="link" href="#selectreview-feature">4.9.4. SelectReview Feature</a></h4>
-<div class="sect4">
-<h5 id="current-implementation-10"><a class="link" href="#current-implementation-10">Current Implementation</a></h5>
+<h4 id="current-implementation-10"><a class="link" href="#current-implementation-10">4.12.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>Selection of review is implemented the same way as the selection of a book.</p>
 </div>
@@ -1525,10 +1532,10 @@ is available where the date can be passed in as a parameter, to be used in testi
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="deletereview-feature"><a class="link" href="#deletereview-feature">4.13. DeleteReview Feature</a></h3>
 <div class="sect3">
-<h4 id="deletereview-feature"><a class="link" href="#deletereview-feature">4.9.5. DeleteReview Feature</a></h4>
-<div class="sect4">
-<h5 id="current-implementation-11"><a class="link" href="#current-implementation-11">Current Implementation</a></h5>
+<h4 id="current-implementation-11"><a class="link" href="#current-implementation-11">4.13.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The review is deleted based on the index.</p>
 </div>
@@ -1543,15 +1550,14 @@ is available where the date can be passed in as a parameter, to be used in testi
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="other-design-considerations"><a class="link" href="#other-design-considerations">4.14. Other Design Considerations</a></h3>
 <div class="sect3">
-<h4 id="other-design-considerations"><a class="link" href="#other-design-considerations">4.9.6. Other Design Considerations</a></h4>
-<div class="sect4">
-<h5 id="whether-to-implement-editreview"><a class="link" href="#whether-to-implement-editreview">Whether to Implement EditReview</a></h5>
+<h4 id="whether-to-implement-editreview"><a class="link" href="#whether-to-implement-editreview">4.14.1. Whether to Implement EditReview</a></h4>
 <div class="paragraph">
 <p>It seems natural to implement EditReview as one component of the CRUD features. However,
 editing an existing review requires re-typing everything and seems painstaking to the user. It makes much more sense to just delete
 the original review and add a new one. Hence. EditReview is currently not implemented.</p>
-</div>
 </div>
 </div>
 </div>
@@ -1681,7 +1687,7 @@ This will render the SE-EDU navigation bar at the top of the page, and add some 
 <div class="sect2">
 <h3 id="Docs-PerFileDocSettings"><a class="link" href="#Docs-PerFileDocSettings">5.5. Per-file Documentation Settings</a></h3>
 <div class="paragraph">
-<p>Each <code>.adoc</code>  file may also specify some file-specific <a href="https://asciidoctor.org/docs/user-manual/#attributes">asciidoc attributes</a> which affects how the file is rendered.</p>
+<p>Each <code>.adoc</code>  files may also specify some file-specific <a href="https://asciidoctor.org/docs/user-manual/#attributes">asciidoc attributes</a> which affects how the file is rendered.</p>
 </div>
 <div class="paragraph">
 <p>Asciidoctor&#8217;s <a href="https://asciidoctor.org/docs/user-manual/#builtin-attributes">built-in attributes</a> may be specified and used as well.</p>
@@ -1718,7 +1724,7 @@ Attributes left unset in <code>.adoc</code> files will use their <strong>default
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Site section that the document belongs to.
 This will cause the associated item in the navigation bar to be highlighted.
-One of: <code>UserGuide</code>, <code>DeveloperGuide</code>, <code>LearningOutcomes</code>*, <code>AboutUs</code>, <code>ContactUs</code></p>
+One of: <code>UserGuide</code>, <code>DeveloperGuide</code>, <code>AboutUs</code>, <code>ContactUs</code></p>
 </div>
 <div class="paragraph">
 <p><em>* Official SE-EDU projects only</em></p>
@@ -1855,7 +1861,7 @@ See <a href="UsingGradle.html">UsingGradle.adoc</a> for more info on how to run 
 <ol class="loweralpha" type="a">
 <li>
 <p><em>Unit tests</em> targeting the lowest level methods/classes.<br>
-e.g. <code>seedu.address.commons.StringUtilTest</code></p>
+e.g. <code>seedu.address.commons.util.StringUtilTest</code></p>
 </li>
 <li>
 <p><em>Integration tests</em> that are checking the integration of multiple code units (those code units are assumed to be working).<br>
@@ -1941,7 +1947,7 @@ e.g. <code>seedu.address.logic.LogicManagerTest</code></p>
 <div class="sect2">
 <h3 id="managing-dependencies"><a class="link" href="#managing-dependencies">7.6. Managing Dependencies</a></h3>
 <div class="paragraph">
-<p>A project often depends on third-party libraries. For example, Book Shelf depends on the <a href="https://github.com/FasterXML/jackson">Jackson library</a> for JSON parsing. Managing these <em>dependencies</em> can be automated using Gradle. For example, Gradle can download the dependencies automatically, which is better than these alternatives:</p>
+<p>A project often depends on third-party libraries. For example, Bookshelf depends on the <a href="https://github.com/FasterXML/jackson">Jackson library</a> for JSON parsing. Managing these <em>dependencies</em> can be automated using Gradle. For example, Gradle can download the dependencies automatically, which is better than these alternatives:</p>
 </div>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
@@ -2018,7 +2024,7 @@ e.g. <code>seedu.address.logic.LogicManagerTest</code></p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">add a new book</p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">record a book I have read</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
@@ -2029,14 +2035,8 @@ e.g. <code>seedu.address.logic.LogicManagerTest</code></p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">find a book by name</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">locate details of books without having to go through the entire list</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">update a book&#8217;s review</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">edit base on current content</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">find books by certain criteria such as name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">locate details and reviews of the books without having to go through the entire list</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
@@ -2047,8 +2047,8 @@ e.g. <code>seedu.address.logic.LogicManagerTest</code></p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">select a book</p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">select a review</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">so that I can view the review</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
@@ -2090,34 +2090,39 @@ e.g. <code>seedu.address.logic.LogicManagerTest</code></p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">sort</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">sort the list in alphabetical order</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">sort the book list in specified order</p></td>
 </tr>
 </tbody>
 </table>
-<div class="paragraph">
-<p><em>{More to be added}</em></p>
-</div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="use-cases"><a class="link" href="#use-cases">Appendix C: Use Cases</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>(For all use cases below, the <strong>System</strong> is the <code>Book Squirrel</code> and the <strong>Actor</strong> is the <code>user</code>, unless specified otherwise)</p>
+<p>(For all use cases below, the <strong>System</strong> is the <code>BookSquirrel</code> and the <strong>Actor</strong> is the <code>user</code>, unless specified otherwise)</p>
 </div>
-<h3 id="use-case-delete-book" class="discrete">Use case: Delete book</h3>
+<h3 id="use" class="discrete">Use</h3>
+<div class="sect2">
+<h3 id="use-case-delete-book"><a class="link" href="#use-case-delete-book">C.1. Use case: Delete book</a></h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User requests to delete a book and all its reviews by the book&#8217;s index in the list</p>
+<p>User requests to list books</p>
 </li>
 <li>
-<p>Book Squirrel deletes the book</p>
+<p>BookSquirrel shows a list of books</p>
+</li>
+<li>
+<p>User requests to delete a specific book in the list</p>
+</li>
+<li>
+<p>BookSquirrel deletes the book and all its reviews</p>
 <div class="paragraph">
-<p>Use case ends.</p>
+<p>The use case ends.</p>
 </div>
 </li>
 </ol>
@@ -2125,18 +2130,27 @@ e.g. <code>seedu.address.logic.LogicManagerTest</code></p>
 <div class="paragraph">
 <p><strong>Extensions</strong></p>
 </div>
-<div class="ulist none">
-<ul class="none">
+<div class="ulist">
+<ul>
 <li>
 <p>2a. The list is empty.</p>
 <div class="paragraph">
-<p>Use case ends.</p>
+<p>The use case ends.</p>
+</div>
+</li>
+<li>
+<p>3a. The given index is invalid.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>3a1. BookSquirrel shows an error message.
+Use case resumes at step 2.</p>
+</li>
+</ul>
 </div>
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p><em>{More to be added}</em></p>
 </div>
 </div>
 </div>
@@ -2155,9 +2169,6 @@ e.g. <code>seedu.address.logic.LogicManagerTest</code></p>
 <p>A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.</p>
 </li>
 </ol>
-</div>
-<div class="paragraph">
-<p><em>{More to be added}</em></p>
 </div>
 </div>
 </div>
@@ -2257,11 +2268,11 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="sorting-the-booklist"><a class="link" href="#sorting-the-booklist">F.3. Sorting the bookList</a></h3>
+<h3 id="sorting-the-booklist"><a class="link" href="#sorting-the-booklist">F.3. Sorting the booklist</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Sorting the current Booklist in a certain order.</p>
+<p>Sorting the current booklist in a certain order.</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
@@ -2269,15 +2280,15 @@ Expected: Similar to previous.</p>
 </li>
 <li>
 <p>Test case: <code>SortBook st/rating</code><br>
-Expected: Booklist will be sorted with the rating in ascending order.</p>
+Expected: booklist will be sorted with the rating in ascending order.</p>
 </li>
 <li>
 <p>Test case: <code>SortBook st/rating st/author o/asc o2/des</code><br>
-Expected: The Booklist will be sorted in ascending order, if they are having the same rating then it will be sorted in ascending order of author <code>o2/des</code> will be ignored as <code>o/asc</code> is specified.</p>
+Expected: The booklist will be sorted in ascending order, if they are having the same rating then it will be sorted in ascending order of author <code>o2/des</code> will be ignored as <code>o/asc</code> is specified.</p>
 </li>
 <li>
 <p>Test case: <code>SortBook st/rating st/author o2/des</code><br>
-Expected: The Booklist will be sorted in ascending order, if they are having the same rating then it will be sorted in descending order of author `.</p>
+Expected: The booklist will be sorted in ascending order, if they are having the same rating then it will be sorted in descending order of author `.</p>
 </li>
 <li>
 <p>Some incorrect sort commands to try:</p>
@@ -2330,4 +2341,4 @@ Error message: Second sorting type does not exist.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-12 09:01:24 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-13 03:50:40 UTC</div></div></div></body></html>
