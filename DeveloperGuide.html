@@ -1279,20 +1279,33 @@ If the new book name already exists, CommandException(MESSAGE_DUPLICATE_BOOK) wi
 <p>Pros: This prevents the command from accessing data managed by the model manager, thus independency of different parts is guaranteed.</p>
 </li>
 <li>
-<p>Cons: More methods are introduced into the model manager. To get include more information in the summary, not only the summary command should be modified, but also more information query methodS should be added in THE <code>Model</code>.</p>
+<p>Cons: More methods are introduced into the model manager. To include more information in the summary, not only the summary command should be modified, but also more information query methodS should be added in The <code>Model</code>. This somehow break the abstraction.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Alternative 2:</strong> Model manager pass the whole Bookshelf to the command, then command process the data according to this list.</p>
+<p><strong>Alternative 2:</strong> Model manager passes the whole bookshelf to the command, then command process the data according to this list.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: More flexible as the command can extract any information it desires.</p>
+<p>Pros: More flexible as the command can extract any information it desires. Whenever we want the summary to include more information, we just directly fetch the data from the copy of the bookshelf.</p>
 </li>
 <li>
 <p>Cons: This approach is unsafe and may lead to more bugs as it violates the principle of independence.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 3:</strong> Model manager creates a list of the copies of the books in the bookshelf and passes it to the command.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: More flexible as the command can read whatever information desired, while keep the bookshelf safe from any unintended modification.</p>
+</li>
+<li>
+<p>Cons: The manager no longer has control over what information is accessible to the command, thus may still expose some sensitive information. Besides, making a copy of the whole list is not practical when there are many books in the bookshelf.</p>
 </li>
 </ul>
 </div>
@@ -2341,4 +2354,4 @@ Error message: Second sorting type does not exist.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 05:04:48 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 01:21:47 UTC</div></div></div></body></html>
