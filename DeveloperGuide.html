@@ -103,7 +103,7 @@
 <h2 id="introduction"><a class="link" href="#introduction">1. Introduction</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>BookSquirrel is for those who <strong>want to keep a record of books they&#8217;ve read</strong>. More importantly, BookSquirrel is <strong>optimized for those who prefer to work with a Command Line Interface</strong> (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, BookSquirrel can get your contact management tasks done faster than traditional GUI apps.</p>
+<p>BookSquirrel is for those who <strong>want to keep a record of books they&#8217;ve read</strong>. More importantly, BookSquirrel is <strong>optimized for those who prefer to work with a Command Line Interface</strong> (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, BookSquirrel can get your management of books done faster than traditional GUI apps.</p>
 </div>
 </div>
 </div>
@@ -573,7 +573,7 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>BookShelf</co
 <p>both the data of books and reviews will be saved.</p>
 </li>
 <li>
-<p>users are not supposed to touch the data file (file inside the <code>data</code> folder) directly. If the user insists on doing so, the data might be corrupted.</p>
+<p>users are not supposed to touch the data file (the file inside the <code>data</code> folder) directly. If the user insists on doing so, the data might be corrupted.</p>
 </li>
 <li>
 <p>users are not supposed to add data files into the app manually. If the user accidentally corrupts the data file, he or she may have to reinstall the app and all data will get lost.</p>
@@ -1276,7 +1276,7 @@ If the new book name already exists, CommandException(MESSAGE_DUPLICATE_BOOK) wi
 </div>
 </div>
 <div class="paragraph">
-<p>Step 4. The <code>ListBookCommand</code> will be executed. The command checks all the book in the <code>BookShelf</code>, selects out books whose name contain <code>Life</code> based on <code>BookNameContainsKeywordPredicate</code>.</p>
+<p>Step 4. The <code>ListBookCommand</code> will be executed. The command checks all the books on the <code>BookShelf</code>, selects out books whose name contain <code>Life</code> based on <code>BookNameContainsKeywordPredicate</code>.</p>
 </div>
 <div class="paragraph">
 <p>The sequence diagram of the whole process is as follows.</p>
@@ -1314,7 +1314,7 @@ If the new book name already exists, CommandException(MESSAGE_DUPLICATE_BOOK) wi
 <p>Pros: More likely to provide the user with the book that the user is looking for.</p>
 </li>
 <li>
-<p>Cons: Hard to test and manage. Such a design also fails to narrow down search results when the user is providing more keywords for the targeted book.</p>
+<p>Cons: Such a design also fails to narrow down search results when the user is providing more keywords for the targeted book. Besides, it&#8217;s hard to test and manage.</p>
 </li>
 </ul>
 </div>
@@ -1329,7 +1329,7 @@ If the new book name already exists, CommandException(MESSAGE_DUPLICATE_BOOK) wi
 <div class="sect3">
 <h4 id="current-implementation-6"><a class="link" href="#current-implementation-6">4.8.1. Current Implementation</a></h4>
 <div class="paragraph">
-<p>The summary feature is a command works to summarize the books in the bookshelf. The user can have a rough overview of what he/she has read.</p>
+<p>The summary feature is a command works to summarize the books on the bookshelf. The user can have an overview of what he/she has read.</p>
 </div>
 <div class="paragraph">
 <p>Given below is an example of usage and how the summary feature works.</p>
@@ -1347,7 +1347,13 @@ If the new book name already exists, CommandException(MESSAGE_DUPLICATE_BOOK) wi
 <p>Step 4. The <code>SummaryCommandParser`returns an `SummaryCommand</code>. The exception will be thrown if the command is invalid.</p>
 </div>
 <div class="paragraph">
-<p>Step 5. The <code>SummaryCommand</code> executes. The command will traverse all books in the bookshelf, checks, if there are authors or tags, appear more than once and give relative details. The command will also show the highest rating of books on the bookshelf.</p>
+<p>Step 5. The <code>SummaryCommand</code> executes. The command will traverse all books in the bookshelf, checks, if there are authors or tags, appear more than once and give relative details. The command will also return the highest rating of books on the bookshelf.</p>
+</div>
+<div class="paragraph">
+<p>The summary command creates a summary as follows:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="images/SummaryActivity.png" alt="SummaryActivity" width="800"></span></p>
 </div>
 </div>
 <div class="sect3">
@@ -1357,11 +1363,11 @@ If the new book name already exists, CommandException(MESSAGE_DUPLICATE_BOOK) wi
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Model manager in charge of data processing, then return the result to the command.</p>
+<p><strong>Alternative 1 (current choice):</strong> Model manager is in charge of data processing, then returns the result to the command.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: This prevents the command from accessing data managed by the model manager, thus independency of different parts is guaranteed.</p>
+<p>Pros: This prevents the command from accessing data managed by the model manager, thus independence of different parts is guaranteed.</p>
 </li>
 <li>
 <p>Cons: More methods are introduced into the model manager. To include more information in the summary, not only the summary command should be modified, but also more information query methodS should be added in The <code>Model</code>. This somehow break the abstraction.</p>
@@ -1387,7 +1393,7 @@ If the new book name already exists, CommandException(MESSAGE_DUPLICATE_BOOK) wi
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: More flexible as the command can read whatever information desired, while keep the bookshelf safe from any unintended modification.</p>
+<p>Pros: More flexible as the command can read whatever information desired, thus keeps the bookshelf safe from any unintended modification.</p>
 </li>
 <li>
 <p>Cons: The manager no longer has control over what information is accessible to the command, thus may still expose some sensitive information. Besides, making a copy of the whole list is not practical when there are many books in the bookshelf.</p>
@@ -2692,4 +2698,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 12:31:25 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 12:55:16 UTC</div></div></div></body></html>

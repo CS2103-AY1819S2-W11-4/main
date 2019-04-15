@@ -151,22 +151,22 @@ Format: <code>listBook [n/BOOKNAME] [a/AUTHOR] [t/TAG] [m/RATING]</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p>If no search criteria are given, the command will give the complete list of the books</p>
+<p>If no parameters are given, the command will give the complete list of all the books</p>
 </li>
 <li>
-<p>Keywords should be single word, or will be rejected as invalid input.</p>
+<p>Keywords should be single word, or will be rejected as an invalid input.</p>
 </li>
 <li>
 <p>Keywords for every type should comply with the constraint enforced for this type.</p>
 </li>
 <li>
-<p>Prefixes should be provided for every keyword. For example, <code>n/Madame Ham</code> will not be recognized as two separate book name keywords 'Madame' and 'Ham'. but will be treated as a whole.</p>
+<p>Prefixes should be provided for every keyword. For example, <code>n/Madame Ham</code> will not be recognized as two separate book name keywords 'Madame' and 'Ham', but will be read as a whole.</p>
 </li>
 <li>
 <p>The search is case insensitive. e.g <code>hans</code> will match <code>Hans</code></p>
 </li>
 <li>
-<p>There are no limits to the number of keywords of one type.</p>
+<p>There are no limits of the number of keywords of one type.</p>
 </li>
 <li>
 <p>The order of the keywords does not matter. e.g. <code>Alice Wonderland</code> will match <code>Wonderland Alice</code></p>
@@ -210,6 +210,11 @@ Books whose name contains the keyword <em>CS2104T</em> or tags include <em>textb
 <p><code>listBook m/5 m/6</code><br>
 Books whose rating is <em>5</em> or <em>6</em> wil be displayed.</p>
 </li>
+<li>
+<p><code>listBook n/Madame n/Prejudice m/6 m/8</code><br>
+<em>Madame Bovary</em> and <em>Pride and Prejudice</em> will be displayed
+<span class="image"><img src="../images/ListBookScreenShot.png" alt="ListBookScreenShot" width="800"></span></p>
+</li>
 </ul>
 </div>
 </div>
@@ -227,13 +232,13 @@ Format: <code>summary</code></p>
 <p>The summary will list out how many books you&#8217;ve read.</p>
 </li>
 <li>
-<p>The summary will also list out authors appear more than once in your bookshelf.</p>
+<p>The summary will also list out authors appear more than once on your bookshelf.</p>
 </li>
 <li>
 <p>The summary will also list out books of the highest score.</p>
 </li>
 <li>
-<p>The summary will also list out tags appear more than once in your bookshelf.</p>
+<p>The summary will also list out tags appear more than once on your bookshelf.</p>
 </li>
 </ul>
 </div>
@@ -292,7 +297,7 @@ An example of a summary <code>You&#8217;ve read 9 books. You prefer books by Eri
 <p>both the data of books and reviews will be saved.</p>
 </li>
 <li>
-<p>users are not supposed to touch the data file (file inside the <code>data</code> folder) directly. If the user insists on doing so, the data might be corrupted.</p>
+<p>users are not supposed to touch the data file (the file inside the <code>data</code> folder) directly. If the user insists on doing so, the data might be corrupted.</p>
 </li>
 <li>
 <p>users are not supposed to add data files into the app manually. If the user accidentally corrupts the data file, he or she may have to reinstall the app and all data will get lost.</p>
@@ -334,7 +339,7 @@ An example of a summary <code>You&#8217;ve read 9 books. You prefer books by Eri
 </div>
 </div>
 <div class="paragraph">
-<p>Step 4. The <code>ListBookCommand</code> will be executed. The command checks all the book in the <code>BookShelf</code>, selects out books whose name contain <code>Life</code> based on <code>BookNameContainsKeywordPredicate</code>.</p>
+<p>Step 4. The <code>ListBookCommand</code> will be executed. The command checks all the books on the <code>BookShelf</code>, selects out books whose name contain <code>Life</code> based on <code>BookNameContainsKeywordPredicate</code>.</p>
 </div>
 <div class="paragraph">
 <p>The sequence diagram of the whole process is as follows.</p>
@@ -372,7 +377,7 @@ An example of a summary <code>You&#8217;ve read 9 books. You prefer books by Eri
 <p>Pros: More likely to provide the user with the book that the user is looking for.</p>
 </li>
 <li>
-<p>Cons: Hard to test and manage. Such a design also fails to narrow down search results when the user is providing more keywords for the targeted book.</p>
+<p>Cons: Such a design also fails to narrow down search results when the user is providing more keywords for the targeted book. Besides, it&#8217;s hard to test and manage.</p>
 </li>
 </ul>
 </div>
@@ -387,7 +392,7 @@ An example of a summary <code>You&#8217;ve read 9 books. You prefer books by Eri
 <div class="sect3">
 <h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">Current Implementation</a></h4>
 <div class="paragraph">
-<p>The summary feature is a command works to summarize the books in the bookshelf. The user can have a rough overview of what he/she has read.</p>
+<p>The summary feature is a command works to summarize the books on the bookshelf. The user can have an overview of what he/she has read.</p>
 </div>
 <div class="paragraph">
 <p>Given below is an example of usage and how the summary feature works.</p>
@@ -405,7 +410,13 @@ An example of a summary <code>You&#8217;ve read 9 books. You prefer books by Eri
 <p>Step 4. The <code>SummaryCommandParser`returns an `SummaryCommand</code>. The exception will be thrown if the command is invalid.</p>
 </div>
 <div class="paragraph">
-<p>Step 5. The <code>SummaryCommand</code> executes. The command will traverse all books in the bookshelf, checks, if there are authors or tags, appear more than once and give relative details. The command will also show the highest rating of books on the bookshelf.</p>
+<p>Step 5. The <code>SummaryCommand</code> executes. The command will traverse all books in the bookshelf, checks, if there are authors or tags, appear more than once and give relative details. The command will also return the highest rating of books on the bookshelf.</p>
+</div>
+<div class="paragraph">
+<p>The summary command creates a summary as follows:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../images/SummaryActivity.png" alt="SummaryActivity" width="800"></span></p>
 </div>
 </div>
 <div class="sect3">
@@ -415,11 +426,11 @@ An example of a summary <code>You&#8217;ve read 9 books. You prefer books by Eri
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Model manager in charge of data processing, then return the result to the command.</p>
+<p><strong>Alternative 1 (current choice):</strong> Model manager is in charge of data processing, then returns the result to the command.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: This prevents the command from accessing data managed by the model manager, thus independency of different parts is guaranteed.</p>
+<p>Pros: This prevents the command from accessing data managed by the model manager, thus independence of different parts is guaranteed.</p>
 </li>
 <li>
 <p>Cons: More methods are introduced into the model manager. To include more information in the summary, not only the summary command should be modified, but also more information query methodS should be added in The <code>Model</code>. This somehow break the abstraction.</p>
@@ -445,7 +456,7 @@ An example of a summary <code>You&#8217;ve read 9 books. You prefer books by Eri
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: More flexible as the command can read whatever information desired, while keep the bookshelf safe from any unintended modification.</p>
+<p>Pros: More flexible as the command can read whatever information desired, thus keeps the bookshelf safe from any unintended modification.</p>
 </li>
 <li>
 <p>Cons: The manager no longer has control over what information is accessible to the command, thus may still expose some sensitive information. Besides, making a copy of the whole list is not practical when there are many books in the bookshelf.</p>
@@ -459,4 +470,4 @@ An example of a summary <code>You&#8217;ve read 9 books. You prefer books by Eri
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 12:31:25 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 12:55:16 UTC</div></div></div></body></html>
