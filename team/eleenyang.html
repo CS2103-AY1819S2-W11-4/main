@@ -154,7 +154,10 @@ Format: <code>listBook [n/BOOKNAME] [a/AUTHOR] [t/TAG] [m/RATING]</code></p>
 <p>If no search criteria are given, the command will give the complete list of the books</p>
 </li>
 <li>
-<p>Since the keyword matching search is done in a word-by-word manner, keywords should be words, not strings with white space in the middle. Though keywords with white space in between will not be rejected as invalid input, they will fail to return the searching result you are looking for. A following example will explain this constraint.</p>
+<p>Keywords should be single word, or will be rejected as invalid input.</p>
+</li>
+<li>
+<p>Keywords for every type should comply with the constraint enforced for this type.</p>
 </li>
 <li>
 <p>Prefixes should be provided for every keyword. For example, <code>n/Madame Ham</code> will not be recognized as two separate book name keywords 'Madame' and 'Ham'. but will be treated as a whole.</p>
@@ -181,10 +184,10 @@ Format: <code>listBook [n/BOOKNAME] [a/AUTHOR] [t/TAG] [m/RATING]</code></p>
 <p>For author name searching, books whose author name matching at least one keyword will be returned. e.g. <code>James</code> will return books whose author name is <code>Henry James</code></p>
 </li>
 <li>
-<p>For tag searching, books containing at least one tag will be returned. e.g. <code>computer</code> will return <code>Computer Organisation</code>, <code>Computer Networks</code></p>
+<p>For tag searching, books containing at least one tag given will be returned. e.g. <code>computer</code> will return <code>Computer Organisation</code>, <code>Computer Networks</code></p>
 </li>
 <li>
-<p>For rating search, books whose rating are included will be returned.</p>
+<p>For rating search, books whose rating is included will be returned.</p>
 </li>
 </ul>
 </div>
@@ -197,23 +200,15 @@ Format: <code>listBook [n/BOOKNAME] [a/AUTHOR] [t/TAG] [m/RATING]</code></p>
 <ul>
 <li>
 <p><code>listBook t/textbook m/5</code><br>
-Books with the rating <code>5</code> or the tag <code>textbook</code> will be displayed.</p>
+Books with the rating <em>5</em> or the tag <em>textbook</em> will be displayed.</p>
 </li>
 <li>
 <p><code>listBook n/CS2104T t/textbook</code><br>
-Books whose name contains the keyword <code>CS2104T</code> or tags include <code>textbook</code> will be displayed.</p>
+Books whose name contains the keyword <em>CS2104T</em> or tags include <em>textbook</em> will be displayed.</p>
 </li>
 <li>
 <p><code>listBook m/5 m/6</code><br>
-Books whose rating is 5 or 6 wil be displayed.</p>
-</li>
-<li>
-<p><code>listBook n/Madame n/Bovary</code><br>
-The book <code>Madame Bovary</code> and <code>Madame Butterfly</code> will be displayed.</p>
-</li>
-<li>
-<p><code>listBook n/Madame Bovary</code><br>
-The book Madame Bovary will not be displayed. As the input <code>Madame Bovary</code> will be considered as a single word, neither <code>Madame</code> nor <code>Bovary</code> equals to the <code>Madame Bovary</code>.</p>
+Books whose rating is <em>5</em> or <em>6</em> wil be displayed.</p>
 </li>
 </ul>
 </div>
@@ -294,10 +289,23 @@ An example of a summary <code>You&#8217;ve read 9 books. You prefer books by Eri
 <p>Step 2. The user executes <code>listBook n/Life</code>.</p>
 </div>
 <div class="paragraph">
-<p>Step 3. The <code>ListBookCommandParser</code> parses this command, and returns an <code>ListBookCommand</code>. The exception will be thrown if the command is invalid.</p>
+<p>Step 3. The <code>ListBookCommandParser</code> parses this command. It will first create some predicates according to the input and then use theses predicates to create a <code>ListBookCommand</code>. The exception will be thrown if the command is invalid. The command is created by the logic manager as follows.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/listBookCommandLogic.png" alt="listBookCommandLogic" width="800">
+</div>
 </div>
 <div class="paragraph">
-<p>Step 4. The <code>ListBookCommand</code> be executed. The command checks all the book in the <code>BookShelf</code>, selects out books whose name contain <code>Life</code> based on <code>BookNameContainsKeywordPredicate</code>.</p>
+<p>Step 4. The <code>ListBookCommand</code> will be executed. The command checks all the book in the <code>BookShelf</code>, selects out books whose name contain <code>Life</code> based on <code>BookNameContainsKeywordPredicate</code>.</p>
+</div>
+<div class="paragraph">
+<p>The sequence diagram of the whole process is as follows.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/listBookSqDiagram.png" alt="listBookSqDiagram" width="800">
+</div>
 </div>
 </div>
 <div class="sect3">
@@ -414,4 +422,4 @@ An example of a summary <code>You&#8217;ve read 9 books. You prefer books by Eri
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 07:21:22 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 08:29:10 UTC</div></div></div></body></html>
