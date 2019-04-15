@@ -351,7 +351,22 @@ Additionally, it uses the following operations from <code>BookShelf</code>:</p>
 <p>Step 1. The user launches the application for the first time. The <code>VersionedBookShelf</code> will be initialized with the initial bookshelf state, and the <code>currentStatePointer</code> pointing to that single bookshelf state.</p>
 </div>
 <div class="paragraph">
-<p>Step 2. The user executes <code>addBook n/Alice a/HR m/5 tag/fantasy</code> command to add the book called Alice, written by HR, with a rating of 5 and tag of fantasy in the Bookshelf. The <code>addBook</code> command calls <code>Model#hasBook()</code>, checking if the book already exists in the bookshelf.</p>
+<p>Step 2. The user executes <code>addBook n/Alice a/HR m/5 tag/fantasy</code> command to add the book called Alice, written by HR, with a rating of 5 and tag of fantasy in the Bookshelf. The <code>AddBookCommandParser</code> check if the command is in valid format.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If the command is not in valid format, ParseException(MESSAGE_INVALID_COMMAND_FORMAT) will be thrown. The book will not be added to the bookshelf.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Step 3. The <code>addBook</code> command calls <code>Model#hasBook()</code>, checking if the book already exists in the bookshelf.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -367,6 +382,22 @@ If the book already exists, CommandException(MESSAGE_DUPLICATE_BOOK) will be thr
 </div>
 <div class="paragraph">
 <p>Step 4. The bookshelf now adds the book to the Bookshelf after making sure there are no duplicates, and calls Model#commitBookShelf(), causing the modified state of the Bookshelf after the <code>addBook</code> command executes to be saved in the BookShelfStateList</p>
+</div>
+<div class="paragraph">
+<p>The Sequence Diagram below shows how the components interact with each other for the scenario where the user issues the command <code>addBook n/Alice a/HR m/5 tag/fantasy</code>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/AddBookHighLevelSequenceDiagram.jpg" alt="AddBookHighLevelSequenceDiagram" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>The following activity diagram summarizes what happens when a user executes an AddBook command:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/AddBookActivityDiagram.png" alt="AddBookActivityDiagram" width="800">
+</div>
 </div>
 </div>
 <div class="sect3">
@@ -409,32 +440,64 @@ If the book already exists, CommandException(MESSAGE_DUPLICATE_BOOK) will be thr
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Saves the entire book as one object contains different components such as author, rating, etc.</p>
+<p><strong>Alternative 1 (current choice):</strong> Saves the entire book as one object contains different fields such as author, rating, etc.</p>
 <div class="ulist">
 <ul>
 <li>
 <p>Pros: Easy to implement delete and other features that change an entire book.</p>
 </li>
 <li>
-<p>Cons: Maybe more difficult to implement the summary feature which needs to obtain statistics of all separate components, eg. find the most popular author.</p>
+<p>Cons: Maybe more difficult to implement the summary feature which needs to obtain statistics of all separate fields stored in each book, eg. find the most popular author.</p>
 </li>
 </ul>
 </div>
 </li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+An example of the current model is given below.<br>
+<br>
+<span class="image"><img src="../images/BookModelComponentClassOopDiagram.png" alt="BookModelComponentClassOopDiagram" width="800"></span>
+</td>
+</tr>
+</table>
+</div>
+<div class="ulist">
+<ul>
 <li>
-<p><strong>Alternative 2:</strong> Components stored as individual objects.</p>
+<p><strong>Alternative 2:</strong> Store a Tag list and an Author List in BookShelf, which Book can reference.</p>
 <div class="ulist">
 <ul>
 <li>
 <p>Pros: Easier to obtain statistics regarding each component.</p>
 </li>
 <li>
-<p>Cons: It is hard to manage book object as we need to find a way to connect all components together.</p>
+<p>Cons: It is harder to manage book object as we need to find a way to connect all components together.</p>
 </li>
 </ul>
 </div>
 </li>
 </ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+An example of the alternative model is given below.<br>
+<br>
+<span class="image"><img src="../images/BookModelComponentAlternativeClassOopDiagram.png" alt="BookModelComponentAlternativeClassOopDiagram" width="800"></span>
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
@@ -527,4 +590,4 @@ If the new book name already exists, CommandException(MESSAGE_DUPLICATE_BOOK) wi
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 09:19:29 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 09:51:51 UTC</div></div></div></body></html>
