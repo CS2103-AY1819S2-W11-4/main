@@ -722,5 +722,49 @@ If the <code>currentStatePointer</code> is at index <code>BookShelfStateList.siz
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="sorting-the-booklist"><a class="link" href="#sorting-the-booklist">Sorting the booklist</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Sorting the current booklist in a certain order.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: List all book using the <code>listBook</code> command. Multiple books on the list.</p>
+</li>
+<li>
+<p>Test case: <code>SortBook st/rating</code><br>
+Expected: booklist will be sorted with the rating in ascending order.</p>
+</li>
+<li>
+<p>Test case: <code>SortBook st/rating st/author o/asc o2/des</code><br>
+Expected: The booklist will be sorted in ascending order, if they are having the same rating then it will be sorted in ascending order of author <code>o2/des</code> will be ignored as <code>o/asc</code> is specified.</p>
+</li>
+<li>
+<p>Test case: <code>SortBook st/rating st/author o2/des</code><br>
+Expected: The booklist will be sorted in ascending order, if they are having the same rating then it will be sorted in descending order of author `.</p>
+</li>
+<li>
+<p>Some incorrect sort commands to try:</p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p><code>sortBook</code><br>
+Error message: Sorting type is not provided.</p>
+</li>
+<li>
+<p><code>sortBook st/name o1/des o2/asc</code><br>
+Error message: Second sorting type does not exist.</p>
+</li>
+</ol>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 12:29:43 UTC</div></div></div></body></html>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 12:31:25 UTC</div></div></div></body></html>
