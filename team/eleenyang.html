@@ -267,6 +267,43 @@ An example of a summary <code>You&#8217;ve read 9 books. You prefer books by Eri
 </tbody>
 </table>
 <div class="sect2">
+<h3 id="storage-component"><a class="link" href="#storage-component">Storage component</a></h3>
+<div class="imageblock">
+<div class="content">
+<img src="../images/StorageClassDiagram.png" alt="StorageClassDiagram" width="800">
+</div>
+<div class="title">Figure 1. Structure of the Storage Component</div>
+</div>
+<div class="paragraph">
+<p><strong>API</strong> : <a href="{repoURL}/src/main/java/seedu/address/storage/Storage.java"><code>Storage.java</code></a></p>
+</div>
+<div class="paragraph">
+<p>The <code>Storage</code> component,</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>can save <code>UserPref</code> objects in JSON format and read it back.</p>
+</li>
+<li>
+<p>can save the BookShelf data in JSON format and read it back.</p>
+</li>
+<li>
+<p>both the data of books and reviews will be saved.</p>
+</li>
+<li>
+<p>users are not supposed to touch the data file (file inside the <code>data</code> folder) directly. If the user insists on doing so, the data might be corrupted.</p>
+</li>
+<li>
+<p>users are not supposed to add data files into the app manually. If the user accidentally corrupts the data file, he or she may have to reinstall the app and all data will get lost.</p>
+</li>
+<li>
+<p>developers can edit the data file for the purpose of testing.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
 <h3 id="listbook-feature"><a class="link" href="#listbook-feature">ListBook Feature</a></h3>
 <div class="sect3">
 <h4 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h4>
@@ -422,4 +459,4 @@ An example of a summary <code>You&#8217;ve read 9 books. You prefer books by Eri
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 08:29:10 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 09:19:29 UTC</div></div></div></body></html>
